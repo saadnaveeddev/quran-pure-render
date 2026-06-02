@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as FreeTrialRouteImport } from './routes/free-trial'
 import { Route as FeeScheduleRouteImport } from './routes/fee-schedule'
@@ -17,6 +18,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TermsConditionsRoute = TermsConditionsRouteImport.update({
+  id: '/terms-conditions',
+  path: '/terms-conditions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-conditions': typeof TermsConditionsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/fee-schedule'
     | '/free-trial'
     | '/privacy-policy'
+    | '/terms-conditions'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/fee-schedule'
     | '/free-trial'
     | '/privacy-policy'
+    | '/terms-conditions'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/fee-schedule'
     | '/free-trial'
     | '/privacy-policy'
+    | '/terms-conditions'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +131,18 @@ export interface RootRouteChildren {
   FeeScheduleRoute: typeof FeeScheduleRoute
   FreeTrialRoute: typeof FreeTrialRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsConditionsRoute: typeof TermsConditionsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms-conditions': {
+      id: '/terms-conditions'
+      path: '/terms-conditions'
+      fullPath: '/terms-conditions'
+      preLoaderRoute: typeof TermsConditionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy-policy': {
       id: '/privacy-policy'
       path: '/privacy-policy'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   FeeScheduleRoute: FeeScheduleRoute,
   FreeTrialRoute: FreeTrialRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsConditionsRoute: TermsConditionsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
