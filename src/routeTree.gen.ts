@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as FreeTrialRouteImport } from './routes/free-trial'
 import { Route as FeeScheduleRouteImport } from './routes/fee-schedule'
 import { Route as CoursesRouteImport } from './routes/courses'
@@ -16,6 +17,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FreeTrialRoute = FreeTrialRouteImport.update({
   id: '/free-trial',
   path: '/free-trial',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
   '/free-trial': typeof FreeTrialRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +90,16 @@ export interface FileRouteTypes {
     | '/courses'
     | '/fee-schedule'
     | '/free-trial'
+    | '/privacy-policy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/courses' | '/fee-schedule' | '/free-trial'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/courses'
+    | '/fee-schedule'
+    | '/free-trial'
+    | '/privacy-policy'
   id:
     | '__root__'
     | '/'
@@ -91,6 +108,7 @@ export interface FileRouteTypes {
     | '/courses'
     | '/fee-schedule'
     | '/free-trial'
+    | '/privacy-policy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -100,10 +118,18 @@ export interface RootRouteChildren {
   CoursesRoute: typeof CoursesRoute
   FeeScheduleRoute: typeof FeeScheduleRoute
   FreeTrialRoute: typeof FreeTrialRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/free-trial': {
       id: '/free-trial'
       path: '/free-trial'
@@ -156,7 +182,18 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesRoute: CoursesRoute,
   FeeScheduleRoute: FeeScheduleRoute,
   FreeTrialRoute: FreeTrialRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
