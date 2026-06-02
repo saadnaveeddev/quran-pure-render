@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as FeeScheduleRouteImport } from './routes/fee-schedule'
 import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const FeeScheduleRoute = FeeScheduleRouteImport.update({
@@ -23,6 +24,11 @@ const CoursesRoute = CoursesRouteImport.update({
   path: '/courses',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses' | '/fee-schedule'
+  fullPaths: '/' | '/about' | '/courses' | '/fee-schedule'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/courses' | '/fee-schedule'
-  id: '__root__' | '/' | '/courses' | '/fee-schedule'
+  to: '/' | '/about' | '/courses' | '/fee-schedule'
+  id: '__root__' | '/' | '/about' | '/courses' | '/fee-schedule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CoursesRoute: typeof CoursesRoute
   FeeScheduleRoute: typeof FeeScheduleRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CoursesRoute: CoursesRoute,
   FeeScheduleRoute: FeeScheduleRoute,
 }
