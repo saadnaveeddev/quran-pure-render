@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FeeScheduleRouteImport } from './routes/fee-schedule'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as IndexRouteImport } from './routes/index'
 
+const FeeScheduleRoute = FeeScheduleRouteImport.update({
+  id: '/fee-schedule',
+  path: '/fee-schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/courses': typeof CoursesRoute
+  '/fee-schedule': typeof FeeScheduleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/courses'
+  fullPaths: '/' | '/courses' | '/fee-schedule'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/courses'
-  id: '__root__' | '/' | '/courses'
+  to: '/' | '/courses' | '/fee-schedule'
+  id: '__root__' | '/' | '/courses' | '/fee-schedule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CoursesRoute: typeof CoursesRoute
+  FeeScheduleRoute: typeof FeeScheduleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/fee-schedule': {
+      id: '/fee-schedule'
+      path: '/fee-schedule'
+      fullPath: '/fee-schedule'
+      preLoaderRoute: typeof FeeScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/courses': {
       id: '/courses'
       path: '/courses'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CoursesRoute: CoursesRoute,
+  FeeScheduleRoute: FeeScheduleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
