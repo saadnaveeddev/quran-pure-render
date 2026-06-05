@@ -1,38 +1,46 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/site";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary/30">
+    <footer className="relative overflow-hidden border-t border-border bg-gradient-to-b from-secondary/20 via-background to-secondary/30">
+      <div className="pointer-events-none absolute -left-24 -top-8 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl" aria-hidden="true" />
       <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
+        <div className="mb-10 rounded-3xl border border-border/80 bg-gradient-emerald px-6 py-8 text-primary-foreground shadow-card sm:px-8">
+          <h3 className="text-balance text-2xl sm:text-3xl">Ready to begin your Quran journey?</h3>
+          <p className="mt-3 max-w-2xl text-primary-foreground/85">
+            Join a warm, structured learning environment with certified tutors and flexible timings.
+          </p>
+          <div className="mt-6">
+            <Link
+              to="/free-trial"
+              className="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-sm font-semibold text-gold-foreground transition-transform duration-300 motion-safe:hover:-translate-y-0.5"
+            >
+              Book Your 2-Day Free Trial
+            </Link>
+          </div>
+        </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-emerald text-primary-foreground">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-                  <path d="M16.5 3.5a8 8 0 1 0 4 6.9 6.5 6.5 0 1 1-4-6.9Z" fill="currentColor" />
-                </svg>
-              </span>
-              <span className="font-display text-lg font-semibold text-foreground">
-                My Quran Guide
-              </span>
-            </div>
+            <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               Quality Quran education, accessible for every student, every family,
               and every new Muslim around the world — from the comfort of home.
             </p>
             <div className="mt-5 flex gap-3">
-              <a href={`mailto:${SITE.email}`} aria-label="Email" className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-soft transition-colors hover:text-primary">
+              <a href={`mailto:${SITE.email}`} aria-label="Email" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-soft transition-colors hover:text-primary">
                 <Mail className="h-4 w-4" />
               </a>
-              <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-soft transition-colors hover:text-primary">
+              <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-soft transition-colors hover:text-primary">
                 <MessageCircle className="h-4 w-4" />
               </a>
-              <a href={SITE.facebookLink} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-soft transition-colors hover:text-primary">
+              <a href={SITE.facebookLink} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-soft transition-colors hover:text-primary">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href={SITE.instagramLink} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-soft transition-colors hover:text-primary">
+              <a href={SITE.instagramLink} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-soft transition-colors hover:text-primary">
                 <Instagram className="h-4 w-4" />
               </a>
             </div>
