@@ -3,25 +3,18 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
+import { coursesFaqs } from "@/content/faqs";
+import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
-    meta: [
-      { title: "Online Quran Courses | Tajweed, Hifz, Arabic & More — My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "Explore all online Quran courses at My Quran Guide — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies & Female Quran Classes. Flexible timings, certified tutors, 2-day free trial. Enroll today!",
-      },
-      { property: "og:title", content: "Online Quran Courses | Tajweed, Hifz, Arabic & More — My Quran Guide" },
-      {
-        property: "og:description",
-        content:
-          "Explore all online Quran courses at My Quran Guide — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies & Female Quran Classes. 2-day free trial.",
-      },
-      { property: "og:url", content: "/courses" },
-    ],
-    links: [{ rel: "canonical", href: "/courses" }],
+    ...buildPageSeo({
+      title: "Online Quran Courses | Tajweed, Hifz, Arabic & More — My Quran Guide",
+      description:
+        "Explore all online Quran courses at My Quran Guide — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies & Female Quran Classes. Flexible timings, certified tutors, 2-day free trial. Enroll today!",
+      path: "/courses",
+    }),
+    scripts: [buildFaqSchema([...coursesFaqs])],
   }),
   component: CoursesPage,
 });
@@ -161,16 +154,6 @@ const schedule = [
   ["Availability", "24/7 — Flexible for all time zones"],
 ];
 
-const faqs = [
-  { q: "Which course should I start with?", a: "If you are a complete beginner or a young child, start with Noorani Qaida. If you can already read Arabic letters, start with Quran Recitation or Tajweed. Not sure? Contact us and we will guide you to the right course." },
-  { q: "Can I take more than one course at a time?", a: "Yes. Many students combine courses — for example Quran Recitation with Tajweed, or Islamic Studies with Arabic Language. Talk to our team and we will build the right schedule for you." },
-  { q: "How many days per week do I need to attend?", a: "You choose. Classes are available 2, 3, 4 or 5 days per week. We recommend at least 3 days per week for consistent progress, but the final choice is always yours." },
-  { q: "What is the class duration?", a: "Each class is either 30 minutes or 45 minutes — you decide based on your preference and schedule. Both options are available for all courses." },
-  { q: "Do you offer a free trial for all courses?", a: "Yes. My Quran Guide offers a 2-day free trial for every course — with no payment and no commitment required." },
-  { q: "Is the Hifz course only for children?", a: "No. Our online Hifz program is open to both children and adults. Many adults have successfully memorized the Quran with our structured program." },
-  { q: "Do I get a certificate after completing a course?", a: "Students who successfully complete the full Hifz program receive an official certificate from My Quran Guide. For other courses, completion is celebrated with tutor recognition and a progress report." },
-];
-
 function CoursesPage() {
   return (
     <>
@@ -239,7 +222,7 @@ function CoursesPage() {
           title="Frequently Asked Questions About Our Courses"
         />
         <div className="mt-12">
-          <FAQ items={faqs} />
+          <FAQ items={coursesFaqs} />
         </div>
       </Section>
 

@@ -6,25 +6,16 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { Field, TextareaField } from "@/components/site/FormFields";
 import { CheckCircle2 } from "lucide-react";
+import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/free-trial")({
   head: () => ({
-    meta: [
-      { title: "Book Free Trial Online Quran Class — 2 Days Free | My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "Book your 2-day free trial online Quran class at My Quran Guide — 100% free, no credit card, no commitment. Choose any course, any timing. Certified male & female tutors. Enroll now!",
-      },
-      { property: "og:title", content: "Book Free Trial Online Quran Class — 2 Days Free | My Quran Guide" },
-      {
-        property: "og:description",
-        content:
-          "Book your 2-day free trial online Quran class — 100% free, no credit card, no commitment. Choose any course, any timing.",
-      },
-      { property: "og:url", content: "/free-trial" },
-    ],
-    links: [{ rel: "canonical", href: "/free-trial" }],
+    ...buildPageSeo({
+      title: "Book Free Trial Online Quran Class — 2 Days Free | My Quran Guide",
+      description:
+        "Book your 2-day free trial online Quran class at My Quran Guide — 100% free, no credit card, no commitment. Choose any course, any timing. Certified male & female tutors. Enroll now!",
+      path: "/free-trial",
+    }),
   }),
   component: FreeTrialPage,
 });

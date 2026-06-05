@@ -1,23 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, DataTable } from "@/components/site/PageHero";
 import { LegalPage, LH2, LH3, LP, LUL, LInfoList } from "@/components/site/Legal";
+import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy-policy")({
-  head: () => ({
-    meta: [
-      { title: "Privacy Policy | My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "Read the My Quran Guide Privacy Policy — what information we collect, how we use and protect it, and your privacy rights.",
-      },
-      { property: "og:title", content: "Privacy Policy | My Quran Guide" },
-      { property: "og:description", content: "How My Quran Guide collects, uses, and protects your personal information." },
-      { property: "og:url", content: "/privacy-policy" },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/privacy-policy" }],
-  }),
+  head: () => {
+    const seo = buildPageSeo({
+      title: "Privacy Policy | My Quran Guide",
+      description:
+        "Read the My Quran Guide Privacy Policy — what information we collect, how we use and protect it, and your privacy rights.",
+      path: "/privacy-policy",
+    });
+
+    return {
+      ...seo,
+      meta: [...seo.meta, { name: "robots", content: "index, follow" }],
+    };
+  },
   component: PrivacyPage,
 });
 
@@ -28,7 +27,7 @@ function PrivacyPage() {
       <LegalPage>
         <LH2>Introduction</LH2>
         <LP>Welcome to My Quran Guide. We are committed to protecting the privacy and personal information of every visitor, student, and parent who interacts with our website and services. This Privacy Policy explains what information we collect, how we use it, how we protect it, and what rights you have over your data.</LP>
-        <LP>By using the My Quran Guide website (myquranquide.com) and our services, you agree to the terms of this Privacy Policy. Please read it carefully. If you do not agree with any part of this policy, please do not use our website or services.</LP>
+        <LP>By using the My Quran Guide website (myquranguide.com) and our services, you agree to the terms of this Privacy Policy. Please read it carefully. If you do not agree with any part of this policy, please do not use our website or services.</LP>
         <LP>This Privacy Policy applies to all users of My Quran Guide globally, including students and families based in the USA, UK, and other countries worldwide.</LP>
 
         <LH2>Who We Are</LH2>
@@ -36,8 +35,8 @@ function PrivacyPage() {
           rows={[
             ["Business Name", "My Quran Guide"],
             ["Service", "Online Quran Classes — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies, Female Quran Classes"],
-            ["Website", "myquranquide.com"],
-            ["Contact Email", "info@myquranquide.com"],
+            ["Website", "myquranguide.com"],
+            ["Contact Email", "info@myquranguide.com"],
             ["Business Type", "Small Team — Online Quran Academy"],
           ]}
         />
@@ -126,7 +125,7 @@ function PrivacyPage() {
             ["Payment Records", "Kept for 7 years for accounting and legal compliance"],
           ]}
         />
-        <LP>After the retention period, your personal data is securely deleted or anonymized. You may also request early deletion of your data at any time by contacting us at info@myquranquide.com.</LP>
+        <LP>After the retention period, your personal data is securely deleted or anonymized. You may also request early deletion of your data at any time by contacting us at info@myquranguide.com.</LP>
 
         <LH2>7. How We Protect Your Data</LH2>
         <LH3>Our Data Security Measures</LH3>
@@ -149,13 +148,13 @@ function PrivacyPage() {
             ["Right to Withdraw Consent", "Withdraw consent for data processing at any time"],
           ]}
         />
-        <LP>To exercise any of these rights, please contact us at info@myquranquide.com with your request. We will respond within 30 days. There is no charge for making a privacy rights request.</LP>
+        <LP>To exercise any of these rights, please contact us at info@myquranguide.com with your request. We will respond within 30 days. There is no charge for making a privacy rights request.</LP>
 
         <LH2>9. Children's Privacy</LH2>
         <LH3>How We Protect the Privacy of Children</LH3>
         <LP>My Quran Guide provides online Quran classes for children aged 5 and above. We take the privacy and safety of children very seriously and implement the following protections:</LP>
         <LUL items={["All enrollment and communication for child students is conducted with a parent or guardian", "We do not knowingly collect personal data directly from children under the age of 13 without verified parental consent", "Child student data is used exclusively for the purpose of delivering their Quran classes", "We do not share child student data with any third party except assigned tutors", "Parents and guardians may request access to, correction of, or deletion of their child's data at any time"]} />
-        <LP>If you believe we have inadvertently collected personal information from a child without proper parental consent, please contact us immediately at info@myquranquide.com and we will delete such data promptly.</LP>
+        <LP>If you believe we have inadvertently collected personal information from a child without proper parental consent, please contact us immediately at info@myquranguide.com and we will delete such data promptly.</LP>
 
         <LH2>10. Third Party Links & Platforms</LH2>
         <LP>Our website and communications may contain links to third-party websites and platforms including Facebook, Instagram, YouTube, Zoom, Skype, and Google Meet. My Quran Guide is not responsible for the privacy practices of these external platforms.</LP>
@@ -180,8 +179,8 @@ function PrivacyPage() {
         <LP>If you have any questions, concerns, or requests regarding this Privacy Policy or how My Quran Guide handles your personal data, please contact us:</LP>
         <LInfoList
           rows={[
-            ["Email", "info@myquranquide.com"],
-            ["Website", "myquranquide.com/contact"],
+            ["Email", "info@myquranguide.com"],
+            ["Website", "myquranguide.com/contact"],
             ["Response Time", "We aim to respond to all privacy-related inquiries within 48 hours"],
             ["Available", "24/7 — We are always here to answer your questions"],
           ]}

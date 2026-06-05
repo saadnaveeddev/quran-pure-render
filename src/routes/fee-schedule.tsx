@@ -4,25 +4,19 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import { Check } from "lucide-react";
+import { feeScheduleFaqs } from "@/content/faqs";
+import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/fee-schedule")({
   head: () => ({
-    meta: [
-      { title: "Online Quran Classes Fee Schedule | Affordable Pricing — My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "View the full fee schedule for My Quran Guide online Quran classes. Affordable monthly packages and per class pricing in USD & GBP. Siblings discount available. Start with 2 days free trial!",
-      },
-      { property: "og:title", content: "Online Quran Classes Fee Schedule | Affordable Pricing — My Quran Guide" },
-      {
-        property: "og:description",
-        content:
-          "Affordable monthly packages and per class pricing in USD & GBP. Siblings discount available. Start with 2 days free trial!",
-      },
-      { property: "og:url", content: "/fee-schedule" },
-    ],
-    links: [{ rel: "canonical", href: "/fee-schedule" }],
+    ...buildPageSeo({
+      title: "Online Quran Classes Fee Schedule | Affordable Pricing — My Quran Guide",
+      description:
+        "View the full fee schedule for My Quran Guide online Quran classes. Affordable monthly packages and per class pricing in USD & GBP. Siblings discount available. Start with 2 days free trial!",
+      path: "/fee-schedule",
+    }),
+    scripts: [buildFaqSchema([...feeScheduleFaqs])],
   }),
   component: FeeSchedulePage,
 });
@@ -75,14 +69,6 @@ const refundPoints = [
   "Refund requests must be submitted within 7 days of the billing date",
   "Free trial classes are non-refundable as they are already provided at zero cost",
   "Refunds are processed within 5-7 business days via the original payment method",
-];
-
-const faqs = [
-  { q: "Are there any registration or hidden fees?", a: "No. My Quran Guide charges no registration fees and has no hidden charges. You only pay the agreed course fee — nothing more, nothing less." },
-  { q: "Can I switch between monthly and per class payment?", a: "Yes. You can switch between monthly packages and per class payment at any time. Simply inform our team and we will adjust your payment plan accordingly." },
-  { q: "When do I pay for my classes?", a: "Payment timing is fully flexible at My Quran Guide. You can pay monthly in advance, weekly, or per class — whichever works best for your budget and schedule." },
-  { q: "Is the 5% siblings discount automatic?", a: "Yes. Once you inform us during enrollment that you are enrolling multiple children from the same family, the 5% siblings discount is automatically applied to each additional child's fees." },
-  { q: "What currencies do you accept?", a: "We accept payments in both USD ($) and GBP (£). If you are based in another country and prefer a different currency, contact us and we will find a solution that works for you." },
 ];
 
 function FeeSchedulePage() {
@@ -216,7 +202,7 @@ function FeeSchedulePage() {
           ))}
         </ul>
         <p className="mx-auto mt-6 max-w-3xl text-center text-sm text-muted-foreground">
-          For any refund queries, contact us at info@myquranquide.com and we will resolve your concern within 24-48 hours.
+          For any refund queries, contact us at {SITE.email} and we will resolve your concern within 24-48 hours.
         </p>
       </Section>
 
@@ -226,7 +212,7 @@ function FeeSchedulePage() {
           title="Frequently Asked Questions About Fees & Pricing"
         />
         <div className="mt-12">
-          <FAQ items={faqs} />
+          <FAQ items={feeScheduleFaqs} />
         </div>
       </Section>
 

@@ -8,25 +8,18 @@ import { CTAButton } from "@/components/site/CTAButton";
 import { Field, TextareaField } from "@/components/site/FormFields";
 import { FAQ } from "@/components/site/FAQ";
 import { SITE } from "@/lib/site";
+import { contactFaqs } from "@/content/faqs";
+import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
-    meta: [
-      { title: "Contact Us | My Quran Guide — Get in Touch Today" },
-      {
-        name: "description",
-        content:
-          "Have a question about our online Quran classes? Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
-      },
-      { property: "og:title", content: "Contact Us | My Quran Guide — Get in Touch Today" },
-      {
-        property: "og:description",
-        content:
-          "Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
-      },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    ...buildPageSeo({
+      title: "Contact Us | My Quran Guide — Get in Touch Today",
+      description:
+        "Have a question about our online Quran classes? Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
+      path: "/contact",
+    }),
+    scripts: [buildFaqSchema([...contactFaqs])],
   }),
   component: ContactPage,
 });
@@ -45,15 +38,6 @@ const responseTimes = [
   ["Instagram DM", "Within 1-2 Hours"],
   ["Availability", "24/7 — Any Time, Any Day"],
   ["Languages", "English & Urdu"],
-];
-
-const faqs = [
-  { q: "How quickly do you reply?", a: "We reply to all messages within 1 to 2 hours — 24 hours a day, 7 days a week. Whether you reach out by email, WhatsApp, Facebook, or Instagram — our team is always ready to help." },
-  { q: "Can I contact you on WhatsApp?", a: "Yes! WhatsApp is one of our fastest contact channels. Simply message us on WhatsApp and we will respond within 1 hour with all the information you need." },
-  { q: "What information should I include in my message?", a: "To help us assist you better, please mention the student's name, age, course of interest, and your preferred class timing. This helps us match you with the right tutor right away." },
-  { q: "Can I contact you before booking a free trial?", a: "Absolutely. You are welcome to contact us first with any questions before booking your free trial. Our team is happy to guide you and help you choose the right course for you or your child." },
-  { q: "Do you communicate in English, Urdu and Punjabi ?", a: "Yes. Our team is fluent in both English,Urdu and Punjabi. You can contact us in whichever language you are most comfortable with." },
-  { q: "Is there a phone number I can call?", a: "We currently offer support via WhatsApp, email, Facebook, and Instagram. WhatsApp is the fastest way to reach us and works just like a phone call if you prefer voice messages." },
 ];
 
 const guideItems = [
@@ -95,7 +79,7 @@ function ContactPage() {
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group rounded-2xl border border-border bg-card p-6 text-center shadow-soft transition-transform duration-300 hover:-translate-y-1"
+                className="group rounded-2xl border border-border bg-card p-6 text-center shadow-soft transition-transform duration-300 motion-safe:hover:-translate-y-1"
               >
                 <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
                   <c.icon className="h-6 w-6" />
@@ -159,7 +143,7 @@ function ContactPage() {
           title="Frequently Asked Questions"
         />
         <div className="mt-12">
-          <FAQ items={faqs} />
+          <FAQ items={contactFaqs} />
         </div>
       </Section>
 

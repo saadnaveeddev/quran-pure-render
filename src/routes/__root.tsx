@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Toaster } from "@/components/ui/sonner";
+import { SITE, absoluteUrl } from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -86,16 +87,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Enroll now!",
       },
-      { name: "author", content: "My Quran Guide" },
-      { property: "og:site_name", content: "My Quran Guide" },
+      { name: "author", content: SITE.name },
+      { name: "theme-color", content: "#2f7a61" },
+      { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE.siteUrl },
+      { property: "og:image", content: absoluteUrl(SITE.defaultOgImagePath) },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "My Quran Guide online Quran learning" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Online Quran Classes | Learn Quran Online — My Quran Guide" },
+      {
+        name: "twitter:description",
+        content:
+          "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors.",
+      },
+      { name: "twitter:image", content: absoluteUrl(SITE.defaultOgImagePath) },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+      { rel: "canonical", href: SITE.siteUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -113,11 +129,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
-          name: "My Quran Guide",
+          name: SITE.name,
           description:
             "Online Quran academy offering Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies and Female Quran Classes with certified English-speaking tutors.",
-          url: "https://myquranquide.com",
-          email: "info@myquranquide.com",
+          url: SITE.siteUrl,
+          email: SITE.email,
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: SITE.name,
+          url: SITE.siteUrl,
         }),
       },
     ],
