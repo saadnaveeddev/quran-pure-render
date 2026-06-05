@@ -14,20 +14,3 @@ export function HomeFaqSection({ items }: { items: ReadonlyArray<FaqItem> }) {
     </Section>
   );
 }
-import { FAQ } from "@/components/site/FAQ";
-import { Section, SectionHeading } from "@/components/site/Section";
-import { homeFaqs } from "@/content/faqs";
-
-export function HomeFaqSection() {
-  return (
-    <Section>
-      <SectionHeading
-        eyebrow="Frequently Asked Questions"
-        title="Online Quran Classes — Common Questions Answered"
-      />
-      <div className="mt-12">
-        <FAQ items={homeFaqs} />
-      </div>
-    </Section>
-  );
-}
