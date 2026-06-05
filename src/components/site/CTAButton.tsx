@@ -6,20 +6,20 @@ type Variant = "primary" | "gold" | "outline" | "ghost";
 type Size = "default" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[0.01em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-primary text-primary-foreground shadow-soft hover:shadow-card hover:-translate-y-0.5",
-  gold: "bg-gold text-gold-foreground shadow-gold hover:-translate-y-0.5",
+    "bg-gradient-emerald text-primary-foreground shadow-card motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.01]",
+  gold: "bg-gold text-gold-foreground shadow-gold motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.01]",
   outline:
-    "border border-primary/30 bg-transparent text-primary hover:bg-secondary",
-  ghost: "bg-transparent text-foreground hover:bg-secondary",
+    "border border-primary/30 bg-background/70 text-primary backdrop-blur-sm hover:bg-secondary/80",
+  ghost: "bg-transparent text-foreground hover:bg-secondary/70",
 };
 
 const sizes: Record<Size, string> = {
   default: "px-6 py-3 text-sm",
-  lg: "px-8 py-4 text-base",
+  lg: "px-9 py-4 text-base",
 };
 
 interface Props {

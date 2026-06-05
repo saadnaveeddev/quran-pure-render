@@ -10,14 +10,14 @@ export interface FaqItem {
   a: string;
 }
 
-export function FAQ({ items }: { items: FaqItem[] }) {
+export function FAQ({ items }: { items: ReadonlyArray<FaqItem> }) {
   return (
     <Accordion type="single" collapsible className="mx-auto w-full max-w-3xl">
       {items.map((item, i) => (
         <AccordionItem
           key={i}
           value={`item-${i}`}
-          className="mb-3 rounded-2xl border border-border bg-card px-5 shadow-soft"
+          className="mb-3 rounded-2xl surface-card px-5"
         >
           <AccordionTrigger className="py-5 text-left text-base font-medium text-foreground hover:no-underline">
             {item.q}
