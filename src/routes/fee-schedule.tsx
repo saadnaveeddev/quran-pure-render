@@ -74,13 +74,7 @@ const refundPoints = [
 function FeeSchedulePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Fee Schedule"
-        title="Online Quran Classes Fee Schedule — Affordable Monthly & Per Class Pricing | My Quran Guide"
-        intro="At My Quran Guide, we believe quality Quran education should be accessible and affordable for every Muslim family. Our fee schedule is transparent, flexible, and designed to fit different budgets and schedules. Whether you prefer a monthly package or a pay-per-class option — we have a plan that works for you."
-      >
-        <CTAButton to="/free-trial" size="lg">Book My 2-Day Free Trial — 100% Free</CTAButton>
-      </PageHero>
+      <PageHero title="Fee Schedule" />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">

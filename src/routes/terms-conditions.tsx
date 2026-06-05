@@ -23,7 +23,7 @@ export const Route = createFileRoute("/terms-conditions")({
 function TermsPage() {
   return (
     <>
-      <PageHero eyebrow="Legal" title="Terms & Conditions" />
+      <PageHero title="Terms & Conditions" />
       <LegalPage>
         <LH2>1. Acceptance of Terms</LH2>
         <LP>By accessing or using the My Quran Guide website (myquranguide.com) and enrolling in any of our online Quran classes or services, you agree to be bound by these Terms and Conditions. These terms apply to all visitors, students, parents, guardians, and users of My Quran Guide services worldwide.</LP>

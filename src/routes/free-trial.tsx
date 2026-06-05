@@ -70,12 +70,7 @@ function FreeTrialPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Free Trial"
-        title="Book Your 2-Day Free Trial Online Quran Class — 100% Free, No Payment, No Commitment | My Quran Guide"
-      >
-        <CTAButton href="#booking-form" size="lg">Book My Free Trial Now</CTAButton>
-      </PageHero>
+      <PageHero title="Free Trial" />
 
       {/* Steps */}
       <Section>

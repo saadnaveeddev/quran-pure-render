@@ -23,7 +23,7 @@ export const Route = createFileRoute("/privacy-policy")({
 function PrivacyPage() {
   return (
     <>
-      <PageHero eyebrow="Legal" title="Privacy Policy" />
+      <PageHero title="Privacy Policy" />
       <LegalPage>
         <LH2>Introduction</LH2>
         <LP>Welcome to My Quran Guide. We are committed to protecting the privacy and personal information of every visitor, student, and parent who interacts with our website and services. This Privacy Policy explains what information we collect, how we use it, how we protect it, and what rights you have over your data.</LP>

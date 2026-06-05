@@ -157,13 +157,7 @@ const schedule = [
 function CoursesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Our Courses"
-        title="Online Quran Courses for Kids, Adults & New Muslims — All Levels | My Quran Guide"
-        intro="At My Quran Guide, we offer a complete range of online Quran and Islamic courses for students of every age, background, and level. Whether you are a complete beginner starting with Noorani Qaida, a student perfecting Tajweed, a hafiz-in-training, or a new Muslim taking your very first steps — we have the right course for you."
-      >
-        <CTAButton to="/free-trial" size="lg">Book My 2-Day Free Trial Now</CTAButton>
-      </PageHero>
+      <PageHero title="Courses" />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">

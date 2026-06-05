@@ -71,11 +71,7 @@ const values = [
 function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About Us"
-        title="About My Quran Guide — Making Quality Quran Education Accessible for Everyone"
-        intro="My Quran Guide was founded with one clear purpose — to make quality Quran education accessible to every Muslim, no matter where they live in the world. What started as a personal passion for teaching the Quran has grown into a trusted online Quran academy with over 500 students taught and more than 10 years of combined teaching experience behind our team."
-      />
+      <PageHero title="About" />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
