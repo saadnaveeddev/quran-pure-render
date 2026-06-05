@@ -60,11 +60,7 @@ function ContactPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Contact Us"
-        title="Contact My Quran Guide — We Are Here for You 24/7"
-        intro="Have a question about our online Quran classes? Want to know which course is right for you or your child? Or are you ready to book your 2-day free trial? Whatever you need — My Quran Guide is here to help."
-      />
+      <PageHero title="Contact" />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
