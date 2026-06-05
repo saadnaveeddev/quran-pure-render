@@ -9,25 +9,16 @@ import {
   CalendarClock,
   Award,
 } from "lucide-react";
+import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
-    meta: [
-      { title: "About Us | My Quran Guide — Online Quran Academy" },
-      {
-        name: "description",
-        content:
-          "Learn about My Quran Guide — our mission is to make quality Quran education accessible for everyone. 500+ students taught by certified Pakistani tutors fluent in English. Book your free trial today!",
-      },
-      { property: "og:title", content: "About Us | My Quran Guide — Online Quran Academy" },
-      {
-        property: "og:description",
-        content:
-          "Our mission is to make quality Quran education accessible for everyone. 500+ students taught by certified Pakistani tutors fluent in English.",
-      },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
+    ...buildPageSeo({
+      title: "About Us | My Quran Guide — Online Quran Academy",
+      description:
+        "Learn about My Quran Guide — our mission is to make quality Quran education accessible for everyone. 500+ students taught by certified Pakistani tutors fluent in English. Book your free trial today!",
+      path: "/about",
+    }),
   }),
   component: AboutPage,
 });

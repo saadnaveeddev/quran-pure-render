@@ -12,34 +12,31 @@ import {
   Moon,
   Flower2,
   Languages,
+  CheckCircle2,
 } from "lucide-react";
-import heroImage from "@/assets/hero-quran.jpg";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import { DataTable } from "@/components/site/PageHero";
+import { homeFaqs } from "@/content/faqs";
+import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Online Quran Classes | Learn Quran Online — My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Enroll now!",
-      },
-      { property: "og:title", content: "Online Quran Classes | Learn Quran Online — My Quran Guide" },
-      {
-        property: "og:description",
-        content:
-          "Online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Start your 2-day free trial!",
-      },
-      { property: "og:url", content: "/" },
-      { property: "og:image", content: heroImage },
-      { name: "twitter:image", content: heroImage },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
+  head: () => {
+    const seo = buildPageSeo({
+      title: "Online Quran Classes | Learn Quran Online — My Quran Guide",
+      description:
+        "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Enroll now!",
+      path: "/",
+      ogImagePath: "/hero-quran.svg",
+    });
+
+    return {
+      ...seo,
+      links: [...seo.links, { rel: "preload", as: "image", href: "/hero-quran.svg" }],
+      scripts: [buildFaqSchema([...homeFaqs])],
+    };
+  },
   component: HomePage,
 });
 
@@ -95,31 +92,39 @@ const steps = [
   { n: "3", title: "Start Learning from Home", body: "Join your class on Zoom, Skype, or Google Meet — whichever you prefer — and begin your Quran learning journey with My Quran Guide today." },
 ];
 
-const faqs = [
-  { q: "Do you offer a free trial?", a: "Yes! My Quran Guide offers a 2-day free trial to all new students. No payment or credit card is required. Simply book your trial and experience the quality of our teaching before you commit." },
-  { q: "What age groups do you teach?", a: "We teach students of all ages — from children as young as 5 years old to adults of any age. We also welcome new Muslims who are starting their Quran journey." },
-  { q: "Can I choose a female tutor?", a: "Absolutely. My Quran Guide has certified and experienced female tutors available for sisters and young girls who prefer learning with a female teacher." },
-  { q: "What platform are classes held on?", a: "Our classes are held on Zoom, Skype, or Google Meet — whichever platform you are most comfortable using." },
-  { q: "What if I am a complete beginner?", a: "No problem at all. Our Noorani Qaida course is designed specifically for complete beginners. We start from the very basics and progress at your own pace." },
-  { q: "Are your tutors certified?", a: "Yes. All tutors at My Quran Guide are both certified and experienced. They hold recognized Islamic teaching certifications and have years of online teaching experience." },
-];
-
 function HomePage() {
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-hero">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-24">
-          <div className="animate-fade-up">
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full bg-secondary px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-secondary-foreground">
+        <div className="pointer-events-none absolute -left-28 top-6 h-72 w-72 rounded-full bg-primary/20 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 top-12 h-80 w-80 rounded-full bg-gold/25 blur-3xl" aria-hidden="true" />
+        <div className="mx-auto grid w-full max-w-7xl items-center gap-14 px-5 py-14 sm:px-8 sm:py-16 lg:grid-cols-2 lg:py-20">
+          <div className="animate-fade-up lg:pr-4">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-secondary-foreground backdrop-blur-sm">
               <Star className="h-3.5 w-3.5 text-gold" /> 500+ Students Worldwide
             </span>
-            <h1 className="text-balance text-4xl leading-[1.1] text-foreground sm:text-5xl lg:text-[3.4rem]">
-              Online Quran Classes for Kids, Adults &amp; New Muslims — Learn Quran from Home with My Quran Guide
+            <h1 className="text-balance text-4xl leading-[1.08] text-foreground sm:text-5xl lg:text-[3.2rem]">
+              Online Quran Classes for Kids, Adults &amp; New Muslims
             </h1>
-            <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              At My Quran Guide, we make learning the Quran simple, flexible, and accessible for everyone — kids, teenagers, adults, and new Muslims alike. Whether you are a complete beginner or want to perfect your Tajweed, our certified and experienced male and female tutors are here to guide you every step of the way. Join thousands of students learning Quran online from the comfort of their home through Zoom, Skype, or Google Meet — on your schedule, at your pace. Start today with our 2-day free trial — no payment required.
+            <p className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
+              Learn with certified male and female tutors in one-on-one or group sessions, on your schedule. Start with a
+              2-day free trial and experience a structured, supportive Quran learning journey from home.
             </p>
+            <ul className="mt-6 grid max-w-xl gap-2.5">
+              <li className="flex items-center gap-2.5 text-sm text-foreground/90">
+                <CheckCircle2 className="h-4 w-4 text-primary" />
+                Flexible timings for all time zones
+              </li>
+              <li className="flex items-center gap-2.5 text-sm text-foreground/90">
+                <CheckCircle2 className="h-4 w-4 text-primary" />
+                Tajweed, Hifz, Noorani Qaida, Arabic and Islamic Studies
+              </li>
+              <li className="flex items-center gap-2.5 text-sm text-foreground/90">
+                <CheckCircle2 className="h-4 w-4 text-primary" />
+                Live classes via Zoom, Skype or Google Meet
+              </li>
+            </ul>
             <div className="mt-8 flex flex-wrap gap-3">
               <CTAButton to="/free-trial" size="lg">
                 Start Your 2-Day Free Trial Now
@@ -128,15 +133,36 @@ function HomePage() {
                 View Our Courses
               </CTAButton>
             </div>
+            <div className="mt-8 grid max-w-xl grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="surface-card rounded-2xl px-4 py-3">
+                <p className="text-xl font-semibold text-foreground">24/7</p>
+                <p className="text-xs text-muted-foreground">Support availability</p>
+              </div>
+              <div className="surface-card rounded-2xl px-4 py-3">
+                <p className="text-xl font-semibold text-foreground">2 Days</p>
+                <p className="text-xs text-muted-foreground">Free trial classes</p>
+              </div>
+              <div className="surface-card rounded-2xl px-4 py-3">
+                <p className="text-xl font-semibold text-foreground">1-on-1</p>
+                <p className="text-xs text-muted-foreground">Personalized learning</p>
+              </div>
+            </div>
           </div>
-          <div className="animate-fade-in">
-            <div className="relative overflow-hidden rounded-[2rem] border border-border shadow-card">
+          <div className="animate-fade-in lg:pl-4">
+            <div className="glass-panel relative overflow-hidden rounded-[2rem] p-3 shadow-card">
+              <div className="pointer-events-none absolute left-6 top-6 rounded-full bg-background/85 px-3 py-1 text-xs font-medium text-foreground shadow-soft">
+                Trusted by Families
+              </div>
+              <div className="pointer-events-none absolute bottom-6 right-6 rounded-xl bg-background/85 px-3 py-2 text-xs font-medium text-foreground shadow-soft">
+                Free trial in 24h
+              </div>
               <img
-                src={heroImage}
+                src="/hero-quran.svg"
                 alt="An open Quran resting on a wooden stand with a soft geometric Islamic arch behind it"
                 width={1536}
                 height={1152}
-                className="h-full w-full object-cover"
+                fetchPriority="high"
+                className="h-full w-full rounded-[1.4rem] object-cover"
               />
             </div>
           </div>
@@ -152,7 +178,7 @@ function HomePage() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {whyChoose.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-border bg-card p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1">
+            <div key={item.title} className="surface-card rounded-2xl p-7 transition-transform duration-300 motion-safe:hover:-translate-y-1">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
                 <item.icon className="h-6 w-6" />
               </span>
@@ -172,7 +198,7 @@ function HomePage() {
         />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {courses.map((c) => (
-            <div key={c.title} className="group rounded-2xl border border-border bg-card p-7 shadow-soft transition-transform duration-300 hover:-translate-y-1">
+            <div key={c.title} className="group surface-card rounded-2xl p-7 transition-transform duration-300 motion-safe:hover:-translate-y-1">
               <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-emerald text-primary-foreground">
                 <c.icon className="h-6 w-6" />
               </span>
@@ -206,7 +232,7 @@ function HomePage() {
         />
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {steps.map((s) => (
-            <div key={s.n} className="relative rounded-2xl border border-border bg-card p-7 shadow-soft">
+            <div key={s.n} className="relative surface-card rounded-2xl p-7">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground font-display text-xl font-semibold">
                 {s.n}
               </span>
@@ -227,7 +253,7 @@ function HomePage() {
           title="Trusted by Families Around the World"
           intro="Here is what parents, students, and new Muslims are saying about their experience with My Quran Guide:"
         />
-        <figure className="mx-auto mt-12 max-w-2xl rounded-3xl border border-border bg-card p-8 text-center shadow-card sm:p-10">
+        <figure className="mx-auto mt-12 max-w-2xl rounded-3xl surface-card p-8 text-center shadow-card sm:p-10">
           <div className="mb-4 text-2xl tracking-widest text-gold" aria-label="5 out of 5 stars">★★★★★</div>
           <blockquote className="text-pretty font-display text-xl leading-relaxed text-foreground sm:text-2xl">
             “My daughter started with Noorani Qaida and within 3 months she is reading the Quran on her own. The female tutor is so patient and kind. Highly recommend My Quran Guide to every Muslim family.”
@@ -243,7 +269,7 @@ function HomePage() {
           title="Online Quran Classes — Common Questions Answered"
         />
         <div className="mt-12">
-          <FAQ items={faqs} />
+          <FAQ items={homeFaqs} />
         </div>
       </Section>
 

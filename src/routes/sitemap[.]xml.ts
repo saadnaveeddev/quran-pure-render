@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+import { absoluteUrl } from "@/lib/site";
 
 interface SitemapEntry {
   path: string;
@@ -16,20 +14,20 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/courses", changefreq: "weekly", priority: "0.9" },
-          { path: "/fee-schedule", changefreq: "monthly", priority: "0.8" },
-          { path: "/free-trial", changefreq: "weekly", priority: "0.9" },
-          { path: "/about", changefreq: "monthly", priority: "0.7" },
-          { path: "/contact", changefreq: "monthly", priority: "0.7" },
-          { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
-          { path: "/terms-conditions", changefreq: "yearly", priority: "0.3" },
+          { path: "/", changefreq: "weekly", priority: "1.0", lastmod: "2026-06-05" },
+          { path: "/courses", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-05" },
+          { path: "/fee-schedule", changefreq: "monthly", priority: "0.8", lastmod: "2026-06-05" },
+          { path: "/free-trial", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-05" },
+          { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2026-06-05" },
+          { path: "/contact", changefreq: "monthly", priority: "0.7", lastmod: "2026-06-05" },
+          { path: "/privacy-policy", changefreq: "yearly", priority: "0.3", lastmod: "2026-06-05" },
+          { path: "/terms-conditions", changefreq: "yearly", priority: "0.3", lastmod: "2026-06-05" },
         ];
 
         const urls = entries.map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <loc>${absoluteUrl(e.path)}</loc>`,
             e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,

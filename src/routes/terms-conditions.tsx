@@ -1,23 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, DataTable } from "@/components/site/PageHero";
 import { LegalPage, LH2, LH3, LP, LUL, LInfoList } from "@/components/site/Legal";
+import { buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms-conditions")({
-  head: () => ({
-    meta: [
-      { title: "Terms & Conditions | My Quran Guide" },
-      {
-        name: "description",
-        content:
-          "Read the Terms and Conditions for using My Quran Guide online Quran classes — free trial terms, enrollment, fees, cancellation, refunds and more.",
-      },
-      { property: "og:title", content: "Terms & Conditions | My Quran Guide" },
-      { property: "og:description", content: "Terms and Conditions for My Quran Guide online Quran classes." },
-      { property: "og:url", content: "/terms-conditions" },
-      { name: "robots", content: "index, follow" },
-    ],
-    links: [{ rel: "canonical", href: "/terms-conditions" }],
-  }),
+  head: () => {
+    const seo = buildPageSeo({
+      title: "Terms & Conditions | My Quran Guide",
+      description:
+        "Read the Terms and Conditions for using My Quran Guide online Quran classes — free trial terms, enrollment, fees, cancellation, refunds and more.",
+      path: "/terms-conditions",
+    });
+
+    return {
+      ...seo,
+      meta: [...seo.meta, { name: "robots", content: "index, follow" }],
+    };
+  },
   component: TermsPage,
 });
 
@@ -27,7 +26,7 @@ function TermsPage() {
       <PageHero eyebrow="Legal" title="Terms & Conditions" />
       <LegalPage>
         <LH2>1. Acceptance of Terms</LH2>
-        <LP>By accessing or using the My Quran Guide website (myquranquide.com) and enrolling in any of our online Quran classes or services, you agree to be bound by these Terms and Conditions. These terms apply to all visitors, students, parents, guardians, and users of My Quran Guide services worldwide.</LP>
+        <LP>By accessing or using the My Quran Guide website (myquranguide.com) and enrolling in any of our online Quran classes or services, you agree to be bound by these Terms and Conditions. These terms apply to all visitors, students, parents, guardians, and users of My Quran Guide services worldwide.</LP>
         <LP>If you are enrolling a child under the age of 18, you as the parent or guardian agree to these terms on behalf of the child and accept full responsibility for the child's participation in our services.</LP>
         <LP>Please read these Terms and Conditions carefully before using our services. If you do not agree with any part of these terms, please do not use our website or enroll in our services.</LP>
 
@@ -36,8 +35,8 @@ function TermsPage() {
           rows={[
             ["Business Name", "My Quran Guide"],
             ["Service Type", "Online Quran Classes — Tajweed, Hifz, Noorani Qaida, Quran Recitation, Islamic Studies, Arabic Language, Female Quran Classes"],
-            ["Website", "myquranquide.com"],
-            ["Contact", "info@myquranquide.com"],
+            ["Website", "myquranguide.com"],
+            ["Contact", "info@myquranguide.com"],
             ["Business Type", "Small Team — Online Quran Education Provider"],
           ]}
         />
@@ -74,7 +73,7 @@ function TermsPage() {
         <LH2>6. Fees & Payment Terms</LH2>
         <LH3>Payment Policy at My Quran Guide</LH3>
         <LH3>6.1 — Fee Structure</LH3>
-        <LP>My Quran Guide offers both monthly packages and per class payment options. Fees vary by course, class frequency, and duration. Full fee details are available on our Fee Schedule page at myquranquide.com/fee-schedule.</LP>
+        <LP>My Quran Guide offers both monthly packages and per class payment options. Fees vary by course, class frequency, and duration. Full fee details are available on our Fee Schedule page at myquranguide.com/fee-schedule.</LP>
         <LH3>6.2 — Payment Timing</LH3>
         <LP>Payment timing at My Quran Guide is fully flexible. Students may choose to pay monthly in advance, weekly, or per class — whichever suits their budget and schedule. The agreed payment arrangement will be confirmed at the time of enrollment.</LP>
         <LH3>6.3 — Accepted Payment Methods</LH3>
@@ -93,7 +92,7 @@ function TermsPage() {
         <LH3>7.3 — Tutor Cancellation</LH3>
         <LP>In the rare event that a tutor needs to cancel a class, My Quran Guide will notify the student as soon as possible and arrange a replacement class or a substitute tutor at no additional cost to the student.</LP>
         <LH3>7.4 — Enrollment Cancellation</LH3>
-        <LP>Students may cancel their enrollment at any time by notifying My Quran Guide via email at info@myquranquide.com. Upon cancellation, any unused prepaid classes will be refunded in accordance with our Refund Policy as outlined in Section 8 below.</LP>
+        <LP>Students may cancel their enrollment at any time by notifying My Quran Guide via email at info@myquranguide.com. Upon cancellation, any unused prepaid classes will be refunded in accordance with our Refund Policy as outlined in Section 8 below.</LP>
         <LH3>7.5 — Extended Absence</LH3>
         <LP>If a student needs to take a break from classes due to illness, travel, or other circumstances, please inform My Quran Guide as soon as possible. We will pause the enrollment and resume classes upon the student's return without any penalty.</LP>
 
@@ -110,7 +109,7 @@ function TermsPage() {
             ["Refund Processing Time", "5 to 7 business days via original payment method"],
           ]}
         />
-        <LP>To request a refund, please contact us at info@myquranquide.com with your full name, enrollment details, and reason for the refund request. We aim to process all refund requests within 5 to 7 business days.</LP>
+        <LP>To request a refund, please contact us at info@myquranguide.com with your full name, enrollment details, and reason for the refund request. We aim to process all refund requests within 5 to 7 business days.</LP>
 
         <LH2>9. Student & Parent Responsibilities</LH2>
         <LH3>What We Expect from Our Students & Families</LH3>
@@ -140,8 +139,8 @@ function TermsPage() {
         <LP>My Quran Guide's total liability to any student or user for any claim arising from these Terms shall not exceed the total fees paid by that student in the 30 days preceding the claim.</LP>
 
         <LH2>13. Privacy & Data Protection</LH2>
-        <LP>My Quran Guide is committed to protecting your personal information. Our collection, use, and storage of personal data is governed by our Privacy Policy, which forms part of these Terms and Conditions and is available at myquranquide.com/privacy-policy.</LP>
-        <LP>By using our services, you agree to the terms of our Privacy Policy. If you have any questions about how we handle your personal data, please contact us at info@myquranquide.com.</LP>
+        <LP>My Quran Guide is committed to protecting your personal information. Our collection, use, and storage of personal data is governed by our Privacy Policy, which forms part of these Terms and Conditions and is available at myquranguide.com/privacy-policy.</LP>
+        <LP>By using our services, you agree to the terms of our Privacy Policy. If you have any questions about how we handle your personal data, please contact us at info@myquranguide.com.</LP>
 
         <LH2>14. Changes to These Terms</LH2>
         <LP>My Quran Guide reserves the right to update or modify these Terms and Conditions at any time. When changes are made, we will:</LP>
@@ -151,15 +150,15 @@ function TermsPage() {
         <LH2>15. Governing Law</LH2>
         <LP>These Terms and Conditions are intended to be fair, clear, and internationally applicable. My Quran Guide serves students globally and does not restrict these terms to the laws of any single jurisdiction.</LP>
         <LP>In the event of any dispute arising from these Terms or the use of My Quran Guide services, both parties agree to first attempt to resolve the matter amicably through direct communication. My Quran Guide is committed to resolving any concerns promptly and fairly.</LP>
-        <LP>For any legal queries or disputes that cannot be resolved amicably, please contact us at info@myquranquide.com and we will work with you to find a fair resolution.</LP>
+        <LP>For any legal queries or disputes that cannot be resolved amicably, please contact us at info@myquranguide.com and we will work with you to find a fair resolution.</LP>
 
         <LH2>16. Contact Us</LH2>
         <LH3>Questions About These Terms?</LH3>
         <LP>If you have any questions, concerns, or queries about these Terms and Conditions, please contact My Quran Guide:</LP>
         <LInfoList
           rows={[
-            ["Email", "info@myquranquide.com"],
-            ["Website", "myquranquide.com/contact"],
+            ["Email", "info@myquranguide.com"],
+            ["Website", "myquranguide.com/contact"],
             ["WhatsApp", "Available — Contact us via our website for WhatsApp details"],
             ["Response Time", "We respond to all inquiries within 1 to 2 hours — available 24/7"],
           ]}

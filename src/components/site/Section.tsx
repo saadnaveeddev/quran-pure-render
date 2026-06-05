@@ -11,14 +11,22 @@ interface SectionProps {
 
 const tones: Record<NonNullable<SectionProps["tone"]>, string> = {
   default: "bg-background",
-  muted: "bg-muted/40",
-  secondary: "bg-secondary/40",
+  muted: "bg-muted/30",
+  secondary: "bg-secondary/30",
   emerald: "bg-gradient-emerald text-primary-foreground",
 };
 
 export function Section({ children, className, id, tone = "default" }: SectionProps) {
   return (
-    <section id={id} className={cn("py-16 sm:py-20 lg:py-24", tones[tone], className)}>
+    <section
+      id={id}
+      className={cn(
+        "relative py-16 sm:py-20 lg:py-24",
+        tone !== "emerald" && "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-border/80 before:to-transparent",
+        tones[tone],
+        className,
+      )}
+    >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">{children}</div>
     </section>
   );
@@ -55,7 +63,7 @@ export function SectionHeading({
             "mb-4 inline-flex items-center rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em]",
             inverted
               ? "bg-primary-foreground/15 text-primary-foreground"
-              : "bg-secondary text-secondary-foreground",
+              : "border border-border/80 bg-card/80 text-secondary-foreground backdrop-blur-sm",
           )}
         >
           {eyebrow}
@@ -63,7 +71,7 @@ export function SectionHeading({
       )}
       <Tag
         className={cn(
-          "text-balance text-3xl leading-tight sm:text-4xl lg:text-[2.75rem]",
+            "text-balance text-3xl leading-tight sm:text-4xl lg:text-[2.9rem]",
           as === "h1" && "text-4xl sm:text-5xl lg:text-6xl",
           inverted ? "text-primary-foreground" : "text-foreground",
         )}
