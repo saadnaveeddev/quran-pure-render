@@ -33,6 +33,7 @@ const courseList = [
   {
     emoji: "📖",
     title: "Noorani Qaida Online Classes",
+    to: "/noorani-qaida-online",
     meta: "For: Kids (5+), Beginners, New Muslims | Level: Beginner",
     body: "Noorani Qaida is the very first step in learning to read the Quran. Our online Noorani Qaida course is designed for complete beginners — especially young children aged 5 and above, adults starting fresh, and new Muslims. Our certified tutors teach Arabic letters, pronunciation, and basic reading sounds in a simple, step-by-step way.",
     points: [
@@ -49,6 +50,7 @@ const courseList = [
   {
     emoji: "🕌",
     title: "Online Quran Recitation Classes",
+    to: "/online-quran-recitation-classes",
     meta: "For: Kids, Teenagers, Adults — All Ages | Level: All Levels",
     body: "Our online Quran Recitation course helps students of all ages learn to read the Quran fluently, correctly, and confidently. Whether you are reading for the first time or want to improve your existing recitation, our certified tutors will guide you at your own pace with personalized attention.",
     points: [
@@ -65,6 +67,7 @@ const courseList = [
   {
     emoji: "✨",
     title: "Online Tajweed Classes",
+    to: "/online-tajweed-classes",
     meta: "For: Kids, Teenagers & Adults | Level: Beginner to Advanced",
     body: "Tajweed is the art and science of reciting the Quran with proper rules, pronunciation, and rhythm. Our online Tajweed course teaches Makharij, Sifaat, Madd, Ghunna and more — in a clear and structured way for both beginners and advanced learners.",
     points: [
@@ -81,6 +84,7 @@ const courseList = [
   {
     emoji: "🏆",
     title: "Online Hifz Program — Quran Memorization",
+    to: "/online-hifz-classes",
     meta: "For: Kids & Adults | Level: Intermediate to Advanced",
     body: "Memorizing the Quran is one of the greatest achievements in a Muslim's life. Our online Hifz program is structured and guided by experienced Huffaz tutors. Upon successful completion of the full Hifz, students receive an official certificate from My Quran Guide.",
     points: [
@@ -97,6 +101,7 @@ const courseList = [
   {
     emoji: "☪",
     title: "Online Islamic Studies Classes",
+    to: "/online-islamic-studies",
     meta: "For: Kids, Teenagers, Adults & New Muslims | Level: All Levels",
     body: "Our online Islamic Studies course gives students a complete foundation in Islamic knowledge — covering the basics of Islam, acts of worship, Seerah, Fiqh, and Islamic ethics. Perfect for new Muslims, young children, and families wanting complete Islamic education from home.",
     points: [
@@ -113,6 +118,7 @@ const courseList = [
   {
     emoji: "🌙",
     title: "Online Arabic Language Classes",
+    to: "/online-arabic-language-classes",
     meta: "For: Kids, Teenagers & Adults — All Ages | Level: Beginner to Advanced",
     body: "Understanding the Quran in its original language deepens your connection with every word of Allah. Our online Arabic Language course teaches Quranic Arabic from scratch — helping students understand what they recite. Taught in English for maximum clarity.",
     points: [
@@ -129,6 +135,7 @@ const courseList = [
   {
     emoji: "🌸",
     title: "Female Quran Classes Online",
+    to: "/female-quran-classes-online",
     meta: "For: Sisters, Girls & Female New Muslims | Level: All Levels",
     body: "Our dedicated Female Quran Classes are taught exclusively by certified and experienced female tutors — covering all courses including Noorani Qaida, Quran Recitation, Tajweed, Hifz, Islamic Studies, and Arabic in a safe and comfortable environment.",
     points: [
@@ -193,7 +200,9 @@ function CoursesPage() {
                 <p><span className="font-semibold">Days/Week:</span> {c.days}</p>
               </div>
               <div className="mt-6">
-                <CTAButton to="/free-trial" className="w-full">Enroll Now — 2 Days Free Trial</CTAButton>
+                <CTAButton to={c.to ?? "/free-trial"} className="w-full">
+                  {c.to ? "View Full Course Details" : "Enroll Now — 2 Days Free Trial"}
+                </CTAButton>
               </div>
             </article>
           ))}

@@ -12,7 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as OnlineTajweedClassesRouteImport } from './routes/online-tajweed-classes'
+import { Route as OnlineQuranRecitationClassesRouteImport } from './routes/online-quran-recitation-classes'
+import { Route as OnlineIslamicStudiesRouteImport } from './routes/online-islamic-studies'
+import { Route as OnlineHifzClassesRouteImport } from './routes/online-hifz-classes'
+import { Route as OnlineArabicLanguageClassesRouteImport } from './routes/online-arabic-language-classes'
+import { Route as NooraniQaidaOnlineRouteImport } from './routes/noorani-qaida-online'
 import { Route as FreeTrialRouteImport } from './routes/free-trial'
+import { Route as FemaleQuranClassesOnlineRouteImport } from './routes/female-quran-classes-online'
 import { Route as FeeScheduleRouteImport } from './routes/fee-schedule'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -34,11 +41,49 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnlineTajweedClassesRoute = OnlineTajweedClassesRouteImport.update({
+  id: '/online-tajweed-classes',
+  path: '/online-tajweed-classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineQuranRecitationClassesRoute =
+  OnlineQuranRecitationClassesRouteImport.update({
+    id: '/online-quran-recitation-classes',
+    path: '/online-quran-recitation-classes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineIslamicStudiesRoute = OnlineIslamicStudiesRouteImport.update({
+  id: '/online-islamic-studies',
+  path: '/online-islamic-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineHifzClassesRoute = OnlineHifzClassesRouteImport.update({
+  id: '/online-hifz-classes',
+  path: '/online-hifz-classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineArabicLanguageClassesRoute =
+  OnlineArabicLanguageClassesRouteImport.update({
+    id: '/online-arabic-language-classes',
+    path: '/online-arabic-language-classes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const NooraniQaidaOnlineRoute = NooraniQaidaOnlineRouteImport.update({
+  id: '/noorani-qaida-online',
+  path: '/noorani-qaida-online',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FreeTrialRoute = FreeTrialRouteImport.update({
   id: '/free-trial',
   path: '/free-trial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FemaleQuranClassesOnlineRoute =
+  FemaleQuranClassesOnlineRouteImport.update({
+    id: '/female-quran-classes-online',
+    path: '/female-quran-classes-online',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const FeeScheduleRoute = FeeScheduleRouteImport.update({
   id: '/fee-schedule',
   path: '/fee-schedule',
@@ -71,7 +116,14 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
+  '/female-quran-classes-online': typeof FemaleQuranClassesOnlineRoute
   '/free-trial': typeof FreeTrialRoute
+  '/noorani-qaida-online': typeof NooraniQaidaOnlineRoute
+  '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
+  '/online-hifz-classes': typeof OnlineHifzClassesRoute
+  '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
+  '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
@@ -82,7 +134,14 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
+  '/female-quran-classes-online': typeof FemaleQuranClassesOnlineRoute
   '/free-trial': typeof FreeTrialRoute
+  '/noorani-qaida-online': typeof NooraniQaidaOnlineRoute
+  '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
+  '/online-hifz-classes': typeof OnlineHifzClassesRoute
+  '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
+  '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
@@ -94,7 +153,14 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/fee-schedule': typeof FeeScheduleRoute
+  '/female-quran-classes-online': typeof FemaleQuranClassesOnlineRoute
   '/free-trial': typeof FreeTrialRoute
+  '/noorani-qaida-online': typeof NooraniQaidaOnlineRoute
+  '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
+  '/online-hifz-classes': typeof OnlineHifzClassesRoute
+  '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
+  '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
@@ -107,7 +173,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/fee-schedule'
+    | '/female-quran-classes-online'
     | '/free-trial'
+    | '/noorani-qaida-online'
+    | '/online-arabic-language-classes'
+    | '/online-hifz-classes'
+    | '/online-islamic-studies'
+    | '/online-quran-recitation-classes'
+    | '/online-tajweed-classes'
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/terms-conditions'
@@ -118,7 +191,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/fee-schedule'
+    | '/female-quran-classes-online'
     | '/free-trial'
+    | '/noorani-qaida-online'
+    | '/online-arabic-language-classes'
+    | '/online-hifz-classes'
+    | '/online-islamic-studies'
+    | '/online-quran-recitation-classes'
+    | '/online-tajweed-classes'
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/terms-conditions'
@@ -129,7 +209,14 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/fee-schedule'
+    | '/female-quran-classes-online'
     | '/free-trial'
+    | '/noorani-qaida-online'
+    | '/online-arabic-language-classes'
+    | '/online-hifz-classes'
+    | '/online-islamic-studies'
+    | '/online-quran-recitation-classes'
+    | '/online-tajweed-classes'
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/terms-conditions'
@@ -141,7 +228,14 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   FeeScheduleRoute: typeof FeeScheduleRoute
+  FemaleQuranClassesOnlineRoute: typeof FemaleQuranClassesOnlineRoute
   FreeTrialRoute: typeof FreeTrialRoute
+  NooraniQaidaOnlineRoute: typeof NooraniQaidaOnlineRoute
+  OnlineArabicLanguageClassesRoute: typeof OnlineArabicLanguageClassesRoute
+  OnlineHifzClassesRoute: typeof OnlineHifzClassesRoute
+  OnlineIslamicStudiesRoute: typeof OnlineIslamicStudiesRoute
+  OnlineQuranRecitationClassesRoute: typeof OnlineQuranRecitationClassesRoute
+  OnlineTajweedClassesRoute: typeof OnlineTajweedClassesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsConditionsRoute: typeof TermsConditionsRoute
@@ -170,11 +264,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/online-tajweed-classes': {
+      id: '/online-tajweed-classes'
+      path: '/online-tajweed-classes'
+      fullPath: '/online-tajweed-classes'
+      preLoaderRoute: typeof OnlineTajweedClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-recitation-classes': {
+      id: '/online-quran-recitation-classes'
+      path: '/online-quran-recitation-classes'
+      fullPath: '/online-quran-recitation-classes'
+      preLoaderRoute: typeof OnlineQuranRecitationClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-islamic-studies': {
+      id: '/online-islamic-studies'
+      path: '/online-islamic-studies'
+      fullPath: '/online-islamic-studies'
+      preLoaderRoute: typeof OnlineIslamicStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-hifz-classes': {
+      id: '/online-hifz-classes'
+      path: '/online-hifz-classes'
+      fullPath: '/online-hifz-classes'
+      preLoaderRoute: typeof OnlineHifzClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-arabic-language-classes': {
+      id: '/online-arabic-language-classes'
+      path: '/online-arabic-language-classes'
+      fullPath: '/online-arabic-language-classes'
+      preLoaderRoute: typeof OnlineArabicLanguageClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noorani-qaida-online': {
+      id: '/noorani-qaida-online'
+      path: '/noorani-qaida-online'
+      fullPath: '/noorani-qaida-online'
+      preLoaderRoute: typeof NooraniQaidaOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/free-trial': {
       id: '/free-trial'
       path: '/free-trial'
       fullPath: '/free-trial'
       preLoaderRoute: typeof FreeTrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/female-quran-classes-online': {
+      id: '/female-quran-classes-online'
+      path: '/female-quran-classes-online'
+      fullPath: '/female-quran-classes-online'
+      preLoaderRoute: typeof FemaleQuranClassesOnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fee-schedule': {
@@ -221,7 +364,14 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   FeeScheduleRoute: FeeScheduleRoute,
+  FemaleQuranClassesOnlineRoute: FemaleQuranClassesOnlineRoute,
   FreeTrialRoute: FreeTrialRoute,
+  NooraniQaidaOnlineRoute: NooraniQaidaOnlineRoute,
+  OnlineArabicLanguageClassesRoute: OnlineArabicLanguageClassesRoute,
+  OnlineHifzClassesRoute: OnlineHifzClassesRoute,
+  OnlineIslamicStudiesRoute: OnlineIslamicStudiesRoute,
+  OnlineQuranRecitationClassesRoute: OnlineQuranRecitationClassesRoute,
+  OnlineTajweedClassesRoute: OnlineTajweedClassesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsConditionsRoute: TermsConditionsRoute,

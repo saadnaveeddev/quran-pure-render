@@ -16,6 +16,13 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0", lastmod: "2026-06-05" },
           { path: "/courses", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-05" },
+          { path: "/noorani-qaida-online", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/online-quran-recitation-classes", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/online-tajweed-classes", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/online-hifz-classes", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/online-islamic-studies", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/online-arabic-language-classes", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
+          { path: "/female-quran-classes-online", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-07" },
           { path: "/fee-schedule", changefreq: "monthly", priority: "0.8", lastmod: "2026-06-05" },
           { path: "/free-trial", changefreq: "weekly", priority: "0.9", lastmod: "2026-06-05" },
           { path: "/about", changefreq: "monthly", priority: "0.7", lastmod: "2026-06-05" },
