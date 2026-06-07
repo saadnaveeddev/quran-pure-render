@@ -19,16 +19,6 @@ export const Route = createFileRoute("/courses")({
   component: CoursesPage,
 });
 
-const overview = [
-  ["Noorani Qaida", "Kids & Beginners", "Beginner", "30-45 min"],
-  ["Quran Recitation", "All Ages", "All Levels", "30-45 min"],
-  ["Tajweed Classes", "Kids & Adults", "Beginner-Adv", "30-45 min"],
-  ["Hifz Program", "Kids & Adults", "Intermediate+", "45 min"],
-  ["Islamic Studies", "All Ages", "All Levels", "30-45 min"],
-  ["Arabic Language", "All Ages", "Beginner-Adv", "30-45 min"],
-  ["Female Quran Classes", "Sisters Only", "All Levels", "30-45 min"],
-];
-
 const courseList = [
   {
     emoji: "📖",
@@ -172,9 +162,6 @@ function CoursesPage() {
         </p>
         <div className="mt-12">
           <SectionHeading title="All Online Quran Courses at a Glance" />
-          <div className="mt-8">
-            <DataTable head={["Course", "For", "Level", "Duration"]} rows={overview} />
-          </div>
         </div>
       </Section>
 
