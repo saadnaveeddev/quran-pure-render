@@ -5,8 +5,13 @@ import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import { Check } from "lucide-react";
 import { feeScheduleFaqs } from "@/content/faqs";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
 import { SITE } from "@/lib/site";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Fee Schedule", to: "/fee-schedule" },
+];
 
 export const Route = createFileRoute("/fee-schedule")({
   head: () => ({
@@ -16,7 +21,10 @@ export const Route = createFileRoute("/fee-schedule")({
         "View the full fee schedule for My Quran Guide online Quran classes. Affordable monthly packages and per class pricing in USD & GBP. Siblings discount available. Start with 2 days free trial!",
       path: "/fee-schedule",
     }),
-    scripts: [buildFaqSchema([...feeScheduleFaqs])],
+    scripts: [
+      buildFaqSchema([...feeScheduleFaqs]),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: FeeSchedulePage,
 });
@@ -74,7 +82,7 @@ const refundPoints = [
 function FeeSchedulePage() {
   return (
     <>
-      <PageHero title="Fee Schedule" />
+      <PageHero title="Fee Schedule" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">

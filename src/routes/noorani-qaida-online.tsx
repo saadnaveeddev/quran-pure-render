@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/noorani-qaida-online";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Noorani Qaida", to: PATH },
+];
 
 export const Route = createFileRoute("/noorani-qaida-online")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/noorani-qaida-online")({
       title: "Online Noorani Qaida Classes for Kids & Beginners | My Quran Guide",
       description:
         "Learn Noorani Qaida online with certified tutors at My Quran Guide. Perfect for kids, beginners & new Muslims. Flexible timings, male & female tutors. Start your 2-day free trial today!",
-      path: "/noorani-qaida-online",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Online Noorani Qaida Classes",
+        description:
+          "Beginner Noorani Qaida course teaching the Arabic alphabet, letter sounds, joining of letters, vowels and basic pronunciation — the foundation for reading the Quran.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: NooraniQaidaOnlinePage,
 });
@@ -118,15 +141,15 @@ const faqs = [
 function NooraniQaidaOnlinePage() {
   return (
     <>
-      <PageHero title="Online Noorani Qaida Classes" />
+      <PageHero as="p" title="Online Noorani Qaida Classes" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           MY QURAN GUIDE
         </p>
-        <h2 className="mt-3 text-center text-2xl text-foreground sm:text-3xl">
+        <p className="mt-3 text-center text-2xl font-display text-foreground sm:text-3xl">
           Online Noorani Qaida Classes
-        </h2>
+        </p>
         <p className="mt-3 text-center text-base font-medium text-secondary-foreground">
           For Beginners, Kids & New Muslims | All Levels Welcome
         </p>
