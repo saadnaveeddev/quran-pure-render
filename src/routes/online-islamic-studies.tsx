@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/online-islamic-studies";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Islamic Studies", to: PATH },
+];
 
 export const Route = createFileRoute("/online-islamic-studies")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/online-islamic-studies")({
       title: "Online Islamic Studies Classes for Kids, Adults & New Muslims | My Quran Guide",
       description:
         "Learn Islam online at My Quran Guide. Islamic Studies classes covering Pillars of Islam, Seerah, Fiqh & Islamic ethics. For kids, adults & new Muslims. Book your 2-day free trial!",
-      path: "/online-islamic-studies",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Online Islamic Studies Classes",
+        description:
+          "Comprehensive online Islamic Studies covering the Pillars of Islam, acts of worship, Seerah, Islamic ethics and basic Fiqh — taught in English for kids, adults and new Muslims.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: OnlineIslamicStudiesPage,
 });
@@ -131,15 +154,15 @@ const faqs = [
 function OnlineIslamicStudiesPage() {
   return (
     <>
-      <PageHero title="Online Islamic Studies Classes" />
+      <PageHero as="p" title="Online Islamic Studies Classes" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">
           MY QURAN GUIDE
         </p>
-        <h2 className="mt-3 text-center text-2xl text-foreground sm:text-3xl">
+        <p className="mt-3 text-center text-2xl font-display text-foreground sm:text-3xl">
           Online Islamic Studies Classes
-        </h2>
+        </p>
         <p className="mt-3 text-center text-base font-medium text-secondary-foreground">
           For Kids, Adults & New Muslims | My Quran Guide
         </p>

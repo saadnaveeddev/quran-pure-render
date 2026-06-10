@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/online-arabic-language-classes";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Arabic Language", to: PATH },
+];
 
 export const Route = createFileRoute("/online-arabic-language-classes")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/online-arabic-language-classes")({
       title: "Online Arabic Language Classes — Learn Quranic Arabic | My Quran Guide",
       description:
         "Learn Arabic online at My Quran Guide. Quranic Arabic classes for kids, teenagers & adults — taught in English. Beginner to advanced. Book your 2-day free trial today!",
-      path: "/online-arabic-language-classes",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Online Arabic Language Classes",
+        description:
+          "Learn Quranic Arabic online from scratch — alphabet, Nahw grammar, Sarf morphology and Quranic vocabulary — taught in English to help you understand the Quran directly.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: OnlineArabicLanguageClassesPage,
 });
@@ -132,7 +155,11 @@ const faqs = [
 function OnlineArabicLanguageClassesPage() {
   return (
     <>
-      <PageHero title="Online Arabic Language Classes" />
+      <PageHero
+        as="p"
+        title="Online Arabic Language Classes"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">

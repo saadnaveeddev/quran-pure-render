@@ -9,7 +9,12 @@ import {
   CalendarClock,
   Award,
 } from "lucide-react";
-import { buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+];
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -19,6 +24,9 @@ export const Route = createFileRoute("/about")({
         "Learn about My Quran Guide — our mission is to make quality Quran education accessible for everyone. 500+ students taught by certified Pakistani tutors fluent in English. Book your free trial today!",
       path: "/about",
     }),
+    scripts: [
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: AboutPage,
 });
@@ -71,7 +79,7 @@ const values = [
 function AboutPage() {
   return (
     <>
-      <PageHero title="About" />
+      <PageHero title="About" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">

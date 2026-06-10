@@ -1,19 +1,80 @@
 import type { ReactNode } from "react";
-import { Check } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Check, ChevronRight } from "lucide-react";
 
-/** Inner-page hero band. */
+export interface BreadcrumbLink {
+  label: string;
+  to: string;
+}
+
+/** Accessible visible breadcrumb trail (pairs with BreadcrumbList JSON-LD). */
+function Breadcrumbs({ items }: { items: BreadcrumbLink[] }) {
+  return (
+    <nav aria-label="Breadcrumb" className="mb-5">
+      <ol className="flex flex-wrap items-center justify-center gap-1.5 text-xs text-muted-foreground">
+        {items.map((item, i) => {
+          const isLast = i === items.length - 1;
+          return (
+            <li key={item.to} className="flex items-center gap-1.5">
+              {isLast ? (
+                <span aria-current="page" className="font-medium text-foreground">
+                  {item.label}
+                </span>
+              ) : (
+                <Link to={item.to} className="transition-colors hover:text-primary">
+                  {item.label}
+                </Link>
+              )}
+              {!isLast && (
+                <ChevronRight className="h-3.5 w-3.5 text-border" aria-hidden="true" />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
+
+/**
+ * Inner-page hero band. Renders the page H1 by default; pass `as="p"` on pages
+ * that already contain their own keyword-rich <h1> in the body so the document
+ * keeps exactly one H1 with a correct heading hierarchy.
+ */
 export function PageHero({
+  eyebrow,
   title,
+  subtitle,
+  intro,
+  breadcrumbs,
+  as = "h1",
 }: {
-  eyebrow?: string;
+  eyebrow?: ReactNode;
   title: ReactNode;
+  subtitle?: ReactNode;
   intro?: ReactNode;
-  children?: ReactNode;
+  breadcrumbs?: BreadcrumbLink[];
+  as?: "h1" | "p";
 }) {
+  const Title = as;
   return (
     <section className="border-y border-border bg-secondary/40">
-      <div className="mx-auto w-full max-w-7xl px-5 py-10 text-center sm:px-8 sm:py-12">
-        <h1 className="font-display text-3xl text-foreground sm:text-4xl">{title}</h1>
+      <div className="mx-auto w-full max-w-3xl px-5 py-10 text-center sm:px-8 sm:py-12">
+        {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
+        {eyebrow && (
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            {eyebrow}
+          </p>
+        )}
+        <Title className="font-display text-3xl text-foreground sm:text-4xl">{title}</Title>
+        {subtitle && (
+          <p className="mt-3 text-base font-medium text-secondary-foreground">{subtitle}</p>
+        )}
+        {intro && (
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground">
+            {intro}
+          </p>
+        )}
       </div>
     </section>
   );

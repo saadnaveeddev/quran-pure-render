@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/female-quran-classes-online";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Female Quran Classes", to: PATH },
+];
 
 export const Route = createFileRoute("/female-quran-classes-online")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/female-quran-classes-online")({
       title: "Quran Classes Online for ladies & Sister's  | My Quran Guide",
       description:
         "Learn Quran online with certified female tutors at My Quran Guide. Female Quran classes for sisters, girls & new Muslim women. All courses available. Book your 2-day free trial today!",
-      path: "/female-quran-classes-online",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Female Quran Classes Online",
+        description:
+          "Online Quran classes taught exclusively by certified female tutors — Noorani Qaida, Recitation, Tajweed, Hifz, Islamic Studies and Arabic — in a safe, comfortable environment for sisters and girls.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: FemaleQuranClassesOnlinePage,
 });
@@ -103,7 +126,11 @@ const faqs = [
 function FemaleQuranClassesOnlinePage() {
   return (
     <>
-      <PageHero title="Female Quran Classes Online" />
+      <PageHero
+        as="p"
+        title="Female Quran Classes Online"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">

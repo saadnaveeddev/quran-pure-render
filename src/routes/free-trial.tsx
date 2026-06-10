@@ -6,7 +6,12 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { Field, TextareaField } from "@/components/site/FormFields";
 import { CheckCircle2 } from "lucide-react";
-import { buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Free Trial", to: "/free-trial" },
+];
 
 export const Route = createFileRoute("/free-trial")({
   head: () => ({
@@ -16,6 +21,9 @@ export const Route = createFileRoute("/free-trial")({
         "Book your 2-day free trial online Quran class at My Quran Guide — 100% free, no credit card, no commitment. Choose any course, any timing. Certified male & female tutors. Enroll now!",
       path: "/free-trial",
     }),
+    scripts: [
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: FreeTrialPage,
 });
@@ -70,7 +78,7 @@ function FreeTrialPage() {
 
   return (
     <>
-      <PageHero title="Free Trial" />
+      <PageHero title="Free Trial" breadcrumbs={breadcrumbs} />
 
       {/* Steps */}
       <Section>

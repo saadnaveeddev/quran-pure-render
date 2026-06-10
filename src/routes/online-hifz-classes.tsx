@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/online-hifz-classes";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Hifz Program", to: PATH },
+];
 
 export const Route = createFileRoute("/online-hifz-classes")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/online-hifz-classes")({
       title: "Online Hifz Program — Quran Memorization Classes | My Quran Guide",
       description:
         "Join My Quran Guide's online Hifz program for kids & adults. Memorize the Quran with experienced Huffaz tutors. Structured plan, progress tracking & Hifz certificate. Start free today!",
-      path: "/online-hifz-classes",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Online Hifz Program — Quran Memorization",
+        description:
+          "Memorize the Quran online with certified Huffaz tutors using the proven Sabaq-Sabaqi-Manzil system, progress tracking and an official Hifz certificate on completion.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: OnlineHifzClassesPage,
 });
@@ -100,7 +123,7 @@ const faqs = [
 function OnlineHifzClassesPage() {
   return (
     <>
-      <PageHero title="Online Hifz Program" />
+      <PageHero as="p" title="Online Hifz Program" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">

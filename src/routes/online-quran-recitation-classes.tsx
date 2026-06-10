@@ -3,7 +3,20 @@ import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import {
+  buildBreadcrumbSchema,
+  buildCourseSchema,
+  buildFaqSchema,
+  buildPageSeo,
+} from "@/lib/seo";
+
+const PATH = "/online-quran-recitation-classes";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+  { label: "Quran Recitation", to: PATH },
+];
 
 export const Route = createFileRoute("/online-quran-recitation-classes")({
   head: () => ({
@@ -11,9 +24,19 @@ export const Route = createFileRoute("/online-quran-recitation-classes")({
       title: "Online Quran Recitation Classes for All Ages | My Quran Guide",
       description:
         "Learn to read the Quran fluently with certified tutors at My Quran Guide. Online Quran recitation classes for kids, teenagers & adults — all levels. Book your 2-day free trial today!",
-      path: "/online-quran-recitation-classes",
+      path: PATH,
     }),
-    scripts: [buildFaqSchema(faqs)],
+    scripts: [
+      buildFaqSchema(faqs),
+      buildCourseSchema({
+        name: "Online Quran Recitation Classes",
+        description:
+          "Structured online Quran recitation classes for all ages and levels — from reading short Surahs to fluent recitation of full Juz with correct pronunciation.",
+        path: PATH,
+        workload: "PT45M",
+      }),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: OnlineQuranRecitationClassesPage,
 });
@@ -104,7 +127,11 @@ const faqs = [
 function OnlineQuranRecitationClassesPage() {
   return (
     <>
-      <PageHero title="Online Quran Recitation (Reading) Classes" />
+      <PageHero
+        as="p"
+        title="Online Quran Recitation (Reading) Classes"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Section>
         <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">

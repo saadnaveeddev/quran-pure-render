@@ -4,7 +4,12 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import { coursesFaqs } from "@/content/faqs";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+];
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
@@ -14,20 +19,13 @@ export const Route = createFileRoute("/courses")({
         "Explore all online Quran courses at My Quran Guide — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies & Female Quran Classes. Flexible timings, certified tutors, 2-day free trial. Enroll today!",
       path: "/courses",
     }),
-    scripts: [buildFaqSchema([...coursesFaqs])],
+    scripts: [
+      buildFaqSchema([...coursesFaqs]),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: CoursesPage,
 });
-
-const overview = [
-  ["Noorani Qaida", "Kids & Beginners", "Beginner", "30-45 min"],
-  ["Quran Recitation", "All Ages", "All Levels", "30-45 min"],
-  ["Tajweed Classes", "Kids & Adults", "Beginner-Adv", "30-45 min"],
-  ["Hifz Program", "Kids & Adults", "Intermediate+", "45 min"],
-  ["Islamic Studies", "All Ages", "All Levels", "30-45 min"],
-  ["Arabic Language", "All Ages", "Beginner-Adv", "30-45 min"],
-  ["Female Quran Classes", "Sisters Only", "All Levels", "30-45 min"],
-];
 
 const courseList = [
   {
@@ -164,7 +162,11 @@ const schedule = [
 function CoursesPage() {
   return (
     <>
-      <PageHero title="Courses" />
+      <PageHero
+        title="Courses"
+        subtitle="Online Quran courses for every age and level — choose your path below"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
@@ -172,9 +174,6 @@ function CoursesPage() {
         </p>
         <div className="mt-12">
           <SectionHeading title="All Online Quran Courses at a Glance" />
-          <div className="mt-8">
-            <DataTable head={["Course", "For", "Level", "Duration"]} rows={overview} />
-          </div>
         </div>
       </Section>
 
