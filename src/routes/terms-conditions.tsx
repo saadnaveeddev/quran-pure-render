@@ -1,29 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, DataTable } from "@/components/site/PageHero";
 import { LegalPage, LH2, LH3, LP, LUL, LInfoList } from "@/components/site/Legal";
-import { buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Terms & Conditions", to: "/terms-conditions" },
+];
 
 export const Route = createFileRoute("/terms-conditions")({
-  head: () => {
-    const seo = buildPageSeo({
+  head: () => ({
+    ...buildPageSeo({
       title: "Terms & Conditions | My Quran Guide",
       description:
         "Read the Terms and Conditions for using My Quran Guide online Quran classes — free trial terms, enrollment, fees, cancellation, refunds and more.",
       path: "/terms-conditions",
-    });
-
-    return {
-      ...seo,
-      meta: [...seo.meta, { name: "robots", content: "index, follow" }],
-    };
-  },
+    }),
+    scripts: [
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
+  }),
   component: TermsPage,
 });
 
 function TermsPage() {
   return (
     <>
-      <PageHero title="Terms & Conditions" />
+      <PageHero title="Terms & Conditions" breadcrumbs={breadcrumbs} />
       <LegalPage>
         <LH2>1. Acceptance of Terms</LH2>
         <LP>By accessing or using the My Quran Guide website (myquranguide.com) and enrolling in any of our online Quran classes or services, you agree to be bound by these Terms and Conditions. These terms apply to all visitors, students, parents, guardians, and users of My Quran Guide services worldwide.</LP>

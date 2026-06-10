@@ -9,7 +9,12 @@ import { Field, TextareaField } from "@/components/site/FormFields";
 import { FAQ } from "@/components/site/FAQ";
 import { SITE } from "@/lib/site";
 import { contactFaqs } from "@/content/faqs";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Contact", to: "/contact" },
+];
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,7 +24,10 @@ export const Route = createFileRoute("/contact")({
         "Have a question about our online Quran classes? Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
       path: "/contact",
     }),
-    scripts: [buildFaqSchema([...contactFaqs])],
+    scripts: [
+      buildFaqSchema([...contactFaqs]),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: ContactPage,
 });
@@ -60,7 +68,7 @@ function ContactPage() {
 
   return (
     <>
-      <PageHero title="Contact" />
+      <PageHero title="Contact" breadcrumbs={breadcrumbs} />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
