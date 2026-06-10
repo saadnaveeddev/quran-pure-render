@@ -4,7 +4,12 @@ import { Section, SectionHeading } from "@/components/site/Section";
 import { CTAButton } from "@/components/site/CTAButton";
 import { FAQ } from "@/components/site/FAQ";
 import { coursesFaqs } from "@/content/faqs";
-import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Courses", to: "/courses" },
+];
 
 export const Route = createFileRoute("/courses")({
   head: () => ({
@@ -14,7 +19,10 @@ export const Route = createFileRoute("/courses")({
         "Explore all online Quran courses at My Quran Guide — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies & Female Quran Classes. Flexible timings, certified tutors, 2-day free trial. Enroll today!",
       path: "/courses",
     }),
-    scripts: [buildFaqSchema([...coursesFaqs])],
+    scripts: [
+      buildFaqSchema([...coursesFaqs]),
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
   }),
   component: CoursesPage,
 });
@@ -154,7 +162,11 @@ const schedule = [
 function CoursesPage() {
   return (
     <>
-      <PageHero title="Courses" />
+      <PageHero
+        title="Courses"
+        subtitle="Online Quran courses for every age and level — choose your path below"
+        breadcrumbs={breadcrumbs}
+      />
 
       <Section>
         <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
