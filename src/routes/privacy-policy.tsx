@@ -1,29 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, DataTable } from "@/components/site/PageHero";
 import { LegalPage, LH2, LH3, LP, LUL, LInfoList } from "@/components/site/Legal";
-import { buildPageSeo } from "@/lib/seo";
+import { buildBreadcrumbSchema, buildPageSeo } from "@/lib/seo";
+
+const breadcrumbs = [
+  { label: "Home", to: "/" },
+  { label: "Privacy Policy", to: "/privacy-policy" },
+];
 
 export const Route = createFileRoute("/privacy-policy")({
-  head: () => {
-    const seo = buildPageSeo({
+  head: () => ({
+    ...buildPageSeo({
       title: "Privacy Policy | My Quran Guide",
       description:
         "Read the My Quran Guide Privacy Policy — what information we collect, how we use and protect it, and your privacy rights.",
       path: "/privacy-policy",
-    });
-
-    return {
-      ...seo,
-      meta: [...seo.meta, { name: "robots", content: "index, follow" }],
-    };
-  },
+    }),
+    scripts: [
+      buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to }))),
+    ],
+  }),
   component: PrivacyPage,
 });
 
 function PrivacyPage() {
   return (
     <>
-      <PageHero title="Privacy Policy" />
+      <PageHero title="Privacy Policy" breadcrumbs={breadcrumbs} />
       <LegalPage>
         <LH2>Introduction</LH2>
         <LP>Welcome to My Quran Guide. We are committed to protecting the privacy and personal information of every visitor, student, and parent who interacts with our website and services. This Privacy Policy explains what information we collect, how we use it, how we protect it, and what rights you have over your data.</LP>
