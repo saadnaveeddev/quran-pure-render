@@ -144,16 +144,7 @@ function NooraniQaidaOnlinePage() {
       <PageHero as="p" title="Online Noorani Qaida Classes" breadcrumbs={breadcrumbs} />
 
       <Section>
-        <p className="text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-          MY QURAN GUIDE
-        </p>
-        <p className="mt-3 text-center text-2xl font-display text-foreground sm:text-3xl">
-          Online Noorani Qaida Classes
-        </p>
-        <p className="mt-3 text-center text-base font-medium text-secondary-foreground">
-          For Beginners, Kids & New Muslims | All Levels Welcome
-        </p>
-        <h1 className="mx-auto mt-10 max-w-5xl text-balance text-center text-3xl leading-tight text-foreground sm:text-4xl">
+        <h1 className="mx-auto max-w-5xl text-balance text-center text-3xl leading-tight text-foreground sm:text-4xl">
           Online Noorani Qaida Classes for Kids, Beginners & New Muslims | My Quran Guide
         </h1>
         <div className="mx-auto mt-8 max-w-4xl space-y-5 text-pretty text-base leading-relaxed text-muted-foreground">
