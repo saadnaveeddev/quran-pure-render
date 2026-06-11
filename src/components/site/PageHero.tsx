@@ -58,7 +58,7 @@ export function PageHero({
 }) {
   const Title = as;
   return (
-    <section className="border-y border-border bg-secondary/40">
+    <section className="border-y border-border bg-gradient-to-r from-secondary/50 via-background to-secondary/40">
       <div className="mx-auto w-full max-w-3xl px-5 py-10 text-center sm:px-8 sm:py-12">
         {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumbs items={breadcrumbs} />}
         {eyebrow && (
@@ -66,7 +66,7 @@ export function PageHero({
             {eyebrow}
           </p>
         )}
-        <Title className="font-display text-3xl text-foreground sm:text-4xl">{title}</Title>
+        <Title className="font-display text-3xl text-primary sm:text-4xl">{title}</Title>
         {subtitle && (
           <p className="mt-3 text-base font-medium text-secondary-foreground">{subtitle}</p>
         )}

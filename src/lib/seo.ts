@@ -94,7 +94,7 @@ export function buildOrganizationSchema() {
     name: SITE.name,
     alternateName: "MyQuranGuide",
     url: SITE.siteUrl,
-    logo: absoluteUrl(SITE.logoPath),
+    logo: absoluteUrl(SITE.logoIconPath),
     image: absoluteUrl(SITE.defaultOgImagePath),
     email: SITE.email,
     description:
