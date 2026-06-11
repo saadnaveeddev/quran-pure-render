@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/site";
 
 interface LogoProps {
@@ -7,17 +8,29 @@ interface LogoProps {
 
 export function Logo({ className }: LogoProps) {
   return (
-    <Link to="/" className={className ?? "flex items-center gap-2.5"} aria-label={SITE.name}>
-      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-emerald text-primary-foreground shadow-soft">
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-          <path d="M16.5 3.5a8 8 0 1 0 4 6.9 6.5 6.5 0 1 1-4-6.9Z" fill="currentColor" />
-          <path
-            d="m18.2 8 .7 1.6 1.7.2-1.3 1.2.4 1.7-1.5-.9-1.5.9.4-1.7-1.3-1.2 1.7-.2.5-1.6Z"
-            fill="var(--gold)"
-          />
-        </svg>
+    <Link
+      to="/"
+      className={cn("group flex items-center gap-2.5 sm:gap-3", className)}
+      aria-label={SITE.name}
+    >
+      <img
+        src={SITE.logoIconPath}
+        alt=""
+        width={40}
+        height={40}
+        className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+        aria-hidden="true"
+      />
+      <span className="flex flex-col gap-0.5 leading-none">
+        <span className="font-display text-[0.9rem] font-semibold uppercase tracking-[0.14em] text-primary sm:text-base">
+          My Quran
+        </span>
+        <span className="flex items-center gap-2 text-[0.62rem] font-semibold uppercase tracking-[0.3em] text-gold sm:text-[0.68rem]">
+          <span className="h-px w-3 bg-gold/70" aria-hidden="true" />
+          Guide
+          <span className="h-px w-3 bg-gold/70" aria-hidden="true" />
+        </span>
       </span>
-      <span className="font-display text-lg font-semibold leading-none text-foreground">{SITE.name}</span>
     </Link>
   );
 }

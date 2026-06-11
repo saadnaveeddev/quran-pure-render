@@ -9,6 +9,7 @@ import {
   HomeWhyChooseSection,
 } from "@/components/home";
 import { homeFaqs } from "@/content/faqs";
+import { SITE } from "@/lib/site";
 import { buildFaqSchema, buildPageSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -18,12 +19,12 @@ export const Route = createFileRoute("/")({
       description:
         "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Enroll now!",
       path: "/",
-      ogImagePath: "/hero-quran.svg",
+      ogImagePath: SITE.heroImagePath,
     });
 
     return {
       ...seo,
-      links: [...seo.links, { rel: "preload", as: "image", href: "/hero-quran.svg" }],
+      links: [...seo.links, { rel: "preload", as: "image", href: SITE.heroImagePath }],
       scripts: [buildFaqSchema([...homeFaqs])],
     };
   },
