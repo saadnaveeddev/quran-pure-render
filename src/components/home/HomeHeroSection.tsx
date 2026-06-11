@@ -1,5 +1,6 @@
 import { CheckCircle2 } from "lucide-react";
 import { CTAButton } from "@/components/site/CTAButton";
+import { SITE } from "@/lib/site";
 
 export function HomeHeroSection() {
   return (
@@ -47,7 +48,7 @@ export function HomeHeroSection() {
               Free trial in 24h
             </div>
             <img
-              src="/hero-quran.svg"
+              src={SITE.heroImagePath}
               alt="An open Quran resting on a wooden stand with a soft geometric Islamic arch behind it"
               width={1536}
               height={1152}

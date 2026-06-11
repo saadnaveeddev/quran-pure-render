@@ -5,9 +5,9 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-gradient-to-b from-secondary/20 via-background to-secondary/30">
-      <div className="pointer-events-none absolute -left-24 -top-8 h-72 w-72 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
-      <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl" aria-hidden="true" />
+    <footer className="relative overflow-hidden border-t border-border bg-gradient-to-b from-background via-muted/20 to-secondary/25">
+      <div className="pointer-events-none absolute -left-24 -top-8 h-72 w-72 rounded-full bg-gold/12 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-primary/8 blur-3xl" aria-hidden="true" />
       <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8">
         <div className="mb-10 rounded-3xl border border-border/80 bg-gradient-emerald px-6 py-8 text-primary-foreground shadow-card sm:px-8">
           <h3 className="text-balance text-2xl sm:text-3xl">Ready to begin your Quran journey?</h3>

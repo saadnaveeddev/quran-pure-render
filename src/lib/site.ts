@@ -15,8 +15,11 @@ export const SITE = {
   instagramLink: "https://instagram.com/MyQuranGuide",
   twitterHandle: "@MyQuranGuide",
   locale: "en_US",
-  logoPath: "/favicon.svg",
-  defaultOgImagePath: "/og-cover.svg",
+  logoPath: "/logo.png",
+  logoIconPath: "/logo-icon.png",
+  faviconPath: "/favicon.png",
+  heroImagePath: "/hero-quran.jpg",
+  defaultOgImagePath: "/og-cover.png",
 } as const;
 
 /** Public social/profile URLs used for schema.org `sameAs`. */
