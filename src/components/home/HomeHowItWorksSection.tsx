@@ -16,12 +16,19 @@ export function HomeHowItWorksSection() {
       />
       <div className="mt-14 grid gap-6 md:grid-cols-3">
         {steps.map((step) => (
-          <div key={step.n} className="relative surface-card rounded-2xl p-7">
-            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold text-gold-foreground font-display text-xl font-semibold">
+          <div
+            key={step.n}
+            className="group card-sweep rounded-2xl p-7 motion-safe:hover:-translate-y-1"
+          >
+            <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gold font-display text-xl font-semibold text-gold-foreground transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
               {step.n}
             </span>
-            <h3 className="mt-5 text-lg text-foreground">Step {step.n} — {step.title}</h3>
-            <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{step.body}</p>
+            <h3 className="relative z-10 mt-5 text-lg text-foreground transition-colors duration-300 group-hover:text-primary-foreground">
+              Step {step.n} — {step.title}
+            </h3>
+            <p className="relative z-10 mt-3 text-[0.95rem] leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/88">
+              {step.body}
+            </p>
           </div>
         ))}
       </div>

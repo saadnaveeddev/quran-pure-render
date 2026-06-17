@@ -244,6 +244,40 @@
     background: var(--gradient-surface);
     box-shadow: var(--shadow-soft);
   }
+  .card-sweep {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid oklch(0.88 0.018 88 / 0.8);
+    background: var(--gradient-surface);
+    box-shadow: var(--shadow-soft);
+    transition:
+      transform var(--motion-duration-base) var(--motion-ease-emphasis),
+      box-shadow var(--motion-duration-base) var(--motion-ease-emphasis),
+      border-color var(--motion-duration-base) var(--motion-ease-emphasis);
+  }
+  .card-sweep::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      135deg,
+      oklch(0.32 0.045 245) 0%,
+      oklch(0.36 0.048 245) 55%,
+      oklch(0.58 0.08 72) 100%
+    );
+    transform: scale(0);
+    transform-origin: top left;
+    transition: transform 0.45s var(--motion-ease-emphasis);
+  }
+  .card-sweep:hover::before {
+    transform: scale(1);
+  }
+  .card-sweep:hover {
+    border-color: oklch(0.32 0.045 245 / 0.35);
+    box-shadow: var(--shadow-card);
+  }
 }
 
 @keyframes fade-up {

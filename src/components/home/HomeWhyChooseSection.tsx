@@ -39,12 +39,19 @@ export function HomeWhyChooseSection() {
       />
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {whyChoose.map((item) => (
-          <div key={item.title} className="surface-card rounded-2xl p-7 transition-transform duration-300 motion-safe:hover:-translate-y-1">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
+          <div
+            key={item.title}
+            className="group card-sweep rounded-2xl p-7 motion-safe:hover:-translate-y-1"
+          >
+            <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary transition-colors duration-300 group-hover:bg-primary-foreground/15 group-hover:text-primary-foreground">
               <item.icon className="h-6 w-6" />
             </span>
-            <h3 className="mt-5 text-xl text-foreground">{item.title}</h3>
-            <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground">{item.body}</p>
+            <h3 className="relative z-10 mt-5 text-xl text-foreground transition-colors duration-300 group-hover:text-primary-foreground">
+              {item.title}
+            </h3>
+            <p className="relative z-10 mt-3 text-[0.95rem] leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-primary-foreground/88">
+              {item.body}
+            </p>
           </div>
         ))}
       </div>
