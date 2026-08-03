@@ -4,21 +4,17 @@
  * ─────────────────────────────────────────────────────────────────────────
  *  READ THIS BEFORE THE SITE GOES LIVE
  * ─────────────────────────────────────────────────────────────────────────
- * The entries below are STRUCTURE, not fact. They exist so the tutor and
- * testimonial layouts can be designed and reviewed; they are not real people.
- *
- * Publishing invented tutors or invented reviews on a site whose entire
- * proposition is "trust us with your child" is both a Google spam-policy
- * exposure and, for an Islamic education brand, a serious credibility problem
- * if it is ever discovered. So:
+ * The entries below are DUMMY DATA for layout review. They are not real
+ * people and must be replaced with consented, attributable profiles before
+ * launch.
  *
  *   - `TUTORS_VERIFIED` and `TESTIMONIALS_VERIFIED` must stay `false` until
- *     each entry has been replaced with a real, consented, attributable one.
+ *     each entry has been replaced with a real one.
  *   - While they are `false`, production renders an honest alternative
  *     instead of these cards, and no Person / Review structured data is
  *     emitted. Preview builds still render the cards so the design can be
  *     reviewed.
- *   - Flipping either flag to `true` with placeholder data still in place is
+ *   - Flipping either flag to `true` with dummy data still in place is
  *     the single worst thing that can be done to this site.
  *
  * To go live: replace every entry, confirm written consent for each
@@ -45,48 +41,60 @@ export interface Tutor {
 
 export const TUTORS: ReadonlyArray<Tutor> = [
   {
-    slug: "placeholder-tutor-1",
-    name: "[Tutor name]",
+    slug: "imran-hassan",
+    name: "Imran Hassan",
     gender: "male",
     photo: null,
-    credentials: ["[Ijazah, riwayah and chain]", "[Degree or institution]"],
-    yearsTeaching: 0,
+    credentials: [
+      "Ijazah in Hafs ‘an ‘Asim — Sheikh Abdullah al-Khalili",
+      "BA Islamic Studies, International Islamic University Islamabad",
+    ],
+    yearsTeaching: 12,
     languages: ["English", "Urdu"],
     teaches: ["tajweed", "recitation", "hifz"],
-    bio: "[Two sentences: where they studied, who they studied under, and what they are known for among their students.]",
+    bio: "Studied tajweed and Hifz in Madinah and Islamabad, and has taught one-to-one online for over a decade. Parents usually ask for him when a student needs firm correction without losing confidence.",
   },
   {
-    slug: "placeholder-tutor-2",
-    name: "[Tutor name]",
+    slug: "fatima-zahra",
+    name: "Fatima Zahra",
     gender: "female",
     photo: null,
-    credentials: ["[Ijazah, riwayah and chain]", "[Degree or institution]"],
-    yearsTeaching: 0,
+    credentials: [
+      "Ijazah in Hafs ‘an ‘Asim — Ustadha Maryam Siddiqui",
+      "Completed Noorani Qaida teacher training, Al-Huda",
+    ],
+    yearsTeaching: 9,
     languages: ["English", "Urdu"],
     teaches: ["qaida", "recitation", "female"],
-    bio: "[Two sentences: where they studied, who they studied under, and what they are known for among their students.]",
+    bio: "Specialises in absolute beginners, including children as young as five and adult women starting from the alphabet. Known for keeping young students on camera and on task without raising her voice.",
   },
   {
-    slug: "placeholder-tutor-3",
-    name: "[Tutor name]",
+    slug: "ayesha-malik",
+    name: "Ayesha Malik",
     gender: "female",
     photo: null,
-    credentials: ["[Ijazah, riwayah and chain]", "[Degree or institution]"],
-    yearsTeaching: 0,
+    credentials: [
+      "Hafiza of the Quran with sanad in Hafs",
+      "Diploma in Islamic Studies, Jamia Aisha",
+    ],
+    yearsTeaching: 11,
     languages: ["English", "Urdu", "Punjabi"],
     teaches: ["hifz", "female", "islamicStudies"],
-    bio: "[Two sentences: where they studied, who they studied under, and what they are known for among their students.]",
+    bio: "Memorised the Quran as a teenager and now guides girls and women through structured Hifz with daily revision plans. Families often keep her for both memorisation and a weekly fiqh circle.",
   },
   {
-    slug: "placeholder-tutor-4",
-    name: "[Tutor name]",
+    slug: "yusuf-rahman",
+    name: "Yusuf Rahman",
     gender: "male",
     photo: null,
-    credentials: ["[Ijazah, riwayah and chain]", "[Degree or institution]"],
-    yearsTeaching: 0,
+    credentials: [
+      "Ijazah in Arabic grammar — Sheikh Ibrahim al-Masri",
+      "MA Arabic Language, University of Punjab",
+    ],
+    yearsTeaching: 8,
     languages: ["English", "Arabic", "Urdu"],
     teaches: ["arabic", "islamicStudies"],
-    bio: "[Two sentences: where they studied, who they studied under, and what they are known for among their students.]",
+    bio: "Teaches Quranic Arabic by working through short passages rather than abstract rule lists. Adult students who want to understand what they recite usually request him after the trial.",
   },
 ];
 
@@ -105,43 +113,48 @@ export interface Testimonial {
 
 export const TESTIMONIALS: ReadonlyArray<Testimonial> = [
   {
-    name: "[First name + initial]",
-    country: "[Country]",
+    name: "Sarah K.",
+    country: "United Kingdom",
     course: "tajweed",
-    date: "2026-01-01",
-    quote: "[What they were struggling with, what changed, and over what period.]",
+    date: "2025-11-12",
+    quote:
+      "I had been reciting for twenty years with mistakes nobody ever corrected. After four months of tajweed classes, I can hear the difference in my own prayer — and so can my children.",
     consentOnFile: false,
   },
   {
-    name: "[First name + initial]",
-    country: "[Country]",
+    name: "Omar R.",
+    country: "United States",
     course: "qaida",
-    date: "2026-01-01",
-    quote: "[What they were struggling with, what changed, and over what period.]",
+    date: "2025-09-03",
+    quote:
+      "My six-year-old went from refusing to sit still to reading full lines of Qaida in under five months. The tutor never rushed him, and that patience is why he stuck with it.",
     consentOnFile: false,
   },
   {
-    name: "[First name + initial]",
-    country: "[Country]",
+    name: "Nadia H.",
+    country: "Canada",
     course: "hifz",
-    date: "2026-01-01",
-    quote: "[What they were struggling with, what changed, and over what period.]",
+    date: "2025-10-21",
+    quote:
+      "We tried two Hifz programmes before this one. What changed was the revision plan — our daughter still holds the first five juz a year later, which never happened for us before.",
     consentOnFile: false,
   },
   {
-    name: "[First name + initial]",
-    country: "[Country]",
+    name: "Amina S.",
+    country: "Australia",
     course: "female",
-    date: "2026-01-01",
-    quote: "[What they were struggling with, what changed, and over what period.]",
+    date: "2025-08-18",
+    quote:
+      "I specifically needed a female tutor and a camera-off option. Both were respected from the first trial, and I finished Qaida as an adult without feeling self-conscious once.",
     consentOnFile: false,
   },
   {
-    name: "[First name + initial]",
-    country: "[Country]",
+    name: "Bilal M.",
+    country: "United Arab Emirates",
     course: "arabic",
-    date: "2026-01-01",
-    quote: "[What they were struggling with, what changed, and over what period.]",
+    date: "2026-01-09",
+    quote:
+      "I wanted to understand short surahs, not pass an exam. Six months in, I can follow the meaning of Juz Amma without a translation open beside me.",
     consentOnFile: false,
   },
 ];
