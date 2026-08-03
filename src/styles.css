@@ -251,7 +251,9 @@
   --lapis: #2a3f7e;
   --lapis-lift: #3c55a0;
   --lapis-wash: #e6eaf5;
-  --gold: #b58a2c;
+  /* Tuned to sit in the narrow band that clears 3:1 against paper (for rules
+     and rosettes) while still clearing 4.5:1 as text on the ink footer. */
+  --gold: #ab8129;
   /* Darkened gold that clears 4.5:1 on paper — the only gold safe for text. */
   --gold-ink: #6e5214;
   --gold-wash: #f0e4c4;
