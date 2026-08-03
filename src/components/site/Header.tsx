@@ -3,7 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/site";
-import { CTAButton } from "./CTAButton";
+import { Button } from "./Button";
 import { Logo } from "./Logo";
 
 export function Header() {
@@ -15,24 +15,24 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 py-3">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between rounded-2xl border border-border/80 bg-card/90 px-5 shadow-soft backdrop-blur-xl sm:px-8">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/95 backdrop-blur">
+      <div className="mx-auto flex h-[72px] w-full max-w-6xl items-center justify-between px-5 sm:px-8">
         <Logo />
 
-        <nav className="hidden items-center gap-1.5 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => {
             const active = pathname === link.to;
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
-                  active
-                    ? "bg-primary/8 text-primary shadow-soft"
-                    : "text-muted-foreground hover:bg-secondary/70 hover:text-foreground",
-                )}
                 aria-current={active ? "page" : undefined}
+                className={cn(
+                  "rounded-[2px] px-3.5 py-2 text-[0.9375rem] transition-colors duration-[120ms]",
+                  active
+                    ? "text-ink underline decoration-gold decoration-2 underline-offset-8"
+                    : "text-ink-soft hover:text-lapis",
+                )}
               >
                 {link.label}
               </Link>
@@ -40,12 +40,15 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:block">
-          <CTAButton to="/free-trial">Free Trial</CTAButton>
+        <div className="hidden lg:block">
+          <Button to="/free-trial" withChevron>
+            Book a free trial
+          </Button>
         </div>
 
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-card/70 text-foreground md:hidden"
+          type="button"
+          className="flex h-11 w-11 items-center justify-center rounded-[2px] border border-rule text-ink lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -58,34 +61,28 @@ export function Header() {
       <div
         id="mobile-nav"
         className={cn(
-          "grid overflow-hidden rounded-b-2xl border-x border-b border-border bg-background/95 shadow-soft transition-[grid-template-rows,opacity] duration-300 ease-out md:hidden motion-reduce:transition-none",
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+          "grid overflow-hidden border-t border-rule bg-paper-warm transition-[grid-template-rows] duration-200 ease-out lg:hidden",
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr] border-t-0",
         )}
       >
         <div className="overflow-hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col gap-1 px-5 py-4">
+          <nav aria-label="Main" className="mx-auto flex max-w-6xl flex-col px-5 py-3 sm:px-8">
             {NAV_LINKS.map((link) => {
               const active = pathname === link.to;
-
               return (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={cn(
-                    "rounded-lg px-4 py-3 text-sm font-medium transition-colors",
-                    active
-                      ? "bg-secondary text-secondary-foreground"
-                      : "text-muted-foreground hover:bg-secondary/60",
-                  )}
                   aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "border-b border-rule py-3.5 text-[0.9375rem] last:border-b-0",
+                    active ? "text-ink" : "text-ink-soft",
+                  )}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <CTAButton to="/free-trial" className="mt-2 w-full">
-              Book My Free Trial
-            </CTAButton>
           </nav>
         </div>
       </div>

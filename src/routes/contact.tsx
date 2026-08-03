@@ -1,14 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
-import { toast } from "sonner";
-import { Mail, MessageCircle, Facebook, Instagram, CheckCircle2 } from "lucide-react";
-import { PageHero, DataTable, CheckList } from "@/components/site/PageHero";
+import { useState } from "react";
+import { PageHero } from "@/components/site/PageHero";
 import { Section, SectionHeading } from "@/components/site/Section";
-import { CTAButton } from "@/components/site/CTAButton";
+import { Button } from "@/components/site/Button";
+import { Faq } from "@/components/site/Disclosure";
+import { SpecStrip } from "@/components/site/Spec";
 import { Field, TextareaField } from "@/components/site/FormFields";
-import { FAQ } from "@/components/site/FAQ";
-import { SITE } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
+import { SITE, ORG_FACTS, whatsappUrl } from "@/lib/site";
+import { track } from "@/lib/analytics";
 import { contactFaqs } from "@/content/faqs";
+import { TUTOR_TIMEZONE_LABEL } from "@/lib/timezone";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
 
 const breadcrumbs = [
@@ -19,9 +21,9 @@ const breadcrumbs = [
 export const Route = createFileRoute("/contact")({
   head: () => ({
     ...buildPageSeo({
-      title: "Contact Us | My Quran Guide — Get in Touch Today",
+      title: "Contact us about Quran classes | My Quran Guide",
       description:
-        "Have a question about our online Quran classes? Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
+        "Message us on WhatsApp or email with any question about courses, fees, timings or tutors. We reply within one to two hours during working hours.",
       path: "/contact",
     }),
     scripts: [
@@ -32,159 +34,158 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const channels = [
-  { icon: Mail, title: "Email Us", value: SITE.email, sub: "We reply within 1-2 hours — 24/7", href: `mailto:${SITE.email}` },
-  { icon: MessageCircle, title: "WhatsApp", value: SITE.whatsappDisplay, sub: "Message us anytime — fastest response", href: SITE.whatsappLink },
-  { icon: Facebook, title: "Facebook", value: SITE.facebookDisplay, sub: "Message us on Facebook page", href: SITE.facebookLink },
-  { icon: Instagram, title: "Instagram", value: SITE.instagramDisplay, sub: "DM us on Instagram anytime", href: SITE.instagramLink },
+const availability = [
+  { label: "WhatsApp", value: "Fastest. Usually under an hour." },
+  { label: "Email", value: ORG_FACTS.supportResponseTime },
+  { label: "Working hours", value: TUTOR_TIMEZONE_LABEL },
+  { label: "Languages", value: ORG_FACTS.teachingLanguages.join(", ") },
 ];
 
-const responseTimes = [
-  ["Email", "Within 1-2 Hours"],
-  ["WhatsApp", "Within 1 Hour"],
-  ["Facebook Message", "Within 1-2 Hours"],
-  ["Instagram DM", "Within 1-2 Hours"],
-  ["Availability", "24/7 — Any Time, Any Day"],
-  ["Languages", "English & Urdu"],
-];
+/** Four fields. Anything longer belongs on the trial form, not here. */
+function ContactForm() {
+  const [state, setState] = useState({ name: "", email: "", whatsapp: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-const guideItems = [
-  "Choose the right Quran course for your age and level",
-  "Understand how our online classes work",
-  "Get matched with the right male or female tutor",
-  "Book your 2-day free trial class with zero hassle",
-  "Answer any questions about timings, platform, or fees",
-];
+  const set = (k: keyof typeof state) => (v: string) => setState((s) => ({ ...s, [k]: v }));
 
-function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
-    toast.success("Message sent! We will get back to you within 1-2 hours.");
-    e.currentTarget.reset();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(state),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="jadwal p-8 text-center">
+        <h3 className="text-h3 text-ink">Message received</h3>
+        <p className="measure mx-auto mt-3 text-ink-soft">
+          We will reply {ORG_FACTS.supportResponseTime} during working hours. If it is urgent,
+          WhatsApp is faster than waiting on email.
+        </p>
+      </div>
+    );
   }
 
   return (
-    <>
-      <PageHero title="Contact" breadcrumbs={breadcrumbs} />
-
-      <Section>
-        <p className="mx-auto max-w-3xl text-center text-pretty text-base leading-relaxed text-muted-foreground">
-          We are available 24/7 and reply to all messages within 1 to 2 hours. Reach out to us through any of the channels below and our friendly team will get back to you as soon as possible.
+    <form onSubmit={onSubmit} className="jadwal space-y-5 p-6 sm:p-8" noValidate>
+      <Field
+        label="Your name"
+        name="c-name"
+        required
+        autoComplete="name"
+        value={state.name}
+        onChange={set("name")}
+      />
+      <Field
+        label="Email address"
+        name="c-email"
+        type="email"
+        required
+        autoComplete="email"
+        inputMode="email"
+        value={state.email}
+        onChange={set("email")}
+      />
+      <Field
+        label="WhatsApp number"
+        name="c-whatsapp"
+        type="tel"
+        autoComplete="tel"
+        inputMode="tel"
+        placeholder="+1 555 123 4567"
+        hint="Only if you would rather we reply there."
+        value={state.whatsapp}
+        onChange={set("whatsapp")}
+      />
+      <TextareaField
+        label="Your question"
+        name="c-message"
+        required
+        rows={5}
+        value={state.message}
+        onChange={set("message")}
+      />
+      {status === "error" && (
+        <p className="text-[0.875rem] text-error" role="alert">
+          That did not send. Please try WhatsApp or email us directly at {SITE.email}.
         </p>
-        <div className="mt-14">
-          <SectionHeading title="Get in Touch with My Quran Guide" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {channels.map((c) => (
-              <a
-                key={c.title}
-                href={c.href}
-                target={c.href.startsWith("http") ? "_blank" : undefined}
-                rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group rounded-2xl border border-border bg-card p-6 text-center shadow-soft transition-transform duration-300 motion-safe:hover:-translate-y-1"
-              >
-                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-primary">
-                  <c.icon className="h-6 w-6" />
-                </span>
-                <h3 className="mt-4 text-base text-foreground">{c.title}</h3>
-                <p className="mt-1 break-words text-sm font-medium text-primary">{c.value}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{c.sub}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </Section>
+      )}
+      <Button type="submit" size="lg" disabled={status === "sending"}>
+        {status === "sending" ? "Sending" : "Send message"}
+      </Button>
+    </form>
+  );
+}
 
-      {/* Form */}
-      <Section tone="muted">
-        <SectionHeading
-          eyebrow="Send Us a Message"
-          title="Send Us a Message"
-          intro="Fill in the form below and we will get back to you within 1-2 hours:"
-        />
-        <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-border bg-card p-7 shadow-card sm:p-9">
-          {submitted ? (
-            <div className="flex flex-col items-center py-8 text-center">
-              <CheckCircle2 className="h-12 w-12 text-primary" />
-              <h3 className="mt-4 text-xl text-foreground">Message sent!</h3>
-              <p className="mt-2 max-w-md text-muted-foreground">
-                Thank you for reaching out. We will get back to you within 1-2 hours. For the fastest response, message us on WhatsApp.
-              </p>
-              <div className="mt-6">
-                <CTAButton onClick={() => setSubmitted(false)} variant="outline">Send another message</CTAButton>
-              </div>
+function ContactPage() {
+  return (
+    <>
+      <PageHero
+        label={`Replies ${ORG_FACTS.supportResponseTime}`}
+        title="Ask us anything before you book"
+        intro="Questions about level, timings, fees or which tutor would teach you are all worth asking first. There is no obligation attached to any of it."
+        breadcrumbs={breadcrumbs}
+        actions={
+          <>
+            <Button
+              href={whatsappUrl("Assalamu alaikum, I have a question about your classes.")}
+              onClick={() => track("whatsapp_click", { location: "contact_hero" })}
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              WhatsApp {SITE.whatsappDisplay}
+            </Button>
+            <Button
+              variant="secondary"
+              href={`mailto:${SITE.email}`}
+              onClick={() => track("email_click", { location: "contact_hero" })}
+            >
+              {SITE.email}
+            </Button>
+          </>
+        }
+      />
+
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] lg:gap-16">
+          <div>
+            <SectionHeading
+              align="left"
+              label="Two ways, both read by a person"
+              title="How to reach us"
+              intro="WhatsApp is genuinely the fastest route and most families use it. The form below goes to the same inbox if you would rather write at length."
+            />
+            <SpecStrip className="mt-10" columns={1} items={availability} />
+            <p className="measure mt-8 text-pretty text-ink-soft">
+              Our tutors work to {TUTOR_TIMEZONE_LABEL}, so a message sent late at night in North
+              America will usually be answered while you are asleep and waiting for you in the
+              morning.
+            </p>
+            <div className="mt-8">
+              <Button to="/free-trial" variant="secondary" withChevron>
+                Or go straight to booking a free trial
+              </Button>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <Field label="Full Name" name="fullName" placeholder="Enter your full name" required />
-              <Field label="Email Address" name="email" type="email" placeholder="Enter your email address" required />
-              <Field label="WhatsApp Number (Optional)" name="whatsapp" placeholder="Enter your WhatsApp number with country code" />
-              <Field label="Your Country" name="country" placeholder="e.g. USA, UK, Canada, Australia..." required />
-              <Field label="Course You Are Interested In" name="course" placeholder="e.g. Tajweed, Hifz, Noorani Qaida, Female Classes..." required />
-              <Field label="Student Age" name="age" placeholder="e.g. Child (7 years), Adult, New Muslim..." required />
-              <Field label="Preferred Class Timing" name="timing" placeholder="e.g. Morning, Evening, Weekend..." required />
-              <TextareaField label="Your Message" name="message" placeholder="Write your question or message here..." required />
-              <CTAButton type="submit" className="w-full" size="lg">Send Message</CTAButton>
-            </form>
-          )}
-        </div>
-      </Section>
+          </div>
 
-      {/* Response time */}
-      <Section>
-        <SectionHeading title="When Can You Reach Us?" />
-        <div className="mt-10">
-          <DataTable head={["Contact Channel", "Response Time"]} rows={responseTimes} />
-        </div>
-      </Section>
-
-      {/* FAQ */}
-      <Section tone="muted">
-        <SectionHeading
-          eyebrow="FAQ"
-          title="Frequently Asked Questions"
-        />
-        <div className="mt-12">
-          <FAQ items={contactFaqs} />
-        </div>
-      </Section>
-
-      {/* Why contact */}
-      <Section>
-        <div className="mx-auto max-w-3xl">
-          <SectionHeading
-            align="left"
-            eyebrow="Why Contact My Quran Guide?"
-            title="Not Sure Where to Start? We Will Guide You"
-            intro="Many families are not sure which course to choose, what level their child is at, or how online Quran classes work. That is completely okay. Our team is here to answer every question — no matter how big or small."
-          />
-          <p className="mt-6 text-base font-medium text-foreground">Contact My Quran Guide today and we will help you:</p>
-          <div className="mt-6">
-            <CheckList items={guideItems} />
+          <div>
+            <ContactForm />
           </div>
         </div>
       </Section>
 
-      {/* Final CTA */}
-      <Section tone="emerald">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading
-            inverted
-            title="Ready to Start? Contact Us Now — We Reply in 1-2 Hours"
-            intro="Do not wait. Whether you are ready to enroll or just have a question — reach out to My Quran Guide today. We are available 24/7 and will reply within 1 to 2 hours. Your Quran learning journey is just one message away."
-          />
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <CTAButton href={`mailto:${SITE.email}`} variant="gold" size="lg">Email Us: {SITE.email}</CTAButton>
-            <CTAButton href={SITE.whatsappLink} size="lg" variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              Message Us on WhatsApp
-            </CTAButton>
-            <CTAButton to="/free-trial" size="lg" variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
-              Book Your Free Trial Class Now
-            </CTAButton>
-          </div>
-        </div>
+      <Section tone="warm" ruled>
+        <SectionHeading label={`${contactFaqs.length} questions`} title="Asked most often" />
+        <Faq className="mt-10" items={contactFaqs} group="contact-faq" />
       </Section>
     </>
   );

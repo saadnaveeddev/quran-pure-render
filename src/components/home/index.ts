@@ -1,7 +1,8 @@
-export { HomeHeroSection } from "./HomeHeroSection";
-export { HomeCoursesSection } from "./HomeCoursesSection";
-export { HomeWhyChooseSection } from "./HomeWhyChooseSection";
-export { HomeHowItWorksSection } from "./HomeHowItWorksSection";
-export { HomeTestimonialSection } from "./HomeTestimonialSection";
-export { HomeFaqSection } from "./HomeFaqSection";
-export { HomeFinalCtaSection } from "./HomeFinalCtaSection";
+export { HomeHero } from "./HomeHero";
+export { HomeCourses } from "./HomeCourses";
+export { HomeAudiences } from "./HomeAudiences";
+export { HomeHowItWorks } from "./HomeHowItWorks";
+export { HomeTutors, HomeTestimonials } from "./HomeTrust";
+export { HomePricing } from "./HomePricing";
+export { HomeFaq } from "./HomeFaq";
+export { HomeClosing } from "./HomeClosing";

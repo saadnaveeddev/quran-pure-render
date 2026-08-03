@@ -1,29 +1,36 @@
-import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { Reveal } from "./Reveal";
 
-interface SectionProps {
+type Tone = "paper" | "warm" | "ink";
+
+const tones: Record<Tone, string> = {
+  paper: "bg-paper text-ink-soft",
+  warm: "bg-paper-warm text-ink-soft",
+  ink: "bg-ink text-paper",
+};
+
+export function Section({
+  children,
+  className,
+  id,
+  tone = "paper",
+  ruled = false,
+}: {
   children: ReactNode;
   className?: string;
   id?: string;
-  /** Background tone */
-  tone?: "default" | "muted" | "emerald" | "secondary";
-}
-
-const tones: Record<NonNullable<SectionProps["tone"]>, string> = {
-  default: "bg-background",
-  muted: "bg-muted/30",
-  secondary: "bg-secondary/30",
-  emerald: "bg-gradient-emerald text-primary-foreground",
-};
-
-export function Section({ children, className, id, tone = "default" }: SectionProps) {
+  tone?: Tone;
+  /** Adds the hairline gold rule that opens a new movement on the page. */
+  ruled?: boolean;
+}) {
   return (
     <section
       id={id}
       className={cn(
         "relative py-16 sm:py-20 lg:py-24",
-        tone !== "emerald" && "before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-border/80 before:to-transparent",
         tones[tone],
+        ruled && "border-t border-gold/35",
         className,
       )}
     >
@@ -32,48 +39,38 @@ export function Section({ children, className, id, tone = "default" }: SectionPr
   );
 }
 
-interface HeadingProps {
-  eyebrow?: string;
-  title: ReactNode;
-  intro?: ReactNode;
-  align?: "left" | "center";
-  inverted?: boolean;
-  as?: "h1" | "h2";
-}
-
 export function SectionHeading({
-  eyebrow,
+  label,
   title,
   intro,
   align = "center",
   inverted = false,
   as = "h2",
-}: HeadingProps) {
+}: {
+  /**
+   * Carries real information — a stage, a count, a level, an age range
+   * ("Module 3 of 6", "For ages 5+"). Never an all-caps echo of the title
+   * below it; if you can't add information, leave it out.
+   */
+  label?: ReactNode;
+  title: ReactNode;
+  intro?: ReactNode;
+  align?: "left" | "center";
+  inverted?: boolean;
+  as?: "h1" | "h2";
+}) {
   const Tag = as;
+
   return (
-    <div
-      className={cn(
-        "max-w-3xl",
-        align === "center" ? "mx-auto text-center" : "text-left",
-      )}
-    >
-      {eyebrow && (
-        <span
-          className={cn(
-            "mb-4 inline-flex items-center rounded-full px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em]",
-            inverted
-              ? "bg-primary-foreground/15 text-primary-foreground"
-              : "border border-border/80 bg-card/80 text-secondary-foreground backdrop-blur-sm",
-          )}
-        >
-          {eyebrow}
-        </span>
+    <Reveal className={cn("max-w-3xl", align === "center" ? "mx-auto text-center" : "text-left")}>
+      {label && (
+        <p className={cn("text-caption mb-3", inverted ? "text-gold" : "text-gold-ink")}>{label}</p>
       )}
       <Tag
         className={cn(
-            "text-balance text-3xl leading-tight sm:text-4xl lg:text-[2.9rem]",
-          as === "h1" && "text-4xl sm:text-5xl lg:text-6xl",
-          inverted ? "text-primary-foreground" : "text-foreground",
+          as === "h1" ? "text-display-l" : "text-h2",
+          "text-balance",
+          inverted ? "text-paper" : "text-ink",
         )}
       >
         {title}
@@ -81,13 +78,14 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-5 text-pretty text-base leading-relaxed sm:text-lg",
-            inverted ? "text-primary-foreground/85" : "text-muted-foreground",
+            "mt-5 text-pretty text-body-l",
+            align === "center" && "mx-auto",
+            inverted ? "text-paper/80" : "text-ink-soft",
           )}
         >
           {intro}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }
