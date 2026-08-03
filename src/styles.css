@@ -2,22 +2,200 @@
 @source "../src";
 @import "tw-animate-css";
 
+/*
+ * Self-hosted fonts. Same woff2 subsets Google serves, copied into
+ * public/fonts so first paint never waits on a third-party origin.
+ * The unicode-range values are Google's own — they let the browser skip
+ * any subset the page does not actually use.
+ */
+
+/* Instrument Sans — variable 400..700, body text */
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/fonts/instrument-sans-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/fonts/instrument-sans-var-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Gentium Book Plus — display serif */
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Gentium Book Plus";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/gentium-book-plus-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Amiri — Arabic script */
+@font-face {
+  font-family: "Amiri";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/amiri-400-arabic.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
+    U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF,
+    U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4,
+    U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27,
+    U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49,
+    U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B,
+    U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72,
+    U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B,
+    U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: "Amiri";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/amiri-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Amiri";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/amiri-700-arabic.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
+    U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF,
+    U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC4,
+    U+10EFC-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27,
+    U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49,
+    U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B,
+    U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72,
+    U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B,
+    U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: "Amiri";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/amiri-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* IBM Plex Mono — numerals and data */
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-500-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-600-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-600-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
- * My Quran Guide — Design System
- * Brand palette from logo: navy blue, warm gold, soft cream paper.
- * Fraunces (display serif) + DM Sans (body). All colors use oklch.
+ * My Quran Guide — "Manuscript" design system
+ *
+ * Grounded in the material world of the Quranic manuscript: rag paper, iron-gall
+ * ink, lapis lazuli illumination, muted gold leaf and ruled jadwal margins.
+ * Deliberately not the emerald-green SaaS palette every competitor uses.
+ *
+ * Colour discipline (enforced, not stylistic preference):
+ *   - --lapis is the only interactive fill. Every primary button is lapis.
+ *   - --gold is structural only: rules, rosettes, dividers, thin accents.
+ *     It never fills a button and never sets body text — it fails 4.5:1 on
+ *     paper. Use --gold-ink for gold-toned text.
+ *   - --success is for confirmation states only. It is not a brand colour.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
+  --radius-4xl: var(--radius);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -33,200 +211,263 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-gold: var(--gold);
-  --color-gold-foreground: var(--gold-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Manuscript semantic tokens — prefer these in new markup. */
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-lapis: var(--lapis);
+  --color-lapis-lift: var(--lapis-lift);
+  --color-lapis-wash: var(--lapis-wash);
+  --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
+  --color-gold-wash: var(--gold-wash);
+  --color-paper: var(--paper);
+  --color-paper-warm: var(--paper-warm);
+  --color-rule: var(--rule);
+  --color-success: var(--success);
+  --color-error: var(--error);
+
+  --font-display: "Gentium Book Plus", ui-serif, Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: "Amiri", "Gentium Book Plus", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
-  --radius: 0.75rem;
+  /* Manuscript pages do not have rounded corners. */
+  --radius: 2px;
 
-  /* Logo-aligned palette: navy + gold + cream */
-  --background: oklch(0.985 0.008 88);
-  --foreground: oklch(0.28 0.04 245);
+  --ink: #10182b;
+  --ink-soft: #2b3245;
+  /* Hints and de-emphasised labels. Still clears 4.5:1 on paper (6.5:1). */
+  --ink-faint: #5a5648;
+  --lapis: #2a3f7e;
+  --lapis-lift: #3c55a0;
+  --lapis-wash: #e6eaf5;
+  /* Tuned to sit in the narrow band that clears 3:1 against paper (for rules
+     and rosettes) while still clearing 4.5:1 as text on the ink footer. */
+  --gold: #ab8129;
+  /* Darkened gold that clears 4.5:1 on paper — the only gold safe for text. */
+  --gold-ink: #6e5214;
+  --gold-wash: #f0e4c4;
+  --paper: #f5f2ea;
+  --paper-warm: #fbf9f4;
+  --rule: #dcd5c4;
+  --success: #2f6b4f;
+  --error: #9b2c2c;
 
-  --card: oklch(0.995 0.006 90);
-  --card-foreground: oklch(0.28 0.04 245);
+  /* shadcn/ui contract, re-pointed at the manuscript palette. */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-warm);
+  --card-foreground: var(--ink);
+  --popover: var(--paper-warm);
+  --popover-foreground: var(--ink);
+  --primary: var(--lapis);
+  --primary-foreground: #ffffff;
+  --secondary: #e8e2d4;
+  --secondary-foreground: var(--ink-soft);
+  --muted: #ece7db;
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--gold-wash);
+  --accent-foreground: var(--ink);
+  --destructive: #9b2c2c;
+  --destructive-foreground: #ffffff;
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--lapis);
 
-  --popover: oklch(0.998 0.005 90);
-  --popover-foreground: oklch(0.28 0.04 245);
+  --shadow-page: 0 1px 2px rgb(16 24 43 / 0.04), 0 12px 28px -20px rgb(16 24 43 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(16 24 43 / 0.05), 0 20px 44px -24px rgb(16 24 43 / 0.22);
 
-  --primary: oklch(0.32 0.045 245);
-  --primary-foreground: oklch(0.98 0.01 90);
-
-  --secondary: oklch(0.94 0.018 245);
-  --secondary-foreground: oklch(0.34 0.04 245);
-
-  --muted: oklch(0.96 0.012 88);
-  --muted-foreground: oklch(0.48 0.03 245);
-
-  --accent: oklch(0.93 0.04 78);
-  --accent-foreground: oklch(0.34 0.05 245);
-
-  --gold: oklch(0.72 0.09 72);
-  --gold-foreground: oklch(0.24 0.04 245);
-
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.985 0.01 95);
-
-  --border: oklch(0.88 0.018 88);
-  --input: oklch(0.88 0.018 88);
-  --ring: oklch(0.32 0.045 245);
-
-  --chart-1: oklch(0.32 0.045 245);
-  --chart-2: oklch(0.72 0.09 72);
-  --chart-3: oklch(0.55 0.04 245);
-  --chart-4: oklch(0.65 0.06 200);
-  --chart-5: oklch(0.78 0.08 78);
-
-  --sidebar: oklch(0.985 0.008 88);
-  --sidebar-foreground: oklch(0.28 0.04 245);
-  --sidebar-primary: oklch(0.32 0.045 245);
-  --sidebar-primary-foreground: oklch(0.98 0.01 90);
-  --sidebar-accent: oklch(0.94 0.018 245);
-  --sidebar-accent-foreground: oklch(0.34 0.04 245);
-  --sidebar-border: oklch(0.88 0.018 88);
-  --sidebar-ring: oklch(0.32 0.045 245);
-
-  /* Gradients & shadows */
-  --gradient-hero: radial-gradient(
-      120% 100% at 85% 0%,
-      oklch(0.9 0.05 72 / 0.28) 0%,
-      transparent 52%
-    ),
-    radial-gradient(
-      90% 90% at 0% 100%,
-      oklch(0.88 0.03 245 / 0.14) 0%,
-      transparent 55%
-    ),
-    linear-gradient(160deg, oklch(0.99 0.006 90) 0%, oklch(0.96 0.012 88) 100%);
-  --gradient-emerald: linear-gradient(
-    135deg,
-    oklch(0.34 0.048 245) 0%,
-    oklch(0.26 0.04 248) 100%
-  );
-  --gradient-surface: linear-gradient(
-    145deg,
-    oklch(0.998 0.005 90 / 0.95) 0%,
-    oklch(0.97 0.014 88 / 0.8) 100%
-  );
-  --shadow-soft: 0 1px 2px oklch(0.28 0.04 245 / 0.05),
-    0 12px 30px -18px oklch(0.28 0.04 245 / 0.14);
-  --shadow-card: 0 2px 4px oklch(0.28 0.04 245 / 0.06),
-    0 24px 48px -22px oklch(0.28 0.04 245 / 0.18);
-  --shadow-gold: 0 10px 30px -12px oklch(0.72 0.09 72 / 0.4);
-  --motion-ease-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-duration-fast: 180ms;
-  --motion-duration-base: 280ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
-  --background: oklch(0.2 0.025 245);
-  --foreground: oklch(0.96 0.01 90);
-  --card: oklch(0.24 0.03 245);
-  --card-foreground: oklch(0.96 0.01 90);
-  --popover: oklch(0.24 0.03 245);
-  --popover-foreground: oklch(0.96 0.01 90);
-  --primary: oklch(0.72 0.09 72);
-  --primary-foreground: oklch(0.2 0.025 245);
-  --secondary: oklch(0.3 0.03 245);
-  --secondary-foreground: oklch(0.96 0.01 90);
-  --muted: oklch(0.3 0.03 245);
-  --muted-foreground: oklch(0.72 0.02 88);
-  --accent: oklch(0.4 0.05 72);
-  --accent-foreground: oklch(0.96 0.01 90);
-  --gold: oklch(0.72 0.09 72);
-  --gold-foreground: oklch(0.2 0.025 245);
-  --destructive: oklch(0.6 0.2 27);
-  --destructive-foreground: oklch(0.96 0.01 90);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.72 0.09 72);
-  --sidebar: oklch(0.24 0.03 245);
-  --sidebar-foreground: oklch(0.96 0.01 90);
-  --sidebar-primary: oklch(0.72 0.09 72);
-  --sidebar-primary-foreground: oklch(0.2 0.025 245);
-  --sidebar-accent: oklch(0.3 0.03 245);
-  --sidebar-accent-foreground: oklch(0.96 0.01 90);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.72 0.09 72);
+  --ink: #f5f2ea;
+  --ink-soft: #d9d3c5;
+  --ink-faint: #a29b88;
+  --lapis: #6e86ce;
+  --lapis-lift: #8ea0dc;
+  --lapis-wash: #1e2740;
+  --gold: #c9a24a;
+  --gold-ink: #dcbf74;
+  --gold-wash: #2a3145;
+  --paper: #10182b;
+  --paper-warm: #182135;
+  --rule: #333c52;
+  --success: #5fae87;
+  --error: #e07b7b;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--paper-warm);
+  --card-foreground: var(--ink);
+  --popover: var(--paper-warm);
+  --popover-foreground: var(--ink);
+  --primary: var(--lapis);
+  --primary-foreground: #10182b;
+  --secondary: #212b41;
+  --secondary-foreground: var(--ink-soft);
+  --muted: #1c2537;
+  --muted-foreground: var(--ink-soft);
+  --accent: #2a3145;
+  --accent-foreground: var(--ink);
+  --destructive: #e07b7b;
+  --destructive-foreground: #10182b;
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--lapis-lift);
+
+  --shadow-page: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 28px -20px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.35), 0 20px 44px -24px rgb(0 0 0 / 0.7);
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--rule);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--paper);
+    color: var(--ink-soft);
     font-family: var(--font-sans);
-    line-height: 1.55;
+    font-size: 1rem;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    background-image:
-      radial-gradient(circle at 15% -10%, oklch(0.9 0.04 72 / 0.22) 0%, transparent 35%),
-      radial-gradient(circle at 90% 5%, oklch(0.88 0.03 245 / 0.1) 0%, transparent 30%);
-    background-attachment: fixed;
   }
 
   h1,
-  h2,
-  h3,
-  h4 {
+  h2 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  /* One visible ring style for every interactive element, everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--lapis);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
   ::selection {
-    background: oklch(0.82 0.08 72 / 0.45);
-    color: oklch(0.24 0.04 245);
+    background: var(--gold-wash);
+    color: var(--ink);
+  }
+
+  /* Native disclosure markers are replaced by the rosette chevron. */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+    cursor: pointer;
   }
 }
 
 @layer utilities {
-  .font-display {
+  /* ---- Type scale (1.25 ratio, fluid) ---- */
+  .text-display-xl {
     font-family: var(--font-display);
+    font-size: clamp(2.75rem, 5vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
   }
-  .bg-gradient-hero {
-    background-image: var(--gradient-hero);
+  .text-display-l {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
   }
-  .bg-gradient-emerald {
-    background-image: var(--gradient-emerald);
+  .text-h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
   }
-  .bg-gradient-surface {
-    background-image: var(--gradient-surface);
+  .text-h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
   }
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
+  .text-body-l {
+    font-size: 1.125rem;
+    line-height: 1.7;
   }
-  .shadow-card {
-    box-shadow: var(--shadow-card);
+  .text-caption {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
   }
-  .shadow-gold {
-    box-shadow: var(--shadow-gold);
+  .text-data {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+  .font-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.5em;
+    line-height: 1.4;
+  }
+
+  /* Body copy never runs full-bleed. */
+  .measure {
+    max-width: 68ch;
+  }
+
+  /* ---- Structural device: the jadwal frame ----
+     A 1px rule with a second inset gold rule 2px inside it, mirroring the ruled
+     margins of a manuscript page. Reserved for the seven course cards and the
+     pricing cards — units of study, not decoration. */
+  .jadwal {
+    position: relative;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+  .jadwal::before {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent);
+    pointer-events: none;
+  }
+
+  .shadow-page {
+    box-shadow: var(--shadow-page);
+  }
+  .shadow-lift {
+    box-shadow: var(--shadow-lift);
   }
   .text-balance {
     text-wrap: balance;
@@ -234,56 +475,24 @@
   .text-pretty {
     text-wrap: pretty;
   }
-  .glass-panel {
-    backdrop-filter: blur(12px);
-    background: oklch(0.998 0.004 90 / 0.78);
-    border: 1px solid oklch(0.86 0.02 88 / 0.55);
+}
+
+/* ---- Motion: restrained and orchestrated ---- */
+@keyframes rosette-draw {
+  from {
+    stroke-dashoffset: var(--rosette-length, 400);
+    opacity: 0;
   }
-  .surface-card {
-    border: 1px solid oklch(0.88 0.018 88 / 0.8);
-    background: var(--gradient-surface);
-    box-shadow: var(--shadow-soft);
-  }
-  .card-sweep {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    border: 1px solid oklch(0.88 0.018 88 / 0.8);
-    background: var(--gradient-surface);
-    box-shadow: var(--shadow-soft);
-    transition:
-      transform var(--motion-duration-base) var(--motion-ease-emphasis),
-      box-shadow var(--motion-duration-base) var(--motion-ease-emphasis),
-      border-color var(--motion-duration-base) var(--motion-ease-emphasis);
-  }
-  .card-sweep::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background: linear-gradient(
-      135deg,
-      oklch(0.32 0.045 245) 0%,
-      oklch(0.36 0.048 245) 55%,
-      oklch(0.58 0.08 72) 100%
-    );
-    transform: scale(0);
-    transform-origin: top left;
-    transition: transform 0.45s var(--motion-ease-emphasis);
-  }
-  .card-sweep:hover::before {
-    transform: scale(1);
-  }
-  .card-sweep:hover {
-    border-color: oklch(0.32 0.045 245 / 0.35);
-    box-shadow: var(--shadow-card);
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 
-@keyframes fade-up {
+@keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -291,21 +500,22 @@
   }
 }
 
-@keyframes fade-in {
-  from {
+@media (prefers-reduced-motion: no-preference) {
+  .animate-rosette-draw path,
+  .animate-rosette-draw circle,
+  .animate-rosette-draw polygon {
+    stroke-dasharray: var(--rosette-length, 400);
+    animation: rosette-draw 900ms var(--motion-ease) forwards;
+  }
+
+  /* Scroll reveal. The `data-reveal` attribute is applied by JS on mount, so
+     content is never hidden for a visitor whose JS failed or is disabled. */
+  [data-reveal="pending"] {
     opacity: 0;
   }
-  to {
-    opacity: 1;
-  }
-}
-
-@layer utilities {
-  .animate-fade-up {
-    animation: fade-up 0.7s var(--motion-ease-emphasis) both;
-  }
-  .animate-fade-in {
-    animation: fade-in 0.9s ease-out both;
+  [data-reveal="shown"] {
+    animation: rise-in 520ms var(--motion-ease) both;
+    animation-delay: var(--reveal-delay, 0ms);
   }
 }
 
@@ -313,9 +523,9 @@
   *,
   *::before,
   *::after {
-    animation-duration: 1ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }

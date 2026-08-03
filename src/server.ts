@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { isProductionDeployment, PREVIEW_ROBOTS_TAG } from "./lib/deployment.server";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -37,12 +38,31 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
+/**
+ * Preview and branch deployments serve the same canonical tags as production,
+ * which would invite Google to index a duplicate of the money domain. Stamping
+ * the robots directive at the header level covers every response — HTML, XML
+ * and assets alike — regardless of what the route itself emits.
+ */
+function withDeploymentRobotsTag(response: Response): Response {
+  if (isProductionDeployment()) return response;
+
+  const headers = new Headers(response.headers);
+  headers.set("X-Robots-Tag", PREVIEW_ROBOTS_TAG);
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withDeploymentRobotsTag(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

@@ -9,11 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TutorsRouteImport } from './routes/tutors'
+import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsConditionsRouteImport } from './routes/terms-conditions'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as QuranClassesForNewMuslimsRouteImport } from './routes/quran-classes-for-new-muslims'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as OnlineTajweedClassesRouteImport } from './routes/online-tajweed-classes'
 import { Route as OnlineQuranRecitationClassesRouteImport } from './routes/online-quran-recitation-classes'
+import { Route as OnlineQuranClassesUsaRouteImport } from './routes/online-quran-classes-usa'
+import { Route as OnlineQuranClassesUkRouteImport } from './routes/online-quran-classes-uk'
+import { Route as OnlineQuranClassesForKidsRouteImport } from './routes/online-quran-classes-for-kids'
+import { Route as OnlineQuranClassesForAdultsRouteImport } from './routes/online-quran-classes-for-adults'
+import { Route as OnlineQuranClassesCanadaRouteImport } from './routes/online-quran-classes-canada'
+import { Route as OnlineQuranClassesAustraliaRouteImport } from './routes/online-quran-classes-australia'
 import { Route as OnlineIslamicStudiesRouteImport } from './routes/online-islamic-studies'
 import { Route as OnlineHifzClassesRouteImport } from './routes/online-hifz-classes'
 import { Route as OnlineArabicLanguageClassesRouteImport } from './routes/online-arabic-language-classes'
@@ -25,7 +35,21 @@ import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as ApiTrialRouteImport } from './routes/api.trial'
+import { Route as ApiContactRouteImport } from './routes/api.contact'
 
+const TutorsRoute = TutorsRouteImport.update({
+  id: '/tutors',
+  path: '/tutors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThankYouRoute = ThankYouRouteImport.update({
+  id: '/thank-you',
+  path: '/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsConditionsRoute = TermsConditionsRouteImport.update({
   id: '/terms-conditions',
   path: '/terms-conditions',
@@ -36,6 +60,17 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuranClassesForNewMuslimsRoute =
+  QuranClassesForNewMuslimsRouteImport.update({
+    id: '/quran-classes-for-new-muslims',
+    path: '/quran-classes-for-new-muslims',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
@@ -50,6 +85,40 @@ const OnlineQuranRecitationClassesRoute =
   OnlineQuranRecitationClassesRouteImport.update({
     id: '/online-quran-recitation-classes',
     path: '/online-quran-recitation-classes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineQuranClassesUsaRoute = OnlineQuranClassesUsaRouteImport.update({
+  id: '/online-quran-classes-usa',
+  path: '/online-quran-classes-usa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineQuranClassesUkRoute = OnlineQuranClassesUkRouteImport.update({
+  id: '/online-quran-classes-uk',
+  path: '/online-quran-classes-uk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineQuranClassesForKidsRoute =
+  OnlineQuranClassesForKidsRouteImport.update({
+    id: '/online-quran-classes-for-kids',
+    path: '/online-quran-classes-for-kids',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineQuranClassesForAdultsRoute =
+  OnlineQuranClassesForAdultsRouteImport.update({
+    id: '/online-quran-classes-for-adults',
+    path: '/online-quran-classes-for-adults',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineQuranClassesCanadaRoute =
+  OnlineQuranClassesCanadaRouteImport.update({
+    id: '/online-quran-classes-canada',
+    path: '/online-quran-classes-canada',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineQuranClassesAustraliaRoute =
+  OnlineQuranClassesAustraliaRouteImport.update({
+    id: '/online-quran-classes-australia',
+    path: '/online-quran-classes-australia',
     getParentRoute: () => rootRouteImport,
   } as any)
 const OnlineIslamicStudiesRoute = OnlineIslamicStudiesRouteImport.update({
@@ -109,6 +178,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTrialRoute = ApiTrialRouteImport.update({
+  id: '/api/trial',
+  path: '/api/trial',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -122,11 +211,25 @@ export interface FileRoutesByFullPath {
   '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
   '/online-hifz-classes': typeof OnlineHifzClassesRoute
   '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
+  '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
+  '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
+  '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
+  '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
   '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
   '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quran-classes-for-new-muslims': typeof QuranClassesForNewMuslimsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/tutors': typeof TutorsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/api/trial': typeof ApiTrialRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -140,11 +243,25 @@ export interface FileRoutesByTo {
   '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
   '/online-hifz-classes': typeof OnlineHifzClassesRoute
   '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
+  '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
+  '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
+  '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
+  '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
   '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
   '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quran-classes-for-new-muslims': typeof QuranClassesForNewMuslimsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/tutors': typeof TutorsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/api/trial': typeof ApiTrialRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -159,11 +276,25 @@ export interface FileRoutesById {
   '/online-arabic-language-classes': typeof OnlineArabicLanguageClassesRoute
   '/online-hifz-classes': typeof OnlineHifzClassesRoute
   '/online-islamic-studies': typeof OnlineIslamicStudiesRoute
+  '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
+  '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
+  '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
+  '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
+  '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
   '/online-quran-recitation-classes': typeof OnlineQuranRecitationClassesRoute
   '/online-tajweed-classes': typeof OnlineTajweedClassesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/quran-classes-for-new-muslims': typeof QuranClassesForNewMuslimsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-conditions': typeof TermsConditionsRoute
+  '/thank-you': typeof ThankYouRoute
+  '/tutors': typeof TutorsRoute
+  '/api/contact': typeof ApiContactRoute
+  '/api/trial': typeof ApiTrialRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -179,11 +310,25 @@ export interface FileRouteTypes {
     | '/online-arabic-language-classes'
     | '/online-hifz-classes'
     | '/online-islamic-studies'
+    | '/online-quran-classes-australia'
+    | '/online-quran-classes-canada'
+    | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-kids'
+    | '/online-quran-classes-uk'
+    | '/online-quran-classes-usa'
     | '/online-quran-recitation-classes'
     | '/online-tajweed-classes'
     | '/privacy-policy'
+    | '/quran-classes-for-new-muslims'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/terms-conditions'
+    | '/thank-you'
+    | '/tutors'
+    | '/api/contact'
+    | '/api/trial'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -197,11 +342,25 @@ export interface FileRouteTypes {
     | '/online-arabic-language-classes'
     | '/online-hifz-classes'
     | '/online-islamic-studies'
+    | '/online-quran-classes-australia'
+    | '/online-quran-classes-canada'
+    | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-kids'
+    | '/online-quran-classes-uk'
+    | '/online-quran-classes-usa'
     | '/online-quran-recitation-classes'
     | '/online-tajweed-classes'
     | '/privacy-policy'
+    | '/quran-classes-for-new-muslims'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/terms-conditions'
+    | '/thank-you'
+    | '/tutors'
+    | '/api/contact'
+    | '/api/trial'
+    | '/blog/$slug'
+    | '/blog'
   id:
     | '__root__'
     | '/'
@@ -215,11 +374,25 @@ export interface FileRouteTypes {
     | '/online-arabic-language-classes'
     | '/online-hifz-classes'
     | '/online-islamic-studies'
+    | '/online-quran-classes-australia'
+    | '/online-quran-classes-canada'
+    | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-kids'
+    | '/online-quran-classes-uk'
+    | '/online-quran-classes-usa'
     | '/online-quran-recitation-classes'
     | '/online-tajweed-classes'
     | '/privacy-policy'
+    | '/quran-classes-for-new-muslims'
+    | '/robots.txt'
     | '/sitemap.xml'
     | '/terms-conditions'
+    | '/thank-you'
+    | '/tutors'
+    | '/api/contact'
+    | '/api/trial'
+    | '/blog/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -234,15 +407,43 @@ export interface RootRouteChildren {
   OnlineArabicLanguageClassesRoute: typeof OnlineArabicLanguageClassesRoute
   OnlineHifzClassesRoute: typeof OnlineHifzClassesRoute
   OnlineIslamicStudiesRoute: typeof OnlineIslamicStudiesRoute
+  OnlineQuranClassesAustraliaRoute: typeof OnlineQuranClassesAustraliaRoute
+  OnlineQuranClassesCanadaRoute: typeof OnlineQuranClassesCanadaRoute
+  OnlineQuranClassesForAdultsRoute: typeof OnlineQuranClassesForAdultsRoute
+  OnlineQuranClassesForKidsRoute: typeof OnlineQuranClassesForKidsRoute
+  OnlineQuranClassesUkRoute: typeof OnlineQuranClassesUkRoute
+  OnlineQuranClassesUsaRoute: typeof OnlineQuranClassesUsaRoute
   OnlineQuranRecitationClassesRoute: typeof OnlineQuranRecitationClassesRoute
   OnlineTajweedClassesRoute: typeof OnlineTajweedClassesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  QuranClassesForNewMuslimsRoute: typeof QuranClassesForNewMuslimsRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsConditionsRoute: typeof TermsConditionsRoute
+  ThankYouRoute: typeof ThankYouRoute
+  TutorsRoute: typeof TutorsRoute
+  ApiContactRoute: typeof ApiContactRoute
+  ApiTrialRoute: typeof ApiTrialRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tutors': {
+      id: '/tutors'
+      path: '/tutors'
+      fullPath: '/tutors'
+      preLoaderRoute: typeof TutorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thank-you': {
+      id: '/thank-you'
+      path: '/thank-you'
+      fullPath: '/thank-you'
+      preLoaderRoute: typeof ThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-conditions': {
       id: '/terms-conditions'
       path: '/terms-conditions'
@@ -255,6 +456,20 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quran-classes-for-new-muslims': {
+      id: '/quran-classes-for-new-muslims'
+      path: '/quran-classes-for-new-muslims'
+      fullPath: '/quran-classes-for-new-muslims'
+      preLoaderRoute: typeof QuranClassesForNewMuslimsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy-policy': {
@@ -276,6 +491,48 @@ declare module '@tanstack/react-router' {
       path: '/online-quran-recitation-classes'
       fullPath: '/online-quran-recitation-classes'
       preLoaderRoute: typeof OnlineQuranRecitationClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-usa': {
+      id: '/online-quran-classes-usa'
+      path: '/online-quran-classes-usa'
+      fullPath: '/online-quran-classes-usa'
+      preLoaderRoute: typeof OnlineQuranClassesUsaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-uk': {
+      id: '/online-quran-classes-uk'
+      path: '/online-quran-classes-uk'
+      fullPath: '/online-quran-classes-uk'
+      preLoaderRoute: typeof OnlineQuranClassesUkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-for-kids': {
+      id: '/online-quran-classes-for-kids'
+      path: '/online-quran-classes-for-kids'
+      fullPath: '/online-quran-classes-for-kids'
+      preLoaderRoute: typeof OnlineQuranClassesForKidsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-for-adults': {
+      id: '/online-quran-classes-for-adults'
+      path: '/online-quran-classes-for-adults'
+      fullPath: '/online-quran-classes-for-adults'
+      preLoaderRoute: typeof OnlineQuranClassesForAdultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-canada': {
+      id: '/online-quran-classes-canada'
+      path: '/online-quran-classes-canada'
+      fullPath: '/online-quran-classes-canada'
+      preLoaderRoute: typeof OnlineQuranClassesCanadaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-australia': {
+      id: '/online-quran-classes-australia'
+      path: '/online-quran-classes-australia'
+      fullPath: '/online-quran-classes-australia'
+      preLoaderRoute: typeof OnlineQuranClassesAustraliaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online-islamic-studies': {
@@ -355,6 +612,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/trial': {
+      id: '/api/trial'
+      path: '/api/trial'
+      fullPath: '/api/trial'
+      preLoaderRoute: typeof ApiTrialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -370,11 +655,25 @@ const rootRouteChildren: RootRouteChildren = {
   OnlineArabicLanguageClassesRoute: OnlineArabicLanguageClassesRoute,
   OnlineHifzClassesRoute: OnlineHifzClassesRoute,
   OnlineIslamicStudiesRoute: OnlineIslamicStudiesRoute,
+  OnlineQuranClassesAustraliaRoute: OnlineQuranClassesAustraliaRoute,
+  OnlineQuranClassesCanadaRoute: OnlineQuranClassesCanadaRoute,
+  OnlineQuranClassesForAdultsRoute: OnlineQuranClassesForAdultsRoute,
+  OnlineQuranClassesForKidsRoute: OnlineQuranClassesForKidsRoute,
+  OnlineQuranClassesUkRoute: OnlineQuranClassesUkRoute,
+  OnlineQuranClassesUsaRoute: OnlineQuranClassesUsaRoute,
   OnlineQuranRecitationClassesRoute: OnlineQuranRecitationClassesRoute,
   OnlineTajweedClassesRoute: OnlineTajweedClassesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  QuranClassesForNewMuslimsRoute: QuranClassesForNewMuslimsRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsConditionsRoute: TermsConditionsRoute,
+  ThankYouRoute: ThankYouRoute,
+  TutorsRoute: TutorsRoute,
+  ApiContactRoute: ApiContactRoute,
+  ApiTrialRoute: ApiTrialRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
