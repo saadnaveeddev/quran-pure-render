@@ -13,13 +13,17 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { StickyCta } from "@/components/site/StickyCta";
+import { Button } from "@/components/site/Button";
 import { Toaster } from "@/components/ui/sonner";
+import { CurrencyProvider } from "@/lib/currency";
+import { COURSE_LIST } from "@/content/courses";
 import { ANALYTICS, SITE, absoluteUrl } from "@/lib/site";
 import { buildOrganizationSchema, buildWebsiteSchema } from "@/lib/seo";
 
 type ScriptTag = { src?: string; async?: boolean; children?: string; type?: string };
 
-/** Build env-gated analytics tags. Nothing is emitted unless real IDs exist. */
+/** Env-gated analytics. Nothing is emitted unless real IDs are configured. */
 function analyticsScripts(): ScriptTag[] {
   const scripts: ScriptTag[] = [];
   if (ANALYTICS.gaId) {
@@ -40,21 +44,34 @@ function analyticsScripts(): ScriptTag[] {
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <div className="mx-auto w-full max-w-3xl px-5 py-24 sm:px-8">
+      <h1 className="text-display-l text-ink">We can't find that page</h1>
+      <p className="measure mt-5 text-body-l text-ink-soft">
+        The link may be out of date, or the page may have moved during our recent rebuild.
+        Everything we teach is listed below.
+      </p>
+
+      <h2 className="text-h3 mt-12 border-t border-rule pt-8 text-ink">Our courses</h2>
+      <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {COURSE_LIST.map((course) => (
+          <li key={course.key}>
+            <Link
+              to={course.path}
+              className="text-[0.9375rem] text-lapis underline-offset-4 hover:underline"
+            >
+              {course.navLabel}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-12 flex flex-wrap gap-3">
+        <Button to="/" withChevron>
+          Back to the home page
+        </Button>
+        <Button to="/free-trial" variant="secondary">
+          Book a free trial class
+        </Button>
       </div>
     </div>
   );
@@ -68,31 +85,23 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
+    <div className="mx-auto w-full max-w-2xl px-5 py-24 sm:px-8">
+      <h1 className="text-h2 text-ink">This page didn't load</h1>
+      <p className="measure mt-4 text-ink-soft">
+        Something went wrong at our end. Refreshing usually fixes it.
+      </p>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Button
+          onClick={() => {
+            router.invalidate();
+            reset();
+          }}
+        >
+          Try again
+        </Button>
+        <Button href="/" variant="secondary">
+          Go to the home page
+        </Button>
       </div>
     </div>
   );
@@ -102,63 +111,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1, viewport-fit=cover",
-      },
-      { title: "Online Quran Classes | Learn Quran Online — My Quran Guide" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Online Quran Classes for Kids & Adults | My Quran Guide" },
       {
         name: "description",
         content:
-          "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors. Flexible timings, all levels. Enroll now!",
-      },
-      {
-        name: "robots",
-        content:
-          "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+          "One-to-one online Quran classes with certified male and female tutors. Noorani Qaida, Tajweed, Hifz and Arabic, from age five. Two free trial classes.",
       },
       { name: "author", content: SITE.name },
       { name: "publisher", content: SITE.name },
-      { name: "theme-color", content: "#2f7a61" },
+      { name: "theme-color", content: SITE.themeColor },
       { name: "format-detection", content: "telephone=no" },
       ...(ANALYTICS.gscVerification
         ? [{ name: "google-site-verification", content: ANALYTICS.gscVerification }]
         : []),
       { property: "og:site_name", content: SITE.name },
       { property: "og:locale", content: SITE.locale },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: SITE.siteUrl },
-      { property: "og:image", content: absoluteUrl(SITE.defaultOgImagePath) },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: `${SITE.name} online Quran learning` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: SITE.twitterHandle },
       { name: "twitter:creator", content: SITE.twitterHandle },
-      { name: "twitter:title", content: "Online Quran Classes | Learn Quran Online — My Quran Guide" },
-      {
-        name: "twitter:description",
-        content:
-          "Start your 2-day free trial today! My Quran Guide offers online Quran classes for kids, adults & new Muslims with certified male & female tutors.",
-      },
-      { name: "twitter:image", content: absoluteUrl(SITE.defaultOgImagePath) },
+      { property: "og:image", content: absoluteUrl(SITE.defaultOgImagePath) },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: SITE.faviconPath },
       { rel: "apple-touch-icon", href: SITE.faviconPath },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      // Only the two subsets needed for first paint. The rest are fetched
+      // on demand by the @font-face unicode-range rules in styles.css.
       {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/instrument-sans-var-latin.woff2",
         crossOrigin: "anonymous",
       },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600;700&display=swap",
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/gentium-book-plus-400-latin.woff2",
+        crossOrigin: "anonymous",
       },
     ],
     scripts: [buildOrganizationSchema(), buildWebsiteSchema(), ...analyticsScripts()],
@@ -188,21 +180,24 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <a
-        href="#main-content"
-        className="sr-only z-[100] rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
-      >
-        Skip to main content
-      </a>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-      <Toaster />
+      <CurrencyProvider>
+        <a
+          href="#main-content"
+          className="sr-only z-[100] bg-lapis px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
+        >
+          Skip to main content
+        </a>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+        <StickyCta />
+        <Toaster />
+      </CurrencyProvider>
     </QueryClientProvider>
   );
 }
