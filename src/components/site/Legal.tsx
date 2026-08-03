@@ -10,9 +10,7 @@ export function LegalPage({ children }: { children: ReactNode }) {
 }
 
 export function LH2({ children }: { children: ReactNode }) {
-  return (
-    <h2 className="pt-6 text-2xl text-foreground sm:text-[1.7rem]">{children}</h2>
-  );
+  return <h2 className="pt-6 text-2xl text-foreground sm:text-[1.7rem]">{children}</h2>;
 }
 
 export function LH3({ children }: { children: ReactNode }) {
@@ -21,9 +19,7 @@ export function LH3({ children }: { children: ReactNode }) {
 
 export function LP({ children }: { children: ReactNode }) {
   return (
-    <p className="text-pretty text-[0.97rem] leading-relaxed text-muted-foreground">
-      {children}
-    </p>
+    <p className="text-pretty text-[0.97rem] leading-relaxed text-muted-foreground">{children}</p>
   );
 }
 
@@ -31,7 +27,10 @@ export function LUL({ items }: { items: ReactNode[] }) {
   return (
     <ul className="space-y-2.5">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3 text-[0.97rem] leading-relaxed text-muted-foreground">
+        <li
+          key={i}
+          className="flex items-start gap-3 text-[0.97rem] leading-relaxed text-muted-foreground"
+        >
           <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
             <Check className="h-3 w-3" strokeWidth={3} />
           </span>

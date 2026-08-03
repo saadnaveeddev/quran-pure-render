@@ -1,35 +1,110 @@
-export const homeFaqs = [
-  { q: "Do you offer a free trial?", a: "Yes! My Quran Guide offers a 2-day free trial to all new students. No payment or credit card is required. Simply book your trial and experience the quality of our teaching before you commit." },
-  { q: "What age groups do you teach?", a: "We teach students of all ages — from children as young as 5 years old to adults of any age. We also welcome new Muslims who are starting their Quran journey." },
-  { q: "Can I choose a female tutor?", a: "Absolutely. My Quran Guide has certified and experienced female tutors available for sisters and young girls who prefer learning with a female teacher." },
-  { q: "What platform are classes held on?", a: "Our classes are held on Zoom, Skype, or Google Meet — whichever platform you are most comfortable using." },
-  { q: "What if I am a complete beginner?", a: "No problem at all. Our Noorani Qaida course is designed specifically for complete beginners. We start from the very basics and progress at your own pace." },
-  { q: "Are your tutors certified?", a: "Yes. All tutors at My Quran Guide are both certified and experienced. They hold recognized Islamic teaching certifications and have years of online teaching experience." },
-] as const;
+import type { FaqItem } from "@/components/site/Disclosure";
 
-export const coursesFaqs = [
-  { q: "Which course should I start with?", a: "If you are a complete beginner or a young child, start with Noorani Qaida. If you can already read Arabic letters, start with Quran Recitation or Tajweed. Not sure? Contact us and we will guide you to the right course." },
-  { q: "Can I take more than one course at a time?", a: "Yes. Many students combine courses — for example Quran Recitation with Tajweed, or Islamic Studies with Arabic Language. Talk to our team and we will build the right schedule for you." },
-  { q: "How many days per week do I need to attend?", a: "You choose. Classes are available 2, 3, 4 or 5 days per week. We recommend at least 3 days per week for consistent progress, but the final choice is always yours." },
-  { q: "What is the class duration?", a: "Each class is either 30 minutes or 45 minutes — you decide based on your preference and schedule. Both options are available for all courses." },
-  { q: "Do you offer a free trial for all courses?", a: "Yes. My Quran Guide offers a 2-day free trial for every course — with no payment and no commitment required." },
-  { q: "Is the Hifz course only for children?", a: "No. Our online Hifz program is open to both children and adults. Many adults have successfully memorized the Quran with our structured program." },
-  { q: "Do I get a certificate after completing a course?", a: "Students who successfully complete the full Hifz program receive an official certificate from My Quran Guide. For other courses, completion is celebrated with tutor recognition and a progress report." },
-] as const;
+/**
+ * Shared FAQ sets. Course-specific questions live with their course in
+ * courses.ts; these cover the site as a whole.
+ *
+ * Questions are written the way a parent would actually type them into Google,
+ * and answers are specific enough to be useful on their own — they are indexed
+ * as answers, not as teasers for the page.
+ */
 
-export const feeScheduleFaqs = [
-  { q: "Are there any registration or hidden fees?", a: "No. My Quran Guide charges no registration fees and has no hidden charges. You only pay the agreed course fee — nothing more, nothing less." },
-  { q: "Can I switch between monthly and per class payment?", a: "Yes. You can switch between monthly packages and per class payment at any time. Simply inform our team and we will adjust your payment plan accordingly." },
-  { q: "When do I pay for my classes?", a: "Payment timing is fully flexible at My Quran Guide. You can pay monthly in advance, weekly, or per class — whichever works best for your budget and schedule." },
-  { q: "Is the 5% siblings discount automatic?", a: "Yes. Once you inform us during enrollment that you are enrolling multiple children from the same family, the 5% siblings discount is automatically applied to each additional child's fees." },
-  { q: "What currencies do you accept?", a: "We accept payments in both USD ($) and GBP (£). If you are based in another country and prefer a different currency, contact us and we will find a solution that works for you." },
-] as const;
+export const homeFaqs: ReadonlyArray<FaqItem> = [
+  {
+    q: "How does the free trial work?",
+    a: "Every new student gets two complete classes at no cost. They are full lessons with the tutor you would continue with, not a demo or a sales call. No card details are taken, and there is no obligation to enrol afterwards.",
+  },
+  {
+    q: "What ages do you teach?",
+    a: "From five years old upwards, with no upper limit. Around half our students are children learning Noorani Qaida or recitation, and the rest are adults — including many who are reading the Quran properly for the first time.",
+  },
+  {
+    q: "Can I request a female tutor?",
+    a: "Yes, and it is treated as a requirement rather than a preference. If you request a female tutor, only certified female tutors are assigned — for the trial, for regular classes, and for any cover lesson.",
+  },
+  {
+    q: "How do classes actually run?",
+    a: "One-to-one over Zoom, Skype or Google Meet, for 30 or 45 minutes, between two and six days a week. You pick the days and times; the tutor shares their screen with the page you are reading and corrects you as you go.",
+  },
+  {
+    q: "I am a complete beginner. Where do I start?",
+    a: "With Noorani Qaida, which teaches the Arabic letters and their sounds before you open a mushaf. If you already recognise the letters, the tutor will assess you in the trial class and start you at recitation instead.",
+  },
+  {
+    q: "What time zones do you cover?",
+    a: "All of them. Tutors teach across the full 24-hour cycle, so early morning slots for the Gulf, after-school slots for the UK and Europe, and evening slots for North America and Australia are all available.",
+  },
+];
 
-export const contactFaqs = [
-  { q: "How quickly do you reply?", a: "We reply to all messages within 1 to 2 hours — 24 hours a day, 7 days a week. Whether you reach out by email, WhatsApp, Facebook, or Instagram — our team is always ready to help." },
-  { q: "Can I contact you on WhatsApp?", a: "Yes! WhatsApp is one of our fastest contact channels. Simply message us on WhatsApp and we will respond within 1 hour with all the information you need." },
-  { q: "What information should I include in my message?", a: "To help us assist you better, please mention the student's name, age, course of interest, and your preferred class timing. This helps us match you with the right tutor right away." },
-  { q: "Can I contact you before booking a free trial?", a: "Absolutely. You are welcome to contact us first with any questions before booking your free trial. Our team is happy to guide you and help you choose the right course for you or your child." },
-  { q: "Do you communicate in English, Urdu and Punjabi ?", a: "Yes. Our team is fluent in both English, Urdu and Punjabi. You can contact us in whichever language you are most comfortable with." },
-  { q: "Is there a phone number I can call?", a: "We currently offer support via WhatsApp, email, Facebook, and Instagram. WhatsApp is the fastest way to reach us and works just like a phone call if you prefer voice messages." },
-] as const;
+export const coursesFaqs: ReadonlyArray<FaqItem> = [
+  {
+    q: "Which course should I start with?",
+    a: "If you cannot yet read Arabic letters, start with Noorani Qaida. If you can read but not fluently, start with Quran recitation. If you read fluently but were never taught the rules, start with Tajweed. If you are unsure, book a trial and the tutor will tell you.",
+  },
+  {
+    q: "Can I take more than one course at a time?",
+    a: "Yes, and it is common. Recitation plus Tajweed is the usual pairing, and Islamic studies alongside Arabic works well for adults. We schedule them with the same tutor where possible so progress in one feeds the other.",
+  },
+  {
+    q: "How many days a week should I attend?",
+    a: "Three is the point at which progress becomes steady rather than start-stop. Two works if you practise between sessions. Five or six is normal for Hifz students and for anyone working towards a deadline.",
+  },
+  {
+    q: "How long is each class?",
+    a: "Thirty or forty-five minutes, and you choose. Thirty suits younger children and anyone fitting classes around work. Forty-five is the better choice for Hifz and Arabic, where the session needs room for both new material and revision.",
+  },
+  {
+    q: "Are classes one-to-one or in a group?",
+    a: "One-to-one by default, because the whole method depends on the tutor hearing every word you read. Group classes are available on request for siblings or for families who want to learn together.",
+  },
+  {
+    q: "Do I get a certificate?",
+    a: "Students completing full Hifz receive an official Hifz certificate. Other courses end with a tutor-verified progress certificate recording what was covered and the tutor's assessment. Neither is an Ijazah, which requires a chain of transmission.",
+  },
+];
+
+export const feeScheduleFaqs: ReadonlyArray<FaqItem> = [
+  {
+    q: "Are there registration or hidden fees?",
+    a: "No. There is no registration fee, no materials fee and no minimum term. The monthly package price or the per-class price is the entire cost, and it is fixed at the point you enrol.",
+  },
+  {
+    q: "Why are prices shown as fixed numbers rather than ranges?",
+    a: "Because a range tells you nothing you can plan around. Every course has one price per class and every package has one price per month. Non-USD prices are converted from the USD figure at a fixed published rate, so the columns always agree.",
+  },
+  {
+    q: "Can I switch between monthly and per-class payment?",
+    a: "At any time, with no penalty. Tell your tutor or message us and the change applies from the next billing cycle. Many families use monthly packages during term time and per-class over the holidays.",
+  },
+  {
+    q: "How does the siblings discount work?",
+    a: "Five per cent comes off the fees of every additional child from the same family, applied automatically once you tell us during enrolment. It applies to the second child and to every child after that.",
+  },
+  {
+    q: "Which currencies can I pay in?",
+    a: "US dollars, pounds sterling, euros, Canadian dollars and Australian dollars, via PayPal, Wise, bank transfer or card. Use the currency toggle on this page to see the exact amount you would be charged.",
+  },
+];
+
+export const contactFaqs: ReadonlyArray<FaqItem> = [
+  {
+    q: "How quickly will you reply?",
+    a: "Within one to two hours, on any day of the week. WhatsApp is answered fastest; email typically takes a little longer because it is checked in batches rather than continuously.",
+  },
+  {
+    q: "What should I include in my first message?",
+    a: "The student's age, the course you are interested in, and roughly when you can attend along with your city or time zone. With those four things we can usually confirm a tutor and a slot in one reply rather than four.",
+  },
+  {
+    q: "Can I ask questions before booking a trial?",
+    a: "Of course. Plenty of families message two or three times before booking anything, and questions about tutor credentials, safeguarding or scheduling are all fair to ask up front.",
+  },
+  {
+    q: "Which languages can I contact you in?",
+    a: "English, Urdu or Punjabi. Classes themselves are taught in English, with Arabic terms explained, unless you specifically ask for a tutor who will explain in Urdu.",
+  },
+  {
+    q: "Is there a phone number I can call?",
+    a: "Support runs through WhatsApp rather than a phone line, which means voice notes and calls both work and there is a written record of what was agreed. The number is the same one listed in the footer.",
+  },
+];
