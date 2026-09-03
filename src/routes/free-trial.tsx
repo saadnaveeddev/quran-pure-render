@@ -8,7 +8,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { TrialForm } from "@/components/trial/TrialForm";
 import { buildBreadcrumbSchema, buildFaqSchema, buildPageSeo } from "@/lib/seo";
 import { ORG_FACTS } from "@/lib/site";
-import { TUTOR_TIMEZONE_LABEL } from "@/lib/timezone";
 
 const breadcrumbs = [
   { label: "Home", to: "/" },
@@ -17,64 +16,67 @@ const breadcrumbs = [
 
 const faqs = [
   {
-    q: "Is the trial really free?",
-    a: "Yes. Two full classes, no card details taken at any point, and no automatic enrolment afterwards. If you decide not to continue you simply tell us, and that is the end of it.",
+    q: "Can I choose any course for my free trial?",
+    a: "Yes. You can choose any course for your free trial — Noorani Qaida, Quran Recitation, Tajweed, Hifz, Islamic Studies, Arabic Language, or Female Quran Classes. The choice is completely yours.",
   },
   {
-    q: "How long until someone gets back to me?",
-    a: `We reply ${ORG_FACTS.supportResponseTime} during working hours, usually on WhatsApp. The reply confirms your tutor, the exact date and time in your own timezone, and the joining link.`,
+    q: "Can I choose my class timing?",
+    a: "Absolutely. You choose the day and time that works best for you. Morning, afternoon, evening, or weekend — we will schedule your free trial classes at your preferred timing.",
   },
   {
-    q: "What happens in the two trial classes?",
-    a: "The first is mostly assessment: the tutor listens to where the student is, checks letter recognition or recitation, and explains what the plan would look like. The second is a normal lesson, so you see the actual teaching rather than a sales pitch.",
+    q: "Can I choose a male or female tutor?",
+    a: "Yes. Simply mention your preference in the booking form and we will match you with a tutor accordingly.",
   },
   {
-    q: "Can I sit in on my child's trial class?",
-    a: "Yes, and we would encourage it for the first one. Parents are welcome in any class at any time without notice — there is no session your child attends that you cannot observe.",
+    q: "What happens after my free trial, and what does it cost?",
+    a: "After your 2 free trial classes, our team will follow up to ask about your experience. Plans start from $18/month, with no long-term contract required. There is absolutely no pressure — the decision is entirely yours.",
   },
   {
-    q: "What if the time I picked does not work after all?",
-    a: "Tell us and we will move it. Timings are not fixed until you are happy with them, and they can be changed later too as school terms and work patterns shift.",
+    q: "Can my child take the free trial?",
+    a: "Yes. The free trial is available for students of all ages — including young children aged 5 and above. Many parents book a free trial for their child first to see how they respond before enrolling.",
   },
   {
-    q: "Do I need to install anything?",
-    a: `Classes run on ${ORG_FACTS.platforms.join(", ")}. Most families use whichever they already have. You need a device with a microphone, a reasonable internet connection, and a copy of the mushaf or Qaida, which we can also share on screen.`,
+    q: "Can I take the free trial more than once?",
+    a: "The 2-day free trial is available once per student. However, every new member of your family is welcome to book their own free trial separately.",
   },
 ];
 
 const glance = [
-  { label: "Free classes", value: `${ORG_FACTS.freeTrialClasses} full classes` },
-  { label: "Cost", value: "None. No card required." },
-  { label: "Class length", value: "30 or 45 minutes" },
-  { label: "Tutor", value: "Male or female, your choice" },
-  { label: "Platforms", value: ORG_FACTS.platforms.join(", ") },
-  { label: "Tutor working hours", value: TUTOR_TIMEZONE_LABEL },
+  { label: "Number of free classes", value: "2 complete classes" },
+  { label: "Cost", value: "100% free — no payment required" },
+  { label: "Credit card required", value: "No — never" },
+  { label: "Class duration", value: "30 or 45 minutes" },
+  { label: "Tutor gender", value: "Male or female — student chooses" },
+  { label: "Platform", value: ORG_FACTS.platforms.join(", ") },
+  { label: "Pricing after trial", value: "Plans start from $18/month" },
+  { label: "Commitment after trial", value: "Zero — no obligation" },
+  { label: "Who can apply", value: "New students only — once per student" },
 ];
 
 const steps = [
   {
     n: 1,
-    title: "Tell us about the student",
-    body: "Three short questions: who is learning, which course, and whether you want a male or female tutor. Nothing that commits you to anything.",
+    title: "Fill in the Form Below",
+    body: "Tell us your name, email, WhatsApp number, the course you are interested in, your preferred tutor gender, and your available timing. It takes less than 2 minutes.",
   },
   {
     n: 2,
-    title: "We propose a time in your timezone",
-    body: `We reply ${ORG_FACTS.supportResponseTime} with a named tutor and a specific slot converted to your own clock, so there is no ambiguity about when to log in.`,
+    title: "We Confirm Your Trial & Match Your Tutor",
+    body: "Within a few hours, our team will contact you to confirm your 2 free trial classes and match you with the most suitable tutor based on your preferences.",
   },
   {
     n: 3,
-    title: "Attend both classes, then decide",
-    body: "After the second class you either pick a schedule and start, or you tell us it is not right for you. Both answers are completely fine and neither costs anything.",
+    title: "Join Your Class & Start Learning",
+    body: `At your chosen time, join your free trial class on ${ORG_FACTS.platforms.join(", ")} and begin your Quran learning journey — completely free, with zero pressure to enroll.`,
   },
 ];
 
 export const Route = createFileRoute("/free-trial")({
   head: () => ({
     ...buildPageSeo({
-      title: "Book 2 free Quran trial classes | My Quran Guide",
+      title: "Free Online Quran Trial - 2 Days Free | My Quran Guide",
       description:
-        "Book two free one-to-one Quran trial classes with a male or female tutor. No card details, no obligation, and we confirm the time in your own timezone.",
+        "Book a 2-day free trial online Quran class - 100% free, no card, no commitment. Pick any course, any timing, male or female tutor. Enroll now!",
       path: "/free-trial",
     }),
     scripts: [
@@ -90,8 +92,8 @@ function FreeTrialPage() {
     <>
       <PageHero
         label={`${ORG_FACTS.freeTrialClasses} classes, no card required`}
-        title="Book your two free trial classes"
-        intro="Two complete one-to-one classes with a tutor matched to the student — not a fifteen-minute demo. Answer three short questions and we will confirm a time in your own timezone."
+        title="Book Your 2-Day Free Trial Online Quran Class - My Quran Guide"
+        intro="Have you been thinking about starting Quran classes for yourself or your child? Now there is absolutely no reason to wait. My Quran Guide offers every new student a 2-day free trial — two complete online Quran classes, at a timing that works for you, on any course you choose. 100% free. No credit card. No commitment. Just two classes to experience the My Quran Guide difference for yourself."
         breadcrumbs={breadcrumbs}
       />
 
@@ -101,8 +103,8 @@ function FreeTrialPage() {
             <SectionHeading
               align="left"
               label="Three steps, about two minutes"
-              title="What happens after you send this"
-              intro="No call centre, no automated sequence. A person reads your answers and replies with a specific tutor and a specific time."
+              title="3 Simple Steps to Start Your Free Trial"
+              intro="Complete the form and we will confirm your 2 free trial classes within a few hours."
             />
             <ol className="mt-10 space-y-8">
               {steps.map((s) => (
@@ -117,15 +119,15 @@ function FreeTrialPage() {
             </ol>
 
             <div className="mt-12">
-              <h3 className="text-h3 text-ink">What the trial includes</h3>
+              <h3 className="text-h3 text-ink">Your 2-Day Free Trial Includes Everything</h3>
               <RosetteList
                 className="mt-4 text-ink-soft"
                 items={[
-                  "Two full-length classes, not a demo or a sales call",
-                  "Any of the seven courses, chosen by you",
-                  "A male or female tutor, chosen by you",
-                  "A written assessment of where the student is starting from",
-                  "A recommended schedule and honest estimate of how long it will take",
+                  "2 complete online classes — not a demo, not a sales pitch. Real classes, real learning.",
+                  "Any course — you choose: Noorani Qaida, Quran Recitation, Tajweed, Hifz, Islamic Studies, Arabic or Female Quran Classes.",
+                  "Male or female tutor — you choose. Tell us your preference and we will match you.",
+                  "Your timing — you decide. Morning, afternoon, evening or weekend.",
+                  "Your platform — Zoom, Skype or Google Meet. No complicated setup required.",
                 ]}
               />
             </div>
@@ -143,7 +145,7 @@ function FreeTrialPage() {
       </Section>
 
       <Section ruled>
-        <SectionHeading label="Six common questions" title="Before you book" />
+        <SectionHeading label="Free trial FAQ" title="Free Trial — Common Questions" />
         <Faq className="mt-10" items={faqs} group="trial-faq" />
       </Section>
     </>

@@ -13,9 +13,9 @@ const breadcrumbs = [
 export const Route = createFileRoute("/terms-conditions")({
   head: () => ({
     ...buildPageSeo({
-      title: "Terms and conditions for classes | My Quran Guide",
+      title: "Terms & Conditions | My Quran Guide",
       description:
-        "The terms covering My Quran Guide classes: what the free trial includes, how fees and billing work, notice periods, missed classes and how refunds work.",
+        "My Quran Guide's Terms & Conditions covering free trial, enrollment, fees, cancellations, refunds, and responsibilities for our online Quran classes.",
       path: "/terms-conditions",
     }),
     scripts: [buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to })))],
@@ -26,7 +26,11 @@ export const Route = createFileRoute("/terms-conditions")({
 function TermsPage() {
   return (
     <>
-      <PageHero title="Terms & Conditions" breadcrumbs={breadcrumbs} />
+      <PageHero
+        title="Terms & Conditions"
+        intro="Last Updated: 27 August 2026"
+        breadcrumbs={breadcrumbs}
+      />
       <LegalPage>
         <LH2>1. Acceptance of Terms</LH2>
         <LP>
@@ -371,7 +375,7 @@ function TermsPage() {
             ["Email", "info@myquranguide.com"],
             ["Website", "myquranguide.com/contact"],
             ["WhatsApp", SITE.whatsappDisplay],
-            ["Response time", "Within 1 to 2 hours during working hours"],
+            ["Response time", "We respond to all inquiries within 1 to 2 hours — available 24/7"],
           ]}
         />
       </LegalPage>
