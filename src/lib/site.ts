@@ -63,7 +63,7 @@ export const ORG_FACTS = {
   freeTrialClasses: 2,
   supportResponseTime: "within 1–2 hours",
   /** Set only once the academy can evidence the figure. */
-  studentsTaught: null as number | null,
+  studentsTaught: 500 as number | null,
   countriesServed: null as number | null,
 } as const;
 
