@@ -11,28 +11,32 @@ import type { FaqItem } from "@/components/site/Disclosure";
 
 export const homeFaqs: ReadonlyArray<FaqItem> = [
   {
-    q: "How does the free trial work?",
-    a: "Every new student gets two complete classes at no cost. They are full lessons with the tutor you would continue with, not a demo or a sales call. No card details are taken, and there is no obligation to enrol afterwards.",
+    q: "Do you offer a free trial?",
+    a: "Yes — a 2-day free trial for all new students. No payment or card required. Book your trial and experience the teaching before you commit.",
   },
   {
-    q: "What ages do you teach?",
-    a: "From five years old upwards, with no upper limit. Around half our students are children learning Noorani Qaida or recitation, and the rest are adults — including many who are reading the Quran properly for the first time.",
+    q: "What age groups do you teach?",
+    a: "Children as young as 5 through adults of any age, including new Muslims starting their Quran journey.",
   },
   {
-    q: "Can I request a female tutor?",
-    a: "Yes, and it is treated as a requirement rather than a preference. If you request a female tutor, only certified female tutors are assigned — for the trial, for regular classes, and for any cover lesson.",
+    q: "Can I choose a female tutor?",
+    a: "Yes. Female tutors are available for sisters and young girls who prefer a female teacher.",
   },
   {
-    q: "How do classes actually run?",
-    a: "One-to-one over Zoom, Skype or Google Meet, for 30 or 45 minutes, between two and six days a week. You pick the days and times; the tutor shares their screen with the page you are reading and corrects you as you go.",
+    q: "What platform are classes held on?",
+    a: "Zoom, Skype, or Google Meet — whichever you're most comfortable with.",
   },
   {
-    q: "I am a complete beginner. Where do I start?",
-    a: "With Noorani Qaida, which teaches the Arabic letters and their sounds before you open a mushaf. If you already recognise the letters, the tutor will assess you in the trial class and start you at recitation instead.",
+    q: "What if I am a complete beginner?",
+    a: "Start with Noorani Qaida — built for complete beginners, from the very basics, at your own pace.",
   },
   {
-    q: "What time zones do you cover?",
-    a: "All of them. Tutors teach across the full 24-hour cycle, so early morning slots for the Gulf, after-school slots for the UK and Europe, and evening slots for North America and Australia are all available.",
+    q: "Are your tutors certified?",
+    a: "Yes — all tutors are certified from Pakistan's top Quran-teaching institutes and have 8+ years of online teaching experience.",
+  },
+  {
+    q: "How much does it cost after the free trial?",
+    a: "Plans start from just $18/month — flexible enough for any budget, with no long-term contract required.",
   },
 ];
 
@@ -65,46 +69,54 @@ export const coursesFaqs: ReadonlyArray<FaqItem> = [
 
 export const feeScheduleFaqs: ReadonlyArray<FaqItem> = [
   {
-    q: "Are there registration or hidden fees?",
-    a: "No. There is no registration fee, no materials fee and no minimum term. The monthly package price or the per-class price is the entire cost, and it is fixed at the point you enrol.",
+    q: "Are there any registration or hidden fees?",
+    a: "No. My Quran Guide charges no registration fees and has no hidden charges. You only pay the agreed course fee — nothing more, nothing less.",
   },
   {
-    q: "Why are prices shown as fixed numbers rather than ranges?",
-    a: "Because a range tells you nothing you can plan around. Every course has one price per class and every package has one price per month. Non-USD prices are converted from the USD figure at a fixed published rate, so the columns always agree.",
+    q: "Can I switch between monthly and per class payment?",
+    a: "Yes. You can switch between monthly packages and per class payment at any time. Simply inform our team and we will adjust your payment plan accordingly.",
   },
   {
-    q: "Can I switch between monthly and per-class payment?",
-    a: "At any time, with no penalty. Tell your tutor or message us and the change applies from the next billing cycle. Many families use monthly packages during term time and per-class over the holidays.",
+    q: "When do I pay for my classes?",
+    a: "Payment timing is fully flexible at My Quran Guide. You can pay monthly in advance, weekly, or per class — whichever works best for your budget and schedule.",
   },
   {
-    q: "How does the siblings discount work?",
-    a: "Five per cent comes off the fees of every additional child from the same family, applied automatically once you tell us during enrolment. It applies to the second child and to every child after that.",
+    q: "Is the 5% siblings discount automatic?",
+    a: "Yes. Once you inform us during enrollment that you are enrolling multiple children from the same family, the 5% siblings discount is automatically applied to each additional child's fees.",
   },
   {
-    q: "Which currencies can I pay in?",
-    a: "US dollars, pounds sterling, euros, Canadian dollars and Australian dollars, via PayPal, Wise, bank transfer or card. Use the currency toggle on this page to see the exact amount you would be charged.",
+    q: "What currencies do you accept?",
+    a: "We accept payments in both USD ($) and GBP (£). If you are based in another country and prefer a different currency, contact us and we will find a solution that works for you.",
+  },
+  {
+    q: "What payment methods do you accept?",
+    a: "We accept PayPal, Bank Transfer, Wise (TransferWise), and other payment methods. Contact us if you need a specific payment method and we will try to accommodate you.",
+  },
+  {
+    q: "Can I get a refund if I am not satisfied?",
+    a: "Yes. My Quran Guide has a fair refund policy. Unused classes are refunded on a pro-rata basis if a cancellation request is submitted within 7 days of billing. See our full refund policy above for details.",
+  },
+  {
+    q: "Do fees change for different courses?",
+    a: "Monthly package fees are the same across all courses — pricing depends only on how many days per week you choose. Per class fees vary slightly by course. Contact us for exact pricing for your chosen course and we will provide a clear, transparent quote.",
   },
 ];
 
 export const contactFaqs: ReadonlyArray<FaqItem> = [
   {
-    q: "How quickly will you reply?",
-    a: "Within one to two hours, on any day of the week. WhatsApp is answered fastest; email typically takes a little longer because it is checked in batches rather than continuously.",
+    q: "What information should I include in my message?",
+    a: "To help us assist you better, please mention the student's name, age, course of interest, and your preferred class timing. This helps us match you with the right tutor right away.",
   },
   {
-    q: "What should I include in my first message?",
-    a: "The student's age, the course you are interested in, and roughly when you can attend along with your city or time zone. With those four things we can usually confirm a tutor and a slot in one reply rather than four.",
+    q: "Can I contact you before booking a free trial?",
+    a: "Absolutely. You are welcome to contact us first with any questions before booking your free trial. Our team is happy to guide you and help you choose the right course for you or your child.",
   },
   {
-    q: "Can I ask questions before booking a trial?",
-    a: "Of course. Plenty of families message two or three times before booking anything, and questions about tutor credentials, safeguarding or scheduling are all fair to ask up front.",
-  },
-  {
-    q: "Which languages can I contact you in?",
-    a: "English, Urdu or Punjabi. Classes themselves are taught in English, with Arabic terms explained, unless you specifically ask for a tutor who will explain in Urdu.",
+    q: "Do you communicate in English and Urdu?",
+    a: "Yes. Our team is fluent in both English and Urdu. You can contact us in whichever language you are most comfortable with.",
   },
   {
     q: "Is there a phone number I can call?",
-    a: "Support runs through WhatsApp rather than a phone line, which means voice notes and calls both work and there is a written record of what was agreed. The number is the same one listed in the footer.",
+    a: "We currently offer support via WhatsApp, email, Facebook, and Instagram. WhatsApp is the fastest way to reach us and works just like a phone call if you prefer voice messages.",
   },
 ];
