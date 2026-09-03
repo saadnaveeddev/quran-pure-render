@@ -4,23 +4,23 @@ import { ORG_FACTS } from "@/lib/site";
 
 const STEPS = [
   {
-    title: "Tell us who is learning and when",
-    body: "Three short steps: who the student is, which course and what times suit them, and how to reach you. The form detects your time zone so the slots you are offered are in your own clock, not ours.",
+    title: "Book Your Free Trial",
+    body: "Click the free trial button, share your name and preferred timing — we confirm your 2-day trial within 24 hours.",
   },
   {
-    title: "We match a tutor and confirm the slot",
-    body: `We reply ${ORG_FACTS.supportResponseTime} with a named tutor, their qualification, and two proposed class times. If you asked for a female tutor, that is who you are offered.`,
+    title: "Get Matched with Your Tutor",
+    body: "Based on age, level, and your preference for a male or female tutor, we match you with the most suitable teacher on our team.",
   },
   {
-    title: "Take two free classes, then decide",
-    body: "Both trial classes are real lessons with the tutor you would continue with. If the match is wrong we will reassign; if the fit is wrong you walk away having paid nothing.",
+    title: "Start Learning from Home",
+    body: `Join your class on ${ORG_FACTS.platforms.join(", ")} and begin your Quran learning journey.`,
   },
 ];
 
 export function HomeHowItWorks() {
   return (
     <Section tone="warm" ruled>
-      <SectionHeading label="Three steps, about two minutes" title="How booking actually works" />
+      <SectionHeading label="3 simple steps" title="Start Learning Quran Online in 3 Simple Steps" />
       <ol className="mt-14 grid gap-10 md:grid-cols-3">
         {STEPS.map((step, i) => (
           <li key={step.title}>

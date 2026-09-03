@@ -5,9 +5,9 @@ export function HomeTutors() {
   return (
     <Section ruled>
       <SectionHeading
-        label="The people teaching"
-        title="You are choosing a tutor, not a platform"
-        intro="The tutor who takes your trial class is the tutor who takes every class after it. Same person, same time, every week."
+        label="Why My Quran Guide"
+        title="Why My Quran Guide Is the Right Choice for Your Family"
+        intro="Every tutor is certified from Quran-teaching institutes and has 8+ years of hands-on classroom experience. You pick the day and time. Classes run on Zoom, Skype or Google Meet."
       />
       <TutorsSection limit={4} />
     </Section>
@@ -17,7 +17,7 @@ export function HomeTutors() {
 export function HomeTestimonials() {
   return (
     <Section tone="warm" ruled>
-      <SectionHeading label="From families we teach" title="What parents and students say" />
+      <SectionHeading label="Trusted by families around the world" title="What Our Students Say" />
       <TestimonialsSection />
     </Section>
   );

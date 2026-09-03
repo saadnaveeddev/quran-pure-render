@@ -15,9 +15,9 @@ export function HomePricing() {
   return (
     <Section ruled>
       <SectionHeading
-        label="Fixed monthly prices"
-        title="You will know the exact figure before you enrol"
-        intro="No registration fee, no materials fee, no minimum term. Five per cent off for every additional child from the same family."
+        label="From $18 a month"
+        title="Affordable monthly packages for every schedule"
+        intro="Plans start from $18/month — flexible enough for any budget, with no long-term contract. Five per cent off for every additional child from the same family."
       />
 
       <CurrencyToggle className="mt-9" />
