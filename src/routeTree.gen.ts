@@ -21,6 +21,7 @@ import { Route as OnlineQuranRecitationClassesRouteImport } from './routes/onlin
 import { Route as OnlineQuranClassesUsaRouteImport } from './routes/online-quran-classes-usa'
 import { Route as OnlineQuranClassesUkRouteImport } from './routes/online-quran-classes-uk'
 import { Route as OnlineQuranClassesForKidsRouteImport } from './routes/online-quran-classes-for-kids'
+import { Route as OnlineQuranClassesForBeginnersRouteImport } from './routes/online-quran-classes-for-beginners'
 import { Route as OnlineQuranClassesForAdultsRouteImport } from './routes/online-quran-classes-for-adults'
 import { Route as OnlineQuranClassesCanadaRouteImport } from './routes/online-quran-classes-canada'
 import { Route as OnlineQuranClassesAustraliaRouteImport } from './routes/online-quran-classes-australia'
@@ -101,6 +102,12 @@ const OnlineQuranClassesForKidsRoute =
   OnlineQuranClassesForKidsRouteImport.update({
     id: '/online-quran-classes-for-kids',
     path: '/online-quran-classes-for-kids',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OnlineQuranClassesForBeginnersRoute =
+  OnlineQuranClassesForBeginnersRouteImport.update({
+    id: '/online-quran-classes-for-beginners',
+    path: '/online-quran-classes-for-beginners',
     getParentRoute: () => rootRouteImport,
   } as any)
 const OnlineQuranClassesForAdultsRoute =
@@ -214,6 +221,7 @@ export interface FileRoutesByFullPath {
   '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
   '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
   '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-beginners': typeof OnlineQuranClassesForBeginnersRoute
   '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
   '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
   '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
@@ -246,6 +254,7 @@ export interface FileRoutesByTo {
   '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
   '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
   '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-beginners': typeof OnlineQuranClassesForBeginnersRoute
   '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
   '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
   '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
@@ -279,6 +288,7 @@ export interface FileRoutesById {
   '/online-quran-classes-australia': typeof OnlineQuranClassesAustraliaRoute
   '/online-quran-classes-canada': typeof OnlineQuranClassesCanadaRoute
   '/online-quran-classes-for-adults': typeof OnlineQuranClassesForAdultsRoute
+  '/online-quran-classes-for-beginners': typeof OnlineQuranClassesForBeginnersRoute
   '/online-quran-classes-for-kids': typeof OnlineQuranClassesForKidsRoute
   '/online-quran-classes-uk': typeof OnlineQuranClassesUkRoute
   '/online-quran-classes-usa': typeof OnlineQuranClassesUsaRoute
@@ -313,6 +323,7 @@ export interface FileRouteTypes {
     | '/online-quran-classes-australia'
     | '/online-quran-classes-canada'
     | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-beginners'
     | '/online-quran-classes-for-kids'
     | '/online-quran-classes-uk'
     | '/online-quran-classes-usa'
@@ -345,6 +356,7 @@ export interface FileRouteTypes {
     | '/online-quran-classes-australia'
     | '/online-quran-classes-canada'
     | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-beginners'
     | '/online-quran-classes-for-kids'
     | '/online-quran-classes-uk'
     | '/online-quran-classes-usa'
@@ -377,6 +389,7 @@ export interface FileRouteTypes {
     | '/online-quran-classes-australia'
     | '/online-quran-classes-canada'
     | '/online-quran-classes-for-adults'
+    | '/online-quran-classes-for-beginners'
     | '/online-quran-classes-for-kids'
     | '/online-quran-classes-uk'
     | '/online-quran-classes-usa'
@@ -410,6 +423,7 @@ export interface RootRouteChildren {
   OnlineQuranClassesAustraliaRoute: typeof OnlineQuranClassesAustraliaRoute
   OnlineQuranClassesCanadaRoute: typeof OnlineQuranClassesCanadaRoute
   OnlineQuranClassesForAdultsRoute: typeof OnlineQuranClassesForAdultsRoute
+  OnlineQuranClassesForBeginnersRoute: typeof OnlineQuranClassesForBeginnersRoute
   OnlineQuranClassesForKidsRoute: typeof OnlineQuranClassesForKidsRoute
   OnlineQuranClassesUkRoute: typeof OnlineQuranClassesUkRoute
   OnlineQuranClassesUsaRoute: typeof OnlineQuranClassesUsaRoute
@@ -512,6 +526,13 @@ declare module '@tanstack/react-router' {
       path: '/online-quran-classes-for-kids'
       fullPath: '/online-quran-classes-for-kids'
       preLoaderRoute: typeof OnlineQuranClassesForKidsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-quran-classes-for-beginners': {
+      id: '/online-quran-classes-for-beginners'
+      path: '/online-quran-classes-for-beginners'
+      fullPath: '/online-quran-classes-for-beginners'
+      preLoaderRoute: typeof OnlineQuranClassesForBeginnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online-quran-classes-for-adults': {
@@ -658,6 +679,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnlineQuranClassesAustraliaRoute: OnlineQuranClassesAustraliaRoute,
   OnlineQuranClassesCanadaRoute: OnlineQuranClassesCanadaRoute,
   OnlineQuranClassesForAdultsRoute: OnlineQuranClassesForAdultsRoute,
+  OnlineQuranClassesForBeginnersRoute: OnlineQuranClassesForBeginnersRoute,
   OnlineQuranClassesForKidsRoute: OnlineQuranClassesForKidsRoute,
   OnlineQuranClassesUkRoute: OnlineQuranClassesUkRoute,
   OnlineQuranClassesUsaRoute: OnlineQuranClassesUsaRoute,

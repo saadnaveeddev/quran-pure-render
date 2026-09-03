@@ -7,9 +7,9 @@ import { SITE, whatsappUrl } from "@/lib/site";
  * or a rating, because we cannot yet evidence either.
  */
 const PROOF = [
-  "Two free trial classes",
-  "Male or female tutor, your choice",
-  "Every time zone, seven days a week",
+  "Certified tutors, 8+ years of experience",
+  "You set the schedule — morning, evening or weekend",
+  "2-day free trial, no card required",
 ];
 
 export function HomeHero() {
@@ -21,21 +21,25 @@ export function HomeHero() {
           <Rosette animate className="h-12 w-12 text-gold" />
 
           <h1 className="text-display-xl mt-7 text-balance text-ink">
-            Learn to read the Quran properly, wherever you are
+            Online Quran Classes for Kids, Adults & New Muslims — Learn From Home, Live With a Real
+            Tutor
           </h1>
 
           <p className="measure mt-6 text-pretty text-body-l text-ink-soft">
-            One-to-one online classes with certified male and female tutors, for children from five
-            and for adults starting from nothing. Your first two classes are free, and nothing is
-            charged until you have decided.
+            My Quran Guide makes learning the Quran simple and flexible — for kids, teenagers,
+            adults, and new Muslims alike. Whether you're starting from zero or refining your
+            Tajweed, our tutors are certified from Pakistan's top Quran-teaching institutes, with
+            8+ years of teaching experience, split evenly between male and female instructors.
+            Classes run live on Zoom, Skype, or Google Meet, on a schedule you set — not one we
+            assign. Start with a 2-day free trial. No payment details, no commitment.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button to="/free-trial" size="lg" withChevron>
-              Book a free trial class
+              Start Your 2-Day Free Trial
             </Button>
             <Button to="/courses" variant="secondary" size="lg">
-              See the seven courses
+              View All Courses
             </Button>
           </div>
 
