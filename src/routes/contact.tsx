@@ -21,9 +21,9 @@ const breadcrumbs = [
 export const Route = createFileRoute("/contact")({
   head: () => ({
     ...buildPageSeo({
-      title: "Contact us about Quran classes | My Quran Guide",
+      title: "Contact Us | My Quran Guide — Get in Touch Today",
       description:
-        "Message us on WhatsApp or email with any question about courses, fees, timings or tutors. We reply within one to two hours during working hours.",
+        "Have a question about our online Quran classes? Contact My Quran Guide via email, WhatsApp, Facebook or Instagram. We reply within 1-2 hours. Available 24/7!",
       path: "/contact",
     }),
     scripts: [
@@ -131,9 +131,9 @@ function ContactPage() {
   return (
     <>
       <PageHero
-        label={`Replies ${ORG_FACTS.supportResponseTime}`}
-        title="Ask us anything before you book"
-        intro="Questions about level, timings, fees or which tutor would teach you are all worth asking first. There is no obligation attached to any of it."
+        label={`Replies ${ORG_FACTS.supportResponseTime} — available 24/7`}
+        title="Contact My Quran Guide — We Are Here for You 24/7"
+        intro="Have a question about our online Quran classes? Want to know which course is right for you or your child? Or are you ready to book your 2-day free trial? Whatever you need — My Quran Guide is here to help. We are available 24/7 and reply to all messages within 1 to 2 hours."
         breadcrumbs={breadcrumbs}
         actions={
           <>
@@ -160,9 +160,9 @@ function ContactPage() {
           <div>
             <SectionHeading
               align="left"
-              label="Two ways, both read by a person"
-              title="How to reach us"
-              intro="WhatsApp is genuinely the fastest route and most families use it. The form below goes to the same inbox if you would rather write at length."
+              label="Get in touch"
+              title="Get in Touch with My Quran Guide"
+              intro="Reach out to us through any of the channels below and our friendly team will get back to you as soon as possible."
             />
             <SpecStrip className="mt-10" columns={1} items={availability} />
             <p className="measure mt-8 text-pretty text-ink-soft">
@@ -184,7 +184,10 @@ function ContactPage() {
       </Section>
 
       <Section tone="warm" ruled>
-        <SectionHeading label={`${contactFaqs.length} questions`} title="Asked most often" />
+        <SectionHeading
+          label={`${contactFaqs.length} questions`}
+          title="Frequently Asked Questions"
+        />
         <Faq className="mt-10" items={contactFaqs} group="contact-faq" />
       </Section>
     </>

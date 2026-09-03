@@ -5,7 +5,10 @@ import { homeFaqs } from "@/content/faqs";
 export function HomeFaq() {
   return (
     <Section tone="warm" ruled>
-      <SectionHeading label="Before you book" title="Questions we are asked most" />
+      <SectionHeading
+        label="Common questions answered"
+        title="Online Quran Classes — Common Questions Answered"
+      />
       <div className="mt-12">
         <Faq items={homeFaqs} group="home-faq" />
       </div>

@@ -18,9 +18,9 @@ import { buildFaqSchema, buildItemListSchema, buildPageSeo } from "@/lib/seo";
 export const Route = createFileRoute("/")({
   head: () => {
     const seo = buildPageSeo({
-      title: "Online Quran Classes for Kids & Adults | My Quran Guide",
+      title: "Online Quran Classes | 2-Day Free Trial - My Quran Guide",
       description:
-        "One-to-one online Quran classes with certified male and female tutors. Noorani Qaida, Tajweed, Hifz and Arabic, from age five. Two free trial classes.",
+        "Learn Quran online with certified male & female tutors. Flexible timings for kids, adults & new Muslims. Start your 2-day free trial today - no card needed.",
       path: "/",
       ogImagePath: SITE.heroImagePath,
     });

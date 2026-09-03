@@ -82,24 +82,24 @@ export const PACKAGES: ReadonlyArray<Package> = [
     name: "Starter",
     daysPerWeek: 2,
     classesPerMonth: 8,
-    usdPerMonth: 40,
-    bestFor: "Busy schedules and steady, unhurried progress",
+    usdPerMonth: 18,
+    bestFor: "2 days per week — 30 or 45 minutes, student chooses",
   },
   {
     id: "standard",
     name: "Standard",
     daysPerWeek: 3,
     classesPerMonth: 12,
-    usdPerMonth: 52,
-    bestFor: "The minimum we recommend for consistent improvement",
+    usdPerMonth: 27,
+    bestFor: "3 days per week — 30 or 45 minutes, student chooses",
   },
   {
     id: "popular",
-    name: "Regular",
+    name: "Popular",
     daysPerWeek: 4,
     classesPerMonth: 16,
-    usdPerMonth: 70,
-    bestFor: "Most students — enough contact time to build real fluency",
+    usdPerMonth: 36,
+    bestFor: "4 days per week — 30 or 45 minutes, student chooses",
     featured: true,
   },
   {
@@ -107,22 +107,22 @@ export const PACKAGES: ReadonlyArray<Package> = [
     name: "Intensive",
     daysPerWeek: 5,
     classesPerMonth: 20,
-    usdPerMonth: 88,
-    bestFor: "Hifz students and anyone working to a deadline",
+    usdPerMonth: 45,
+    bestFor: "5 days per week — 30 or 45 minutes, student chooses",
   },
   {
     id: "full-week",
     name: "Full week",
     daysPerWeek: 6,
     classesPerMonth: 24,
-    usdPerMonth: 105,
-    bestFor: "Full-time Hifz and accelerated Arabic study",
+    usdPerMonth: 54,
+    bestFor: "6 days per week — 30 or 45 minutes, student chooses",
   },
 ];
 
 export const SIBLING_DISCOUNT_PERCENT = 5;
 
-export const PAYMENT_METHODS = ["PayPal", "Bank transfer", "Wise", "Debit or credit card"] as const;
+export const PAYMENT_METHODS = ["PayPal", "Bank Transfer", "Wise (TransferWise)", "Other methods"] as const;
 
 export const REFUND_POLICY = [
   "A class missed because of a tutor issue is replaced at no extra cost.",

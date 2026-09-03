@@ -35,9 +35,9 @@ const monthlyPrices = PACKAGES.map((p) => p.usdPerMonth);
 export const Route = createFileRoute("/fee-schedule")({
   head: () => ({
     ...buildPageSeo({
-      title: "Online Quran Class Fees & Pricing | My Quran Guide",
+      title: "Online Quran Classes Fee Schedule | My Quran Guide",
       description:
-        "Fixed monthly and per-class fees for online Quran classes, shown in USD, GBP, EUR, CAD and AUD. Five per cent sibling discount, no registration fee.",
+        "View My Quran Guide's fee schedule - affordable monthly packages from $18 and per class pricing in USD & GBP. Siblings discount available!",
       path: "/fee-schedule",
     }),
     scripts: [
@@ -67,12 +67,12 @@ function FeeSchedulePage() {
     <>
       <PageHero
         breadcrumbs={breadcrumbs}
-        label="Fixed prices, no registration fee"
-        title="What online Quran classes cost"
-        intro="Every figure on this page is a fixed number rather than a range, because a range tells you nothing you can budget against. Prices are set in US dollars and converted at a published fixed rate."
+        label="From $18 a month"
+        title="Online Quran Classes Fee Schedule — Affordable Monthly & Per Class Pricing | My Quran Guide"
+        intro="At My Quran Guide, we believe quality Quran education should be accessible and affordable for every Muslim family. Our fee schedule is transparent, flexible, and designed to fit different budgets and schedules. Whether you prefer a monthly package or a pay-per-class option — we have a plan that works for you. All fees are available in both USD ($) and GBP (£). A siblings discount of 5% is available for families enrolling more than one child. And remember — every new student starts with a 2-day free trial at absolutely no cost."
         actions={
           <Button to="/free-trial" withChevron>
-            Start with two free classes
+            Book My 2-Day Free Trial — 100% Free
           </Button>
         }
       />
@@ -130,7 +130,7 @@ function FeeSchedulePage() {
         <SectionHeading
           label="Pay as you go"
           title="Per-class fees by course"
-          intro="No monthly commitment. The same fee applies whether the session is 30 or 45 minutes."
+          intro="Prefer flexibility? Pay per class with no monthly commitment. Exact per class fee is confirmed upon enrollment based on course, duration, and tutor availability."
           align="left"
         />
         <DataTable
@@ -199,11 +199,13 @@ function FeeSchedulePage() {
       <Section tone="ink">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-h2 text-balance text-paper">
-            Not sure which package fits? Get a personalised quote
+            Start with 2 Days Free — No Payment Until You Are Ready
           </h2>
           <p className="mt-5 text-pretty text-body-l text-paper/80">
-            Tell us how many children, which courses and how many days a week, and we will send back
-            one figure — including the sibling discount — with no obligation attached to it.
+            Before paying anything, every new student at My Quran Guide gets 2 completely free trial
+            classes. Experience our certified tutors, flexible schedule, and quality teaching —
+            then choose the plan that works best for you. Affordable, transparent, and always
+            flexible.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Button
@@ -213,7 +215,7 @@ function FeeSchedulePage() {
               size="lg"
               withChevron
             >
-              Get a personalised quote
+              Contact Us for a Personalized Fee Quote
             </Button>
             <Button
               to="/free-trial"
@@ -221,7 +223,7 @@ function FeeSchedulePage() {
               size="lg"
               className="border-paper/35 text-paper hover:bg-paper/10"
             >
-              Or start with two free classes
+              Book My 2-Day Free Trial — 100% Free
             </Button>
           </div>
         </div>

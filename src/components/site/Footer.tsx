@@ -17,6 +17,7 @@ import { track } from "@/lib/analytics";
 const audiencePages = [
   { to: "/online-quran-classes-for-kids", label: "Classes for kids" },
   { to: "/online-quran-classes-for-adults", label: "Classes for adults" },
+  { to: "/online-quran-classes-for-beginners", label: "Classes for beginners" },
   { to: "/quran-classes-for-new-muslims", label: "Classes for new Muslims" },
 ];
 

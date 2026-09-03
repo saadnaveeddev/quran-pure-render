@@ -12,9 +12,9 @@ const breadcrumbs = [
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     ...buildPageSeo({
-      title: "Privacy policy and how we handle data | My Quran Guide",
+      title: "Privacy Policy | My Quran Guide",
       description:
-        "What information My Quran Guide collects when you book a class, how it is used and stored, who it is shared with, and how to ask us to delete it.",
+        "Read My Quran Guide's Privacy Policy to learn how we collect, use, and protect your personal data across our online Quran classes and services.",
       path: "/privacy-policy",
     }),
     scripts: [buildBreadcrumbSchema(breadcrumbs.map((b) => ({ name: b.label, path: b.to })))],
@@ -25,7 +25,11 @@ export const Route = createFileRoute("/privacy-policy")({
 function PrivacyPage() {
   return (
     <>
-      <PageHero title="Privacy Policy" breadcrumbs={breadcrumbs} />
+      <PageHero
+        title="Privacy Policy"
+        intro="Last Updated: 27 August 2026"
+        breadcrumbs={breadcrumbs}
+      />
       <LegalPage>
         <LH2>Introduction</LH2>
         <LP>
@@ -50,7 +54,7 @@ function PrivacyPage() {
             ["Business Name", "My Quran Guide"],
             [
               "Service",
-              "Online Quran Classes — Tajweed, Hifz, Noorani Qaida, Arabic, Islamic Studies, Female Quran Classes",
+              "Online Quran Classes — Tajweed, Hifz, Noorani Qaida, Quran Recitation, Islamic Studies, Arabic Language, Female Quran Classes",
             ],
             ["Website", "myquranguide.com"],
             ["Contact Email", "info@myquranguide.com"],
@@ -379,8 +383,8 @@ function PrivacyPage() {
           rows={[
             ["Email", "info@myquranguide.com"],
             ["Website", "myquranguide.com/contact"],
-            ["Response time", "We aim to respond to privacy enquiries within 48 hours"],
-            ["Working hours", "Pakistan Standard Time (UTC+5), Saturday to Thursday"],
+            ["Response time", "We aim to respond to all privacy-related inquiries within 1 to 2 hours"],
+            ["Available", "24/7 — We are always here to answer your questions"],
           ]}
         />
         <LP>

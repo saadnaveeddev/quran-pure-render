@@ -113,12 +113,12 @@ export interface Testimonial {
 
 export const TESTIMONIALS: ReadonlyArray<Testimonial> = [
   {
-    name: "Sarah K.",
+    name: "Sarah M.",
     country: "United Kingdom",
-    course: "tajweed",
+    course: "qaida",
     date: "2025-11-12",
     quote:
-      "I had been reciting for twenty years with mistakes nobody ever corrected. After four months of tajweed classes, I can hear the difference in my own prayer — and so can my children.",
+      "My daughter started with Noorani Qaida and within 3 months she is reading the Quran on her own. The female tutor is so patient and kind. Highly recommend My Quran Guide to every Muslim family.",
     consentOnFile: false,
   },
   {
