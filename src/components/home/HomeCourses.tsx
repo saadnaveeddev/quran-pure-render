@@ -8,8 +8,8 @@ export function HomeCourses() {
     <Section id="courses" ruled>
       <SectionHeading
         label={`${COURSE_LIST.length} courses`}
-        title="Pick the one that matches where you actually are"
-        intro="Each course starts at a defined point and ends at a defined point. If you are not sure which applies to you, the tutor will tell you in the free trial."
+        title="Complete Online Quran Courses for All Levels"
+        intro="From absolute beginners to advanced learners — a course for every age and stage."
       />
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {COURSE_LIST.map((course) => (

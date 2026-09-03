@@ -14,12 +14,12 @@ export function HomeAudiences() {
   return (
     <Section tone="warm" ruled>
       <SectionHeading
-        label="Three starting points, four countries"
-        title="Find the page written for your situation"
-        intro="The right answer for a seven-year-old, an adult who stopped at fifteen, and someone who took shahadah last month are genuinely different. So are the class times that work in London and in Sydney."
+        label="Kids, adults, beginners & new Muslims"
+        title="Online Quran Classes for Everyone — No Matter Your Age or Level"
+        intro="Kids (5–12), teenagers (13–17), adults, new Muslims and complete beginners each have a starting point — and class times that work in London and in Sydney."
       />
 
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
         {AUDIENCE_PAGE_LIST.map((page, i) => (
           <Reveal key={page.path} delayMs={i * 60}>
             <Link

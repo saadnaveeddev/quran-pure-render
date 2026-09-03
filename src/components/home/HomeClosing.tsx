@@ -13,14 +13,17 @@ export function HomeClosing() {
     <Section tone="ink">
       <div className="mx-auto max-w-2xl text-center">
         <RosetteDivider className="mb-10 [&>span]:bg-gold/40" />
-        <h2 className="text-h2 text-balance text-paper">Two classes, no card, no obligation</h2>
+        <h2 className="text-h2 text-balance text-paper">
+          Start Your Quran Learning Journey Today — 2 Days Completely Free
+        </h2>
         <p className="mt-5 text-pretty text-body-l text-paper/80">
-          Tell us the student's age and roughly when they can attend. We will come back within one
-          to two hours with a named tutor and two proposed times.
+          Certified tutors, flexible timings, one-on-one or group classes, and a 2-day free trial
+          with zero risk. Join the families who've already chosen My Quran Guide as their online
+          Quran academy.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <Button to="/free-trial" size="lg" withChevron>
-            Book a free trial class
+            Start My Free Trial Now
           </Button>
           <Button
             href={whatsappUrl("Assalamu alaikum — I'd like to book a free trial class.")}
