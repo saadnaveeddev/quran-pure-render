@@ -15,51 +15,43 @@ const breadcrumbs = [
   { label: "About", to: "/about" },
 ];
 
-/**
- * Every claim on this page is one the academy can evidence.
- *
- * The previous version led with "500+ students taught" and "10+ years of
- * combined experience", neither of which is in ORG_FACTS and neither of which
- * a visitor can check. Unverifiable numbers are worth less than a specific
- * description of how something works, and they are a real liability on a site
- * asking parents for trust.
- */
+/** About page copy from My_Quran_Guide_AboutUs_FINAL (27 August 2026). */
 
 const principles = [
   {
-    title: "One student, one tutor",
-    body: "Every class is one-to-one. Group classes are cheaper to run and we do not offer them, because a child who is embarrassed to make a mistake in front of other children stops trying, and an adult beginner will not recite at all.",
+    title: "Accessibility",
+    body: "We believe Quran education should never be out of reach for any Muslim family, anywhere in the world.",
   },
   {
-    title: "The same tutor each week",
-    body: "Continuity is the single biggest predictor of whether a student keeps going. The tutor who takes your trial is the tutor you continue with, and we do not rotate staff to fill gaps in a timetable.",
+    title: "Authenticity",
+    body: "We teach the Quran the way it was revealed — with proper Tajweed, correct pronunciation, and deep respect for every word.",
   },
   {
-    title: "Parents can watch anything",
-    body: "Any class, any time, without asking. We would not run a session that a parent was not free to observe, and we think any provider unwilling to say that plainly should be asked why.",
+    title: "Care",
+    body: "Every student at My Quran Guide is treated like family. Our tutors are patient, encouraging, and genuinely invested in your progress.",
   },
   {
-    title: "We say what we do not know",
-    body: "Where we cannot evidence a claim, it does not appear on this site. That is why you will not find a student counter or a star rating here until there is something real behind it.",
+    title: "Flexibility",
+    body: "Life is busy. We build our schedule around yours — not the other way around.",
   },
 ];
 
 const whoWeTeach = [
   {
-    title: "Children starting from nothing",
-    body: "Usually from around age five, beginning with letter recognition in the Qaida. Sessions are 30 minutes because that is genuinely how long a young child can concentrate, whatever a longer booking would earn us.",
+    title: "Kids (5-12)",
+    body: "Just starting their Quran journey with Noorani Qaida and basic recitation.",
   },
   {
-    title: "Children and teenagers already reading",
-    body: "Moving from decoding to fluency, correcting habits picked up early, and starting tajweed properly. This is where most families arrive when a weekend madrasah has taken them as far as it can.",
+    title: "Teenagers (13-17)",
+    body: "Ready to improve their Tajweed, begin Hifz, or learn Arabic.",
   },
   {
-    title: "Adults returning to it",
-    body: "Often people who learned as children, stopped, and are uncomfortable about how much they have lost. One-to-one means nobody hears the process except the tutor.",
+    title: "Adults (18+)",
+    body: "Learning or improving Quran recitation with flexible evening timings.",
   },
   {
     title: "New Muslims",
-    body: "Starting at the alphabet with a tutor who expects no prior knowledge, will not assume cultural context, and will not make anyone feel behind.",
+    body: "Taking their first steps in Islam, guided by a patient, English-speaking tutor with care and respect.",
   },
 ];
 
@@ -82,7 +74,7 @@ const faqs = [
   },
   {
     q: "How many students have you taught?",
-    a: "We do not publish a figure, because we would not be able to show you how it was counted. What we can tell you is exactly how classes run and who would teach them, and the two free classes let you judge the teaching directly rather than taking a number on trust.",
+    a: "My Quran Guide has taught 500+ students across multiple countries. Our founder, Hafiz Abdul Shakoor, brings 8+ years of Quran teaching experience, and every family starts with a 2-day free trial so you can judge the teaching directly.",
   },
   {
     q: "Do you teach a particular madhhab or school of thought?",
@@ -101,9 +93,9 @@ const faqs = [
 export const Route = createFileRoute("/about")({
   head: () => ({
     ...buildPageSeo({
-      title: "About My Quran Guide and how our classes work",
+      title: "About Us | My Quran Guide - Certified Online Quran Academy",
       description:
-        "How our one-to-one Quran classes are run, who we teach, what we will and will not claim, and the practical facts about the academy in one place.",
+        "Certified Pakistani Quran tutors, 500+ students taught, flexible timings for every family. Book your 2-day free trial with My Quran Guide today.",
       path: "/about",
     }),
     scripts: [
@@ -118,14 +110,14 @@ function AboutPage() {
   return (
     <>
       <PageHero
-        label="Founded to remove three specific barriers"
-        title="About My Quran Guide"
-        intro="We teach the Quran one-to-one to families who cannot reach a good teacher locally, cannot find a female tutor, or cannot fit a fixed madrasah timetable around work and school."
+        label="500+ students taught · 8+ years of teaching"
+        title="About My Quran Guide — Making Quality Quran Education Accessible for Everyone"
+        intro="My Quran Guide was founded with one clear purpose — to make quality Quran education accessible to every Muslim, no matter where they live in the world. What started as a personal passion for teaching the Quran has grown into a trusted online Quran academy with over 500 students taught and 8+ years of teaching experience behind our founder and team."
         breadcrumbs={breadcrumbs}
         actions={
           <>
             <Button to="/free-trial" withChevron>
-              Book two free classes
+              Book My Free Trial Class Now
             </Button>
             <Button variant="secondary" to="/tutors">
               How we vet tutors
@@ -137,26 +129,25 @@ function AboutPage() {
       <Section>
         <div className="measure mx-auto space-y-5 text-pretty text-body-l text-ink-soft">
           <p>
-            Most families who find us have already tried something else. A weekend madrasah forty
-            minutes away that a working parent cannot reliably reach. A class of twenty children
-            where a quiet child can go a term without being heard recite. A relative teaching over
-            the phone when they have time.
+            We are not just another online Quran platform. We are a team of certified, experienced,
+            English-speaking Pakistani tutors who genuinely care about every student's progress —
+            from a 5-year-old learning their first Arabic letters to an adult new Muslim reciting
+            the Quran for the very first time.
           </p>
           <p>
-            None of those are bad options, and for some families they work well. But they fail in
-            predictable ways, and the failures are almost always about consistency and attention
-            rather than about the teaching itself. That is the specific problem this academy was
-            built to solve, and it is why the format has not changed since: one student, one tutor,
-            a fixed weekly slot, and a schedule built around your week rather than ours.
+            At My Quran Guide, we believe that every Muslim deserves access to authentic,
+            high-quality Quran education — regardless of their location, schedule, or level. Our
+            mission is simple: “To make quality Quran education accessible for every student, every
+            family, and every new Muslim around the world — from the comfort of their home.”
           </p>
         </div>
       </Section>
 
       <Section tone="warm" ruled>
         <SectionHeading
-          label="Four things we hold to"
-          title="How we run classes, and why"
-          intro="These are commitments rather than aspirations. Each one costs us something, which is what makes it worth stating."
+          label="Our values"
+          title="Our Values — What We Stand For"
+          intro="This mission drives every decision we make — from the tutors we hire, to the courses we design, to the flexible timings we offer."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {principles.map((p) => (
@@ -169,7 +160,10 @@ function AboutPage() {
       </Section>
 
       <Section ruled>
-        <SectionHeading label="Four kinds of student" title="Who we teach" />
+        <SectionHeading
+          label="Kids, adults, teenagers & new Muslims"
+          title="Who We Serve — Kids, Adults, Teenagers & New Muslims"
+        />
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
           {whoWeTeach.map((w) => (
             <div key={w.title}>
@@ -185,28 +179,35 @@ function AboutPage() {
           <div>
             <SectionHeading
               align="left"
-              label="Stated plainly"
-              title="What we will not claim"
-              intro="Everything on this site should be something you could check or something we could show you."
+              label="Why students trust us"
+              title="Why 500+ Students Trust My Quran Guide"
+              intro="Trust is not built overnight. It is earned — one class at a time, one student at a time."
             />
             <RosetteList
               className="mt-8 text-ink-soft"
               items={[
-                "No student counter, because we cannot show you how it was counted.",
-                "No star rating, because there is no verified review corpus behind one.",
-                "No stock photographs presented as our tutors or our students.",
-                "No testimonial without a real name, country, course, date and written permission.",
-                "No claim that a tutor is qualified without naming the qualification.",
+                "500+ students successfully taught",
+                "8+ years of teaching experience, led by founder Hafiz Abdul Shakoor",
+                "Certified male and female tutors from Pakistan",
+                "Fluent, English-speaking instruction",
+                "Flexible timings — you choose your schedule",
+                "One-on-one and group classes available",
+                "Classes via Zoom, Skype & Google Meet",
+                "2-day free trial — no payment required",
+                "All levels welcome, from beginner to advanced",
+                "New Muslims warmly welcomed",
               ]}
             />
             <p className="measure mt-6 text-pretty text-ink-soft">
-              This costs us conversions against sites that do claim those things. We would rather
-              carry that cost than have a parent find out later that a number was invented.
+              My Quran Guide did not begin as a business. It began as a calling. Our founder, Hafiz
+              Abdul Shakoor, brings 8+ years of Quran teaching experience and built My Quran Guide
+              to remove the barriers families faced: no local madrassa, no qualified female tutor,
+              and no flexible timing that fit a busy modern lifestyle.
             </p>
           </div>
 
           <div>
-            <h2 className="text-h2 text-ink">The academy in facts</h2>
+            <h2 className="text-h2 text-ink">Who We Are — Certified, Experienced & English-Speaking</h2>
             <SpecStrip className="mt-6" columns={1} items={facts} />
           </div>
         </div>
@@ -220,15 +221,17 @@ function AboutPage() {
       <Section tone="ink">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-h2 text-balance text-paper">
-            The two free classes are the actual evidence
+            Start Your Journey with My Quran Guide Today
           </h2>
           <p className="mt-5 text-pretty text-body-l text-paper/80">
-            Not a demo and not a sales call. Two real lessons with the tutor you would continue
-            with, after which you decide. Nothing is charged and no card is taken.
+            Whether you are a parent looking for the best online Quran teacher for your child, an
+            adult wanting to reconnect with the Quran, or a new Muslim taking your very first steps
+            — My Quran Guide is here for you. Book your 2-day free trial today. No payment. No
+            commitment. Just two classes to experience the My Quran Guide difference for yourself.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Button to="/free-trial" size="lg" withChevron>
-              Book two free classes
+              Book My Free Trial Class Now
             </Button>
             <Button
               href={whatsappUrl("Assalamu alaikum, I have a question about the academy.")}

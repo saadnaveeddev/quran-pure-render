@@ -27,9 +27,9 @@ const breadcrumbs = [
 export const Route = createFileRoute("/courses")({
   head: () => ({
     ...buildPageSeo({
-      title: "Online Quran Courses: Tajweed, Hifz, Qaida | My Quran Guide",
+      title: "Complete Online Quran Courses for All Levels | My Quran Guide",
       description:
-        "Seven online Quran courses with certified tutors: Noorani Qaida, recitation, Tajweed, Hifz, Islamic studies and Quranic Arabic. Compare levels and fees.",
+        "From absolute beginners to advanced learners — Noorani Qaida, Recitation, Tajweed, Hifz, Islamic Studies, Arabic and Female Quran Classes. Book a 2-day free trial.",
       path: "/courses",
     }),
     scripts: [
@@ -110,8 +110,8 @@ function CoursesPage() {
       <PageHero
         breadcrumbs={breadcrumbs}
         label="Seven courses"
-        title="Online Quran courses, from the first letter to full Hifz"
-        intro="Every course below is taught one-to-one by a certified tutor, in 30 or 45 minute sessions, two to six days a week. Filter by who is learning and where they are starting."
+        title="Complete Online Quran Courses for All Levels"
+        intro="From absolute beginners to advanced learners — a course for every age and stage. Every course is taught by a certified tutor, in 30 or 45 minute sessions, two to six days a week."
         actions={
           <Button to="/free-trial" withChevron>
             Book a free trial class
@@ -201,15 +201,17 @@ function CoursesPage() {
 
       <Section tone="ink">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-h2 text-balance text-paper">Not sure which one applies to you?</h2>
+          <h2 className="text-h2 text-balance text-paper">
+            Start Your Quran Learning Journey Today — 2 Days Completely Free
+          </h2>
           <p className="mt-5 text-pretty text-body-l text-paper/80">
-            Book a trial without picking a course. The tutor will listen to you read for a few
-            minutes and tell you where to start — that assessment is the whole point of the first
-            free class.
+            Certified tutors, flexible timings, one-on-one or group classes, and a 2-day free trial
+            with zero risk. If you are not sure which course fits, we will match you after the
+            trial.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Button to="/free-trial" size="lg" withChevron>
-              Book an assessment class
+              Start My Free Trial Now
             </Button>
             <Button
               href={whatsappUrl("Assalamu alaikum — which course should I start with?")}
